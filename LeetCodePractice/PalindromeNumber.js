@@ -1,3 +1,5 @@
+//Given an integer x, return true if x is a palindrome, and false otherwise.
+
 var isPalindrome = function(x) {
     var userInputArray = String(x).split('').map(Number);
     var lastElementIndex = userInputArray.length-1;
@@ -9,4 +11,4 @@ var isPalindrome = function(x) {
     return true
 }
 
-console.log(isPalindrome(1000021))
+console.log(isPalindrome(100001))

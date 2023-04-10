@@ -1,3 +1,5 @@
+//Given a roman numeral, convert it to an integer.
+
 function romanNumerals (romanString){
     var num = 0;
     var answer = 0;

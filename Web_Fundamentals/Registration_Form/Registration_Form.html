@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <div>
+        First Name:*
+        <input type="text" name="first_name">
+    </div>
+    <div>
+        Last Name:*
+        <input type="text" name="last_name">
+    </div>
+    <div>
+        Email Address:*
+        <input type="text" name="email_address">
+    </div>
+    <div>
+        Password:*
+        <input type="password" name="password">
+    </div>
+    <div>
+        Confirm Password:*
+        <input type="password" name="confirm_password">
+    </div>
+    <div>
+        Birthday:
+        <input type="date" name="birthday">
+    </div>
+    <div>
+        Gender Identity:
+        <input type="radio" name="gender_identity" value="Male" id="Male">
+            <label for="Male">Male</label>
+        <input type="radio" name="gender_identity" value="Female" id="Female">
+            <label for="Female">Female</label>
+        <input type="radio" name="gender_identity" value="Non-Binary" id="Non-Binary">
+            <label for="Non-Binary">Non-Binary</label>
+        <input type="radio" name="gender_identity" value="I prefer not to answer" id="I prefer not to answer">
+            <label for="I prefer not to answer">I prefer not to answer</label>
+    </div>
+    <p></p>
+    A short description about myself:
+    <div>
+        <textarea name="comment" cols="20" rows="5"></textarea>
+    </div>
+    <p></p>
+    <div>
+        Favorite Language
+        <select name="favorite_language">
+            <option value="Javascript">Javascript</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="C#">C#</option>
+        </select>
+    </div>
+    <div>
+        <input type="checkbox" name="subscription" id="accept">
+        <label for="accept">Yes, I would like to receive periodic email updates</label>
+    </div>
+    <input type="submit" value="Create Account">
+    <p>*Indicates a required field</p>
+</body>
+</html>
