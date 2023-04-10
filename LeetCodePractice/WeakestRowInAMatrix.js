@@ -35,6 +35,3 @@ var kWeakestRows = function(mat, k){
     }
     return result
 }
-
-var x = [[1,0,0,0],[1,1,1,1],[1,0,0,0],[1,0,0,0]]
-console.log(kWeakestRows(x, 2))
