@@ -1,0 +1,44 @@
+body {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+h1 {
+    color: gray;
+    font-weight:bolder;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 4em;
+}
+
+.row img {
+    height: 300px;
+}
+
+.row {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#aqua {
+    background-color: aqua;
+}
+
+#pink {
+    background-color: pink;
+    justify-content: space-evenly;
+}
+
+#white {
+    background-color: white;
+}
+
+#last-sentence {
+    text-align:center;
+    font-size: 1.2em;
+}
