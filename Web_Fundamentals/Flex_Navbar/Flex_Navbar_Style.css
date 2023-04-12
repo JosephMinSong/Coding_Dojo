@@ -1,0 +1,36 @@
+.nav {
+    display: flex;
+    background-color: rgb(64, 71, 78);
+    padding: 15px;
+    justify-content: space-between;
+}
+
+.nav-title {
+    color:white;
+    font-size: 2em;
+}
+
+.nav-links {
+    text-decoration: none;
+}
+
+li {
+    display: inline-block;
+    font-size: 1.65em;
+    margin-left: 15px;
+    color:white
+}
+
+.btn {
+    font-size: .7em;
+    color: white;
+    background-color:turquoise;
+    font-weight:bolder;
+    padding: 7px;
+    box-shadow: 5px 5px black;
+}
+
+a:link { text-decoration: none; color:white}
+a:visited { text-decoration: none; color:white}
+a:hover { text-decoration: none; color:white}
+a:active { text-decoration: none; color: white;}
