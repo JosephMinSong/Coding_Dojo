@@ -2,14 +2,16 @@
     display: flex;
     background-color:bisque;
     padding:25px;
+    height: 300px;
 }
 
 .col, .col-2, .col-3 {
     flex:1;
     border: 1px solid black;
-    height: 200px;
-    text-align: center;
     background-color:aquamarine;
+    text-align: center;
+    font-size: 3em;
+    justify-content: space-evenly;
 }
 
 .col-2 {
