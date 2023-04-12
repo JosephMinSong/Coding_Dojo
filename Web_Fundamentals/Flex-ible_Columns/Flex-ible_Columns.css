@@ -1,0 +1,21 @@
+.row {
+    display: flex;
+    background-color:bisque;
+    padding:25px;
+}
+
+.col, .col-2, .col-3 {
+    flex:1;
+    border: 1px solid black;
+    height: 200px;
+    text-align: center;
+    background-color:aquamarine;
+}
+
+.col-2 {
+    flex:2;
+}
+
+.col-3 {
+    flex:3;
+}
