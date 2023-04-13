@@ -8,25 +8,22 @@
     <link rel="stylesheet" type="text/css" href="User_Card.css">
 </head>
 <body>
-    <div class="top-card" id="blue"></div>
-    <div class="bottom-card" id="white">
-        <div class="profile-pic">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/002/387/693/small/user-profile-icon-free-vector.jpg" alt="profile-picture"></a>
+    <div id="user-card">
+        <div id="blue"></div>
+        <div><img id="user-icon" src="icons/user-circle.png" alt="user-icon"></a></div>
+        <div><ul>
+            <li id="name">Jane Doe</li>
+            <li> <img id="map-icon" src="icons/map-marker.png" alt="map-icon">Seattle</li>
+            <li id="description">
+                <p>Developer | Engineer | Problem Solver</p>
+                <p>Master of shadows and the Internet!</p>
+            </li>
+            <li id="edit-text">
+                <img id="edit-icon" src="icons/gear.png" alt="edit-icon">
+                <a href="website">edit profile</a>
+            </li>
+        </ul>
         </div>
-        <div class="name">
-            <h1>Jane Doe</h1>
-        </div>
-        <div class="location">
-            <img id="map-marker" src="data:image/png;base64,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" alt="marker">
-            <div id="city">Seattle</div>
-        </div>
-        <div class="titles">
-            <p>Developer | Engineer | Problem Solver</p>
-            <p>Master of shadows and the Internet!</p>
-        </div>
-        <div class="edit">
-            <img id="gear" src="https://icon2.cleanpng.com/20180204/vee/kisspng-gear-icon-gears-png-file-5a7793b1e283d3.8984860115177860339278.jpg" alt="gear_icon">
-            <a href="nothing">edit profile</a>
-        </div>
+    </div>
 </body>
 </html>
