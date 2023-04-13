@@ -1,4 +1,4 @@
-.nav {
+/* .nav {
     display: flex;
     background-color: rgb(64, 71, 78);
     padding: 15px;
@@ -33,4 +33,45 @@ li {
 a:link { text-decoration: none; color:white}
 a:visited { text-decoration: none; color:white}
 a:hover { text-decoration: none; color:white}
-a:active { text-decoration: none; color: white;}
+a:active { text-decoration: none; color: white;} */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav {
+    background-color: #333333;
+    color: #ffffff;
+    height: 80px;
+    width: 1000px; /* for styling purposes */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-title {
+    margin-left: 20px;
+}
+
+.btn {
+    height: 35px;
+    width: 100px;
+    background-color: #17a2b8;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    box-shadow: 5px 5px #000000;
+}

@@ -1,0 +1,65 @@
+* {
+    font-family:sans-serif;
+}
+
+body {
+    align-content:center;
+    padding: 100px 400px;
+}
+
+#blue {
+    background-color: aqua;
+    border: 1px solid grey;
+    height: 200px;
+}
+
+#white {
+    display:flex;
+    border: 1px solid grey;
+    height: 30em;
+    padding-top:50px;
+    padding-left:50px;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.profile-pic {
+    display:flex;
+    position: absolute;
+    top:200px;
+    padding:0;
+    border: 1px solid grey;
+}
+
+.name {
+    color:black;
+    font-size: 2em;
+}
+
+
+.location {
+    display: inline-flex;
+}
+
+#map-marker {
+    background-color: white;
+    height: 50px;
+}
+
+#city {
+    font-size: 2.5em;
+}
+
+
+.titles {
+    font-size: 2em;
+}
+
+.edit {
+    display: inline;
+    font-size: 2em;
+}
+
+#gear {
+    height: 50px;
+}
