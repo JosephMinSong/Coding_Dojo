@@ -4,14 +4,14 @@ const example_3 = 'The_Stealth-Warrior';
 
 function toCamelCase(str) {
     var newStr = '';
-    var str_array = str.split('');
-    for (var i=0; i < str_array.length; i++){
-        if (str_array[i] === '-' || str_array[i] === '_'){
-            var nextCapitalLetter = str_array[i+1].toUpperCase();
+    // var str_array = str.split('');
+    for (var i=0; i < str.length; i++){
+        if (str[i] === '-' || str[i] === '_'){
+            var nextCapitalLetter = str[i+1].toUpperCase();
             newStr += nextCapitalLetter;
             i++;
         } else {
-            newStr += str_array[i];
+            newStr += str[i];
         }
     }
     return newStr;
