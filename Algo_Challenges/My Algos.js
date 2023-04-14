@@ -1,75 +1,139 @@
 /* 
-Given an array of numbers,
-return a count of how many are both even and negative.
+Recreate the built in .slice method
+
+Given an array, a start index, and an end index,
+return a NEW array that has only the elements from
+the start index (inclusive) to the end index (exclusive)
+
+What should you do if the provided end index is out of bounds?
 */
 
-const nums1 = [1, 5, -1, 2, -4, 9, -10, 0, -3, -2];
-const expected1 = 3;
+const arr1 = ["a", "b", "c", "d", "e"];
+const startIdx1 = 0;
+const endIdx1 = 5;
+const expected1 = ["a", "b", "c", "d", "e"];
 
-const nums2 = [];
-const expected2 = 0;
+const arr2 = ["a", "b", "c", "d", "e"];
+const startIdx2 = 0;
+const endIdx2 = 1;
+const expected2 = ["a"];
 
-const nums3 = [-4, -2, -6];
-const expected3 = 3;
+const arr3 = ["a", "b", "c", "d", "e"];
+const startIdx3 = 1;
+const endIdx3 = 2;
+const expected3 = ["b"];
+
+const arr4 = ["a", "b", "c", "d", "e"];
+const startIdx4 = -100;
+const endIdx4 = 100;
+const expected4 = ["a", "b", "c", "d", "e"];
+
+const arr5 = ["a", "b", "c", "d", "e"];
+const startIdx5 = 0;
+const endIdx5 = 0;
+const expected5 = [];
+
+const arr6 = ["a", "b", "c", "d", "e"];
+const startIdx6 = 1;
+const endIdx6 = 1;
+const expected6 = [];
 
 /**
- * Counts how many numbers are both even and negative.
- * @param {number} nums
- * @returns {number} The count.
+ * Returns a slice of given arr.
+ * @param {Array<any>} items
+ * @param {number} startIdx
+ * @param {number} endIdx
+ * @returns {Array<any>} The slice of the given arr from startIdx inclusive
+ *    to endIdx.
  */
-function countEvenNegatives(nums) {
-    var count = 0;
-    for (var i=0; i<nums.length; i++){
-        if (nums[i]%2 === 0 && nums[i]<0){
-            count += 1;
-        }
+function slice(items, startIdx, endIdx) {
+    var newArr = [];
+    if (startIdx < 0){
+        startIdx = 0;
     }
-    return count;
+    if (endIdx > items.length){
+        endIdx = items.length;
+    }
+    for (var i=startIdx; i<endIdx ; i++){
+        newArr.push(items[i]);
+    }
+    return newArr
 }
 
-console.log(countEvenNegatives(nums1))
+// function slice(items, startIdx, endIdx) {
+//     var newArr = [];
+//     startIdx < 0 ? startIdx = 0 
+//     : endIdx > items.length ? endIdx = items.length
+//     : for (var i=startIdx; i<endIdx ; i++){
+//         newArr.push(items[i]);
+//     }
+//     return newArr
+// }
 
-// 1. A function that returns a new string that is the given string with the first
-// letter capitalized.
+// Tests
+const result1 = slice(arr1, startIdx1, endIdx1);
+console.log(result1, "should be", expected1);
 
-// 2. Given an array of strings,
-// return the same array with the first letter of each string capitalized using
-// the previously created helper function.
+const result2 = slice(arr2, startIdx2, endIdx2);
+console.log(result2, "should be", expected2);
 
-// HINT: strings are immutable so to change a string you must create a new version
-// of it.
-// */
+const result3 = slice(arr3, startIdx3, endIdx3);
+console.log(result3, "should be", expected3);
 
-/* Tests for capitalize function */
-const string4 = 'hello';
-const expected4 = 'Hello';
+const result4 = slice(arr4, startIdx4, endIdx4);
+console.log(result4, "should be", expected4);
 
-const string5 = '';
-const expected5 = '';
+const result5 = slice(arr5, startIdx5, endIdx5);
+console.log(result5, "should be", expected5);
+
+const result6 = slice(arr6, startIdx6, endIdx6);
+console.log(result6, "should be", expected6);
+
+/* 
+Array: Concat
+
+.push allowed: arrName.push(newItem)
+
+Replicate JavaScript's concat() which combines two arrays into one NEW array
+
+Input: two arrays
+Output: one NEW array with the items of both in the original order
+*/
+
+const arrA1 = ["a", "b"];
+const arrB1 = [1, 2, 3];
+const expected1 = ["a", "b", 1, 2, 3];
+
+const arrA2 = [1, 2, 3];
+const arrB2 = ["a", "b"];
+const expected2 = [1, 2, 3, "a", "b"];
 
 /**
- * Capitalizes the first letter of the given string.
- * @param {string} string The string to capitalize.
- * @returns {string} The given string with the first letter capitalized or an
- *    empty string.
+ * Concatenates the given arrays together into order that they are passed in.
+ * @param {Array<any>} items1
+ * @param {Array<any>} items2
+ * @returns {Array<any>} The new arr that is a concatenation of the given arrays.
  */
 
-function capitalize(string) {
-    return string[0].toUpperCase() + string.slice(1);
+// function concat(items1, items2) {
+//     var newArr = [];
+//     newArr = items1;
+//     for (var i=0; i<items2.length; i++){
+//         newArr.push(items2[i]);
+//     }
+//     return newArr;
+// }
+
+function concat(items1, items2) {
+    for (var i=0; i<items2.length; i++){
+        items1.push(items2[i]);
+    }
 }
 
-console.log(capitalize(string4));
 
-console.log(capitalize(string4));
+// Tests
+const result1 = concat(arrA1, arrB1);
+console.log(arrA1, "should be", expected1);
 
-/* Tests for capitalization function */
-const strings1 = ['hello', 'world'];
-const expectedStrings1 = ['Hello', 'World'];
-
-/**
- * Capitalizes the first letter of each string in the given array.
- * @param {Array<string>} strings
- * @returns {Array<string>} The same given array with updated items.
- */
-function capitalization(strings) {
-}
+const result2 = concat(arrA2, arrB2);
+console.log(arrA2, "should be", expected2);
