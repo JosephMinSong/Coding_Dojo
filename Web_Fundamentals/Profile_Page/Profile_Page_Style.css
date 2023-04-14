@@ -169,7 +169,7 @@ body {
     justify-content: space-between;
 }
 
-#friend-requests {
+.friend-requests {
     display: flex;
     align-items: center;
 }
@@ -189,7 +189,7 @@ body {
     height: 60px;
 }
 
-#connection-list {
+.connection-list {
     display: flex;
     align-items: center;
     font-size: 40px;
