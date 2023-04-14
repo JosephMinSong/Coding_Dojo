@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: sans-serif;
+}
+
+a {
+    margin: 0px 8.5px;
+}
+
+/* Navigation Bar */
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin: 0px 200px;
+    min-height: 100px;
+    padding: 25px;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+.nav-bar input {
+    width: 900px;
+    height: 50px;
+    font-size: 2em;
+    border: 5px solid rgba(0, 0, 0, 0.7);
+}
+
+.nav-bar button {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+    background-color: rgba(43, 120, 288, 0.8);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.7);
+    padding: 8px;
+    width: 200px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Main Body */
+
+.main-body {
+    display: flex;
+    margin: 40px 200px;
+    gap: 50px;
+}
+
+/* Left side of main body - Definitions */
+
+.left-main {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    gap: 50px;
+}
+
+.definition {
+    display: flex;
+    border: 5px solid rgba(0, 0, 0, 0.7);
+}
+
+.definition ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    font-size: 2.5em;
+    padding: 40px;
+}
+
+.definition p {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: 2.5em;
+    flex-wrap: wrap;
+}
+
+.like-button {
+    background-color: rgba(255, 217, 102, 0.9);
+    font-size: 1em;
+    margin-top: 30px;
+    border: 5px solid black;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+/* Right side of main body - Add definition box */
+
+.right-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 200px;
+    border: 5px solid rgba(0, 0, 0, 0.7);
+    padding: 40px;
+}
+
+.right-main h2 {
+    display: flex;
+    font-size: 3em;
+    flex-wrap: wrap;
+}
+
+#add-definition-button {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+    background-color: rgba(147, 196, 125, 0.8);
+    border: 5px solid black;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.7);
+    margin-top: 20px;
+}

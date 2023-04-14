@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar on Top -->
+    <nav class="nav-bar">
+        <h1>Dojonary</h1>
+        <input type="text" placeholder="Search...">
+        <button onclick="login(this)">Login</button>
+    </nav>
+
+    <!-- Main Body -->
+    <nav class="main-body">
+        <!-- Left Side of Main Body -->
+        <div class="left-main">
+            <div class="definition">
+                <ul>
+                    <li style="font-weight:bolder; font-size: 2em">ninja</li>
+                    <li style="font-style: italic;">noun</li>
+                    <li>Plural: <i>ninjas</i></li>
+                    <li><button class="like-button" onclick="alert('Ninja was liked')">13 likes</button></li>
+                </ul>
+                <p>
+                    A practitioner skilled in the 
+                    <a href="#">Japanese</a> 
+                    art of  
+                    <a href="#">ninjutsu</a>
+                </p>
+            </div>
+            <div class="definition">
+                <ul>
+                    <li style="font-weight:bolder; font-size: 2em">ninja</li>
+                    <li style="font-style: italic;">noun</li>
+                    <li>Plural: <i>ninjas</i></li>
+                    <li><button class="like-button" onclick="alert('Ninja was liked')">37 likes</button></li>
+                </ul>
+                <p>
+                    A 
+                    <a href="#">programmer</a>
+                    who breaks down problems with 
+                    <a href="#" style="margin-right:0">zen</a>-like focus
+                </p>
+            </div>
+        </div>
+        <!-- Right Side of Main Body -->
+        <div class="right-main">
+            <h2>
+                Dojonary is
+            </h2>
+            <h2>
+                defined by YOU
+            </h2>
+            <button id="add-definition-button" onclick="remove(this)">Add Definition</button>
+        </div>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>

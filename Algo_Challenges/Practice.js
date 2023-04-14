@@ -1,5 +1,16 @@
-var a = 13
-var b = 10
-
-var x = a < b ? b : a;
-console.log(x)
+function Something(arr){
+    var result = 0;
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] > 10){
+            console.log("We got a big one!");
+        } else {
+            result+=arr[i]
+        }
+    }
+    if(result < 10){
+        console.log("You're killin' me, Smalls");
+    } else {
+        return "You're gonna need a bigger funcion!";
+    }
+}
+console.log(Something([1,8,21,-11,12,2,9,15,7]));
