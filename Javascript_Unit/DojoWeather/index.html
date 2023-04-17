@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DojoWeather Website</title>
+</head>
+<body>
+    <!-- Nav Bar -->
+    <nav id="nav-bar">
+        <h2>DojoWeather</h2>
+        <ul>
+            <li id="Burbank" onclick="alert(this)">Burbank</li>
+            <li id="Chicago" onclick="alert(this)">Chicago</li>
+            <li id="Dallas" onclick="alert(this)">Dallas</li>
+        </ul>
+    </nav>
+
+    <!-- Main Body -->
+    <main class="main-body">
+
+        <!-- Cookie Message -->
+        <div id="cookie">
+            <img id="cookie-image" src="assets/cookie.png">
+            <div class="cookie-message">
+                <h4>Stop! Cookie time</h4>
+                <p>We use cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
+            </div>
+            <button id="cookie-button" onclick="remove('cookie')">I Accept</button>
+        </div>
+
+        <!-- City -->
+        <div id="city-display">
+            <h2>San Jose</h2>
+            <div id="temperature">
+                <p>show temperature in</p>
+                <select onchange="convertTemperature(this)">
+                    <choice>Celcius</choice>
+                    <choice>Fer</choice>
+                </select>
+            </div>
+        </div>
+
+        <!-- Forcast -->
+        <div class="panel">
+            <h3>Today</h3>
+            <img class="panel-image" src="assets/some_rain.png">
+            <p>some rain</p>
+            <div class="temperature-reading">
+                <p>24</p>
+                <p>18</p>
+            </div>
+        </div>
+        <div class="panel">
+            <h3>Tomorrow</h3>
+            <img class="panel-image" src="assets/some_sun.png">
+            <p>some sun</p>
+            <div class="temperature-reading">
+                <p>27</p>
+                <p>19</p>
+            </div>
+        </div>
+        <div class="panel">
+            <h3>Friday</h3>
+            <img class="panel-image" src="assets/some_clouds.png">
+            <p>some clouds</p>
+            <div class="temperature-reading">
+                <p>21</p>
+                <p>16</p>
+            </div>
+        </div>
+        <div class="panel">
+            <h3>Saturday</h3>
+            <img class="panel-image" src="assets/some_sun.png">
+            <p>some sun</p>
+            <div class="temperature-reading">
+                <p>26</p>
+                <p>21</p>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
