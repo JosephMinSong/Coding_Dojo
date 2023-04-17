@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nav Bar -->
+    <nav class="nav-bar">
+        <h1>Network</h1>
+    </nav>
+    <!-- Main Body -->
+    <h2 id="title">Your Feed</h2>
+    <main class="main-body">
+        <!-- Left Side: User Profile -->
+        <div id="user-profile">
+            <img src="user-circle.png" alt="user-circle-image">
+            <a href="#">Add an avator</a>
+            <h2>James Doe</h2>
+        </div>
+        <div id="friend-column">
+            <!-- Friend 1 Status-->
+            <nav class="friend">
+                <div class="friend_upper">
+                    <h2>Neil M</h2>
+                    <div class="friend_like-count">
+                        <p class="friend_like-display-counter" id="neil-likes">9 like(s)</p>
+                        <button onclick="increaseLikes(neilLikes, neilLikesCounter)">Like</button>
+                    </div>
+                </div>
+                <p class="friend_description">I just set up this discord bot, let me know what you all think. <a href="#" style="margin-left: 5px">link</a></p>
+            </nav>
+
+            <!-- Friend 2 Status -->
+            <nav class="friend">
+                <div class="friend_upper">
+                    <h2>Nichole K</h2>
+                    <div class="friend_like-count">
+                        <p class="friend_like-display-counter" id="nichole-likes">12 like(s)</p>
+                        <button onclick="increaseLikes(nicholeLikes, nicholeLikesCounter)">Like</button>
+                    </div>
+                </div>
+                <p class="friend_description">Just finished my <a href="#" style="margin-left: 5px">next comic</a>, check it out.</p>
+            </nav>
+
+            <!-- Friend 3 Status -->
+            <nav class="friend">
+                <div class="friend_upper">
+                    <h2>Jim R</h2>
+                    <div class="friend_like-count">
+                        <p class="friend_like-display-counter" id="jim-likes">9 like(s)</p>
+                        <button onclick="increaseLikes(jimLikes, jimLikesCounter)">Like</button>
+                    </div>
+                </div>
+                <p class="friend_description">I can't stop listening to the <a href="#" style="margin-left: 5px; margin-right: 5px">new album.</a> Who else is liking it?</p>
+            </nav>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
