@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <nav class="left-side">
+            <div id="profile">Profile</div>
+            <div id="links">
+                <ul>
+                    <li><a href="Home">Home</a></li>
+                    <li><a href="My_Profile">My Profile</a></li>
+                    <li><a href="Find_Connections">Find Connections</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="right-side">
+            <div><button id="sign-out">Sign Out</button></div>
+        </nav>
+    </div>
+    <div class="main-body">
+        <nav class="left">
+            <div id="user-card">
+                <div id="blue"></div>
+                <div><img id="user-icon" src="icons/user-circle.png" alt="user-icon"></div>
+                <div><ul>
+                    <li id="name">Jane Doe</li>
+                    <li> <img id="map-icon" src="icons/map-marker.png" alt="map-icon">Seattle</li>
+                    <li id="description">
+                        <p>Developer | Engineer | Problem Solver</p>
+                        <p>Master of shadows and the Internet!</p>
+                    </li>
+                    <li id="edit-text">
+                        <img id="edit-icon" src="icons/gear.png" alt="edit-icon">
+                        <a onclick="edit()" id="edit-profile" href="#">edit profile</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="eduation">
+                <div class="black-top" style="font-size: 50px">Education</div>
+                <div id="education-description">
+                    <h3>Coding Dojo - Full Stack Bootcamp</h3>
+                    <h4 style="color: grey">Dec 2019 - Mar 2020</h4>
+                    <p>Triple black belt in Python, MERN, and C#</p>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </nav>
+
+
+        <nav class="right">
+            <div class="requests">
+                <div class="black-top">
+                    <button id="friendRequestCount"> 2 </button>
+                    Connection Requests
+                </div>
+                <div class="friends">
+                    <div class="friend-requests" id="todd">
+                        <img src="icons/user-circle.png" alt="user-icon">
+                        Todd E
+                    </div>
+                    <div>
+                        <img onclick="accept(this, 'todd')" id="accept-todd" src="icons/accept-circle.png" alt="accept-circle-icon">
+                        <img onclick="deny(this, 'todd')" id="deny-todd" src="icons/close-circle.png" alt="deny-circle-icon">
+                    </div>
+                </div>
+                <div class="friends">
+                    <div class="friend-requests" id="phil">
+                        <img src="icons/user-circle.png" alt="user-icon">
+                        Phil K
+                    </div>
+                    <div>
+                        <img onclick="accept(this, 'phil')" id="accept-phil" src="icons/accept-circle.png" alt="accept-circle-icon">
+                        <img onclick="deny(this, 'phil')" id="deny-phil" src="icons/close-circle.png" alt="deny-circle-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="connections">
+                <div class="black-top">
+                    <button id="connectionCount"> 500 </button>
+                    Your Connections
+                </div>
+                <div class="connection-list">
+                    <img src="icons/user-circle.png" alt="user-icon">
+                    Adrien D
+                </div>
+                <div class="connection-list">
+                    <img src="icons/user-circle.png" alt="user-icon">
+                    Anne J
+                </div>
+                <div class="connection-list">
+                    <img src="icons/user-circle.png" alt="user-icon">
+                    Alayne T
+                </div>
+                <div class="connection-list">
+                    <img src="icons/user-circle.png" alt="user-icon">
+                    Arry Y
+                </div>
+                <hr>
+                <div>
+                    <a id="view-more" href="View">View More</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
