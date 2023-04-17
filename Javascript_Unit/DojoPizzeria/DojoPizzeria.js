@@ -49,5 +49,3 @@ function randomPizza(numberOfCheese, numberOfToppings) {
     return randomPizza
 }
 
-console.log(randomPizza(3,4));
-
