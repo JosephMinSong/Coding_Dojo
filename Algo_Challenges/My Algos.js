@@ -1,139 +1,113 @@
-/* 
-Recreate the built in .slice method
-
-Given an array, a start index, and an end index,
-return a NEW array that has only the elements from
-the start index (inclusive) to the end index (exclusive)
-
-What should you do if the provided end index is out of bounds?
-*/
-
-const arr1 = ["a", "b", "c", "d", "e"];
-const startIdx1 = 0;
-const endIdx1 = 5;
-const expected1 = ["a", "b", "c", "d", "e"];
-
-const arr2 = ["a", "b", "c", "d", "e"];
-const startIdx2 = 0;
-const endIdx2 = 1;
-const expected2 = ["a"];
-
-const arr3 = ["a", "b", "c", "d", "e"];
-const startIdx3 = 1;
-const endIdx3 = 2;
-const expected3 = ["b"];
-
-const arr4 = ["a", "b", "c", "d", "e"];
-const startIdx4 = -100;
-const endIdx4 = 100;
-const expected4 = ["a", "b", "c", "d", "e"];
-
-const arr5 = ["a", "b", "c", "d", "e"];
-const startIdx5 = 0;
-const endIdx5 = 0;
-const expected5 = [];
-
-const arr6 = ["a", "b", "c", "d", "e"];
-const startIdx6 = 1;
-const endIdx6 = 1;
-const expected6 = [];
+var pokemon = [
+    { id: 1, name: 'Bulbasaur', types: ['poison', 'grass'] },
+    { id: 5, name: 'Charmeleon', types: ['fire'] },
+    { id: 9, name: 'Blastoise', types: ['water'] },
+    { id: 12, name: 'Butterfree', types: ['bug', 'flying'] },
+    { id: 16, name: 'Pidgey', types: ['normal', 'flying'] },
+    { id: 23, name: 'Ekans', types: ['poison'] },
+    { id: 24, name: 'Arbok', types: ['poison'] },
+    { id: 25, name: 'Pikachu', types: ['electric'] },
+    { id: 37, name: 'Vulpix', types: ['fire'] },
+    { id: 52, name: 'Meowth', types: ['normal'] },
+    { id: 63, name: 'Abra', types: ['psychic'] },
+    { id: 67, name: 'Machamp', types: ['fighting'] },
+    { id: 72, name: 'Tentacool', types: ['water', 'poison'] },
+    { id: 74, name: 'Geodude', types: ['rock', 'ground'] },
+    { id: 87, name: 'Dewgong', types: ['water', 'ice'] },
+    { id: 98, name: 'Krabby', types: ['water'] },
+    { id: 115, name: 'Kangaskhan', types: ['normal'] },
+    { id: 122, name: 'Mr. Mime', types: ['psychic'] },
+    { id: 133, name: 'Eevee', types: ['normal'] },
+    { id: 144, name: 'Articuno', types: ['ice', 'flying'] },
+    { id: 145, name: 'Zapdos', types: ['electric', 'flying'] },
+    { id: 146, name: 'Moltres', types: ['fire', 'flying'] },
+    { id: 148, name: 'Dragonair', types: ['dragon'] },
+];
 
 /**
- * Returns a slice of given arr.
- * @param {Array<any>} items
- * @param {number} startIdx
- * @param {number} endIdx
- * @returns {Array<any>} The slice of the given arr from startIdx inclusive
- *    to endIdx.
+ * console.log the pokemon objects whose id is evenly divisible by 3 
+ * @param {Array<any>} pokemon
+ * @returns {null} no return
  */
-function slice(items, startIdx, endIdx) {
-    var newArr = [];
-    if (startIdx < 0){
-        startIdx = 0;
-    }
-    if (endIdx > items.length){
-        endIdx = items.length;
-    }
-    for (var i=startIdx; i<endIdx ; i++){
-        newArr.push(items[i]);
-    }
-    return newArr
-}
 
-// function slice(items, startIdx, endIdx) {
-//     var newArr = [];
-//     startIdx < 0 ? startIdx = 0 
-//     : endIdx > items.length ? endIdx = items.length
-//     : for (var i=startIdx; i<endIdx ; i++){
-//         newArr.push(items[i]);
+
+// function dividibleByThree(pokemon) {
+//     for (var i = 0; i < pokemon.length; i++){
+//         if (pokemon[i].id % 3 == 0){
+//             console.log(pokemon[i]);
+//         }
 //     }
-//     return newArr
 // }
 
-// Tests
-const result1 = slice(arr1, startIdx1, endIdx1);
-console.log(result1, "should be", expected1);
-
-const result2 = slice(arr2, startIdx2, endIdx2);
-console.log(result2, "should be", expected2);
-
-const result3 = slice(arr3, startIdx3, endIdx3);
-console.log(result3, "should be", expected3);
-
-const result4 = slice(arr4, startIdx4, endIdx4);
-console.log(result4, "should be", expected4);
-
-const result5 = slice(arr5, startIdx5, endIdx5);
-console.log(result5, "should be", expected5);
-
-const result6 = slice(arr6, startIdx6, endIdx6);
-console.log(result6, "should be", expected6);
-
-/* 
-Array: Concat
-
-.push allowed: arrName.push(newItem)
-
-Replicate JavaScript's concat() which combines two arrays into one NEW array
-
-Input: two arrays
-Output: one NEW array with the items of both in the original order
-*/
-
-const arrA1 = ["a", "b"];
-const arrB1 = [1, 2, 3];
-const expected1 = ["a", "b", 1, 2, 3];
-
-const arrA2 = [1, 2, 3];
-const arrB2 = ["a", "b"];
-const expected2 = [1, 2, 3, "a", "b"];
+// dividibleByThree(pokemon);
 
 /**
- * Concatenates the given arrays together into order that they are passed in.
- * @param {Array<any>} items1
- * @param {Array<any>} items2
- * @returns {Array<any>} The new arr that is a concatenation of the given arrays.
+ * console.log the pokemon objects that have more than one type
+ * @param {Array<any>} pokemon
+ * @returns {null} no return
  */
 
-// function concat(items1, items2) {
-//     var newArr = [];
-//     newArr = items1;
-//     for (var i=0; i<items2.length; i++){
-//         newArr.push(items2[i]);
+// function moreThanOneType(pokemon) {
+//     for (var i = 0; i < pokemon.length; i++){
+//         if (pokemon[i]['types'].length > 1){
+//             console.log(pokemon[i]);
+//         }
 //     }
-//     return newArr;
 // }
 
-function concat(items1, items2) {
-    for (var i=0; i<items2.length; i++){
-        items1.push(items2[i]);
+// moreThanOneType(pokemon);
+
+/**
+ * console.log the names of the pokemon whose only type is 'poison'
+ * @param {Array<any>} pokemon
+ * @returns {null} no return
+ */
+
+function poisonType(pokemon) {
+    var poisonList = [];
+    for (var i = 0; i < pokemon.length; i++){
+        if (pokemon[i]['types'] == 'poison'){
+            poisonList.push(pokemon[i]);
+        }
     }
+    return poisonList;
 }
 
+/**
+ * console.log the first type of all the pokemon whose second type is flying
+ * @param {Array<any>} pokemon
+ * @returns {null} no return
+ */
+// function flyingSecondType(pokemon) {
+//     for (var i = 0; i < pokemon.length; i++){
+//         if (pokemon[i]['types'][1] == 'flying'){
+//             console.log(pokemon[i]);
+//         }
+//     }
+// }
 
-// Tests
-const result1 = concat(arrA1, arrB1);
-console.log(arrA1, "should be", expected1);
+// flyingSecondType(pokemon);
 
-const result2 = concat(arrA2, arrB2);
-console.log(arrA2, "should be", expected2);
+/**
+ * console.log the reverse of the names of the pokemon whose only type is 'poison'
+ * @param {Array<any>} pokemon
+ * @returns {null} no return
+ */
+
+function reverseString(str) {
+    var strArray = str.split('');
+    var strReverse = strArray.reverse();
+    return strReverse.join('');
+}
+
+function reversedNamesOfPoisonPokemon(pokemon) {
+    var poisonPokemon = poisonType(pokemon);
+    for (var i = 0; i < poisonPokemon.length; i++){
+        var newName = reverseString(poisonPokemon[i]['name']);
+        poisonPokemon[i]['name'] = newName;
+    }
+    return poisonPokemon;
+}
+
+console.log(reversedNamesOfPoisonPokemon(pokemon));
+

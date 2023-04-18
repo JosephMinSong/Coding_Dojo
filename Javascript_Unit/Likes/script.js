@@ -4,3 +4,4 @@ function increaseLikes(id) {
     num += 1;
     spanTag.innerText = num;
 }
+
