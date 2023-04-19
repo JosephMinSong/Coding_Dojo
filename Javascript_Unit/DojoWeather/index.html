@@ -9,21 +9,21 @@
 </head>
 <body>
     <!-- Nav Bar -->
-    <nav id="nav-bar">
+    <nav class="flex" id="nav-bar">
         <h2>DojoWeather</h2>
-        <ul>
-            <li id="Burbank" onclick="alert(this)">Burbank</li>
-            <li id="Chicago" onclick="alert(this)">Chicago</li>
-            <li id="Dallas" onclick="alert(this)">Dallas</li>
+        <ul class="flex">
+            <li id="Burbank" onclick="message(this)">Burbank</li>
+            <li id="Chicago" onclick="message(this)">Chicago</li>
+            <li id="Dallas" onclick="message(this)">Dallas</li>
         </ul>
     </nav>
 
     <!-- Main Body -->
-    <main class="main-body">
+    <main class="main-body flex">
 
         <!-- Cookie Message -->
-        <div id="cookie">
-            <img id="cookie-image" src="assets/cookie.png">
+        <div class="flex grey-background" id="cookie">
+            <img src="assets/cookie.png" alt="cookie-image">
             <div class="cookie-message">
                 <h4>Stop! Cookie time</h4>
                 <p>We use cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
@@ -32,52 +32,54 @@
         </div>
 
         <!-- City -->
-        <div id="city-display">
-            <h2>San Jose</h2>
-            <div id="temperature">
+        <div class="flex" id="city-display">
+            <h2>Seattle</h2>
+            <div class="flex" id="temperature">
                 <p>show temperature in</p>
-                <select onchange="convertTemperature(this)">
-                    <choice>Celcius</choice>
-                    <choice>Fer</choice>
+                <select id="temperature-selector" onchange="convertTemperature(this)">
+                    <option>C</option>
+                    <option>F</option>
                 </select>
             </div>
         </div>
 
         <!-- Forcast -->
-        <div class="panel">
-            <h3>Today</h3>
-            <img class="panel-image" src="assets/some_rain.png">
-            <p>some rain</p>
-            <div class="temperature-reading">
-                <p>24</p>
-                <p>18</p>
+        <div class="flex" id="forcast">
+            <div class="flex panel grey-background">
+                <p class="day">Today</p>
+                <img src="assets/some_rain.png" alt="rain-image">
+                <p>some rain</p>
+                <div class="flex temperature-reading">
+                    <p class="red-text">24</p>
+                    <p class="blue-text">18</p>
+                </div>
             </div>
-        </div>
-        <div class="panel">
-            <h3>Tomorrow</h3>
-            <img class="panel-image" src="assets/some_sun.png">
-            <p>some sun</p>
-            <div class="temperature-reading">
-                <p>27</p>
-                <p>19</p>
+            <div class="flex panel grey-background">
+                <p class="day">Tomorrow<p>
+                <img src="assets/some_sun.png" alt="sun-image">
+                <p>some sun</p>
+                <div class="flex temperature-reading">
+                    <p class="red-text">27</p>
+                    <p class="blue-text">19</p>
+                </div>
             </div>
-        </div>
-        <div class="panel">
-            <h3>Friday</h3>
-            <img class="panel-image" src="assets/some_clouds.png">
-            <p>some clouds</p>
-            <div class="temperature-reading">
-                <p>21</p>
-                <p>16</p>
+            <div class="flex panel grey-background">
+                <p class="day">Friday</p>
+                <img src="assets/some_clouds.png" alt="cloud-image">
+                <p>some clouds</p>
+                <div class="flex temperature-reading">
+                    <p class="red-text">21</p>
+                    <p class="blue-text">16</p>
+                </div>
             </div>
-        </div>
-        <div class="panel">
-            <h3>Saturday</h3>
-            <img class="panel-image" src="assets/some_sun.png">
-            <p>some sun</p>
-            <div class="temperature-reading">
-                <p>26</p>
-                <p>21</p>
+            <div class="flex panel grey-background">
+                <p class="day">Saturday</p>
+                <img src="assets/some_sun.png" alt="sun-image">
+                <p>some sun</p>
+                <div class="flex temperature-reading">
+                    <p class="red-text">26</p>
+                    <p class="blue-text">21</p>
+                </div>
             </div>
         </div>
     </main>

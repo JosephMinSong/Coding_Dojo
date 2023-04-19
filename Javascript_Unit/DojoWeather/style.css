@@ -1,0 +1,140 @@
+/* General styles */
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: "Balsomiq Sans", cursive;
+}
+
+.flex {
+    display: flex;
+}
+
+.red-text {
+    color: rgb(207,42,39);
+    font-weight: bold;
+}
+
+.blue-text {
+    color: rgb(64,131,224);
+    font-weight: bold;
+}
+
+.grey-background {
+    background-color: rgb(238,238,238);
+}
+
+/* Cookie Message */
+
+#cookie{
+    position: fixed;
+    bottom: 10px;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 2rem;
+    gap: 5rem;
+    border: 4px solid black;
+    left: 20rem;
+    right: 20rem;
+}
+
+#cookie img {
+    height: 5rem;
+}
+
+#cookie button {
+    font-size: 1.2rem;
+    border: 5px solid black;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.7);
+    background-color: rgb(159,197,248);
+    padding: .9rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* Nav Bar */
+
+nav {
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 8em;
+    background-color: rgb(159,197,248);
+    color: white;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    text-decoration: none;
+    list-style: none;
+    gap: 4rem;
+    margin: 2rem;
+    cursor: pointer;
+}
+
+/* Main Body */
+
+
+.main-body {
+    flex-direction: column;
+    margin: 2em 20rem;
+}
+
+/* City */
+
+#city-display{
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0rem 0rem 2rem 0rem;
+    border-bottom:3px solid rgba(0, 0, 0, 0.7);
+}
+
+#temperature-selector {
+    font-size: 1.5rem;
+    border: 4px solid black;
+    margin-left: 1rem;
+}
+
+#temperature-selector option::before{
+    content: "\00B0";
+}
+
+/* Forcast */
+
+#forcast {
+    justify-content: space-between;
+    margin: 2rem 0rem;
+    font-size: 2rem;
+    gap: 2rem;
+}
+
+.day {
+    font-size: 3rem;
+}
+
+.panel{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5rem;
+    gap: 4rem;
+}
+
+.temperature-reading {
+    gap: 100px;
+}
+
+.panel img {
+    border-radius: 50%;
+}
+
+.red-text::after {
+    content: "\00B0";
+}
+
+.blue-text::after {
+    content: "\00B0";
+}
