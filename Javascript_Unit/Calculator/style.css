@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Balsomiq Sans", cursive;
+    font-size: 1.5rem;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url(https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3NrOTc5MS1pbWFnZS1rd3Z1amE5Ni5qcGc.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+#calculator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    background-image: linear-gradient(120deg, rgba(246, 211, 101, 0.8) 0%, rgba(253, 160, 133, 0.8) 100%);
+    border: 2px 2px 2px solid #a18cd1(0, 0, 0, 0.9);
+    border-radius: 20px;
+    padding: 1rem 3rem;
+    gap: 1rem;
+    width: 13.4rem;
+    margin: 4rem;
+}
+
+#display-log {
+    display: flex;
+    justify-content: right;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    word-spacing: .05rem;
+}
+
+#display {
+    display: flex;
+    justify-content: right;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius: 10%;
+    background-color: rgba(0, 0, 255, 0.3);
+    font-size: 3rem;
+    overflow: auto;
+}
+
+button {
+    border-radius: 50%;
+    align-items: center;
+    background-color: rgba(102,102,102, 0.8);
+    color: white;
+    cursor: pointer;
+    height: 3rem;
+    width: 3rem;
+}
+
+.row button:last-child {
+    background-color: rgba(255,140,0, 0.8);
+}
+
+.equals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.equals button {
+    border-radius: 20px;
+    padding: 0rem 6.5rem;
+}
+
+button:hover {
+    background-color: rgba(255,140,0, 0.5);
+}
+
+.row button:last-child:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+button:active, .row button:last-child:active {
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.5)
+}
