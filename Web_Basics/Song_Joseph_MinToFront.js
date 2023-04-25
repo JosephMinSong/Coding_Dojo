@@ -16,13 +16,13 @@ function minToFront (list){
 
 console.log(minToFront(x))
 
-// for (var i5=powerArray.length-1;i5>=0;i5--){
-//         for (var i6=powerArray.length-1;i6>0;i6--){
-//             if (powerArray[i6][0]<powerArray[i5][0]){
-//                 var nextElement = powerArray[i6];
-//                 var currentElement = powerArray[i5];
-//                 powerArray[i5] = nextElement;
-//                 powerArray[i6] = currentElement;
-//             }
-//         }
-//     }
+for (var i5=powerArray.length-1;i5>=0;i5--){
+        for (var i6=powerArray.length-1;i6>0;i6--){
+            if (powerArray[i6][0]<powerArray[i5][0]){
+                var nextElement = powerArray[i6];
+                var currentElement = powerArray[i5];
+                powerArray[i5] = nextElement;
+                powerArray[i6] = currentElement;
+            }
+        }
+    }
