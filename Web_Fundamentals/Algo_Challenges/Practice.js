@@ -64,3 +64,29 @@ function unshift(items, newItem) {
 }
 
 console.log(unshift(arr1, newItem1));
+
+
+
+
+
+
+
+
+/* 
+for (let j = 0; j < nums.length; j++) {
+    let temp = nums[j];
+    nums[j] = prev;
+    prev = temp;
+}
+*/
+
+
+//ROTATE IN PLACE SOLUTION
+/*
+function rotate(nums, k) {
+    k = k % nums.length;
+    const numsToRotate = nums.splice(nums.length-k, k);
+    nums.splice(0, 0, ...numsToRotate);
+    return nums;
+}
+*/
