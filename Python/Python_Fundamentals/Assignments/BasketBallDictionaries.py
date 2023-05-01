@@ -4,14 +4,18 @@ class Player:
     team_list = []
 
     def __init__(self, player_dictionary):
-        self.player = {}
-        for key, value in player_dictionary.items():
-            self.player[key] = value
-        Player.team_list.append(self.player)
+        self.name = player_dictionary['name']
+        self.age = player_dictionary['age']
+        self.position = player_dictionary['position']
+        self.team = player_dictionary['team']
+        Player.team_list.append((self.name, self.position))
 
     def display_player(self):
-        print(self.player)
-    
+        print(f'Player name: {self.name}')
+        print(f'Player age: {self.age}')
+        print(f'Player position: {self.position}')
+        print(f'Player team: {self.team}')
+
     @classmethod
     def get_team(cls):
         for player in cls.team_list:
@@ -47,8 +51,8 @@ player_dict = {
 #Challenge 3
 new_team = []
 
-for athelete in player_dict:
-    new_athelete = Player(player_dict[athelete])
+for athelete, info in player_dict.items():
+    new_athelete = Player(info)
     new_team.append(new_athelete)
 
 for player in new_team:
