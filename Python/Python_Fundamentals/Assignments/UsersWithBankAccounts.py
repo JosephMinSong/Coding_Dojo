@@ -3,23 +3,29 @@ class BankUser:
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.user_accounts = []
-        self.account = BankAccount(int_rate = 0.02, balance = 0)
+        self.user_accounts = {}
 
     def get_user_info(self):
-        print(self.name, self.email, self.account, self.user_accounts)
+        print(self.name, self.email, self.user_accounts)
+        return self
     
-    def user_deposit(self, amount):
-        self.account.deposit(amount)
+    def user_deposit(self, key, amount):
+        self.user_accounts[key].deposit(amount)
+        return self
 
-    def user_withdraw(self, amount):
-        self.account.withdraw(amount)
+    def user_withdraw(self, key, amount):
+        self.user_accounts[key].withdraw(amount)
+        return self
 
-    def display_info(self):
-        self.account.display_account_info(self)
+    def display_account_balance(self):
+        for key in self.user_accounts:
+            print(key, ':', self.user_accounts[key].balance)
+        return self
 
-    # def make_new_account():
-
+    def make_new_account(self, name, int_rate, balance):
+        new_account = BankAccount(int_rate, balance)
+        self.user_accounts[name] = new_account
+        return self
 
 
 class BankAccount:
@@ -40,16 +46,15 @@ class BankAccount:
         else:
             self.balance -= amount
             return self
-        
-    def display_account_info(self):
-        print("Balance:", self.balance)
-        return self
     
     def yield_interest(self):
         if self.balance > 0:
             self.balance += self.balance*self.int_rate
             return self
-        
-user1 = BankUser('Joe Song', 'yeojsong@gmail.com')
 
-user1.get_user_info()
+
+user1 = BankUser('Joe Song', 'yeojsong@gmail.com')
+user1.make_new_account('Checking', 0.05, 100)
+user1.make_new_account('Savings', 0.05, 500)
+user1.display_account_balance()
+
