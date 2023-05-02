@@ -6,7 +6,7 @@ class BankUser:
         self.user_accounts = {}
 
     def get_user_info(self):
-        print(self.name, self.email, self.user_accounts)
+        print(f"Name: {self.name}. Email: {self.email}. Number of Accounts: {len(self.user_accounts)}")
         return self
     
     def user_deposit(self, key, amount):
@@ -29,9 +29,8 @@ class BankUser:
 
 
 class BankAccount:
-    
-    def __init__(self, int_rate, balance): 
-        self.int_rate = int_rate
+    def __init__(self, type, balance): 
+        self.type = type
         self.balance = balance
 
     def deposit(self, amount):
@@ -53,8 +52,14 @@ class BankAccount:
             return self
 
 
+
+
+
+
 user1 = BankUser('Joe Song', 'yeojsong@gmail.com')
 user1.make_new_account('Checking', 0.05, 100)
 user1.make_new_account('Savings', 0.05, 500)
+user1.get_user_info()
 user1.display_account_balance()
+
 
