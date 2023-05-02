@@ -1,4 +1,4 @@
-class Store():
+class Store:
 
     id = 0
 
@@ -32,7 +32,7 @@ class Store():
 
 
 
-class Product():
+class Product:
 
     def __init__(self, name, price, category):
         self.name = name
