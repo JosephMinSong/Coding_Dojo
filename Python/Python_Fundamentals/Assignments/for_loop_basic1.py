@@ -37,6 +37,6 @@ lowNum = 1
 highNum = 100
 mult = 11
 
-for i in range(lowNum, highNum):
+for i in range(lowNum, highNum + 1):
     if (i%mult == 0):
         print(i)

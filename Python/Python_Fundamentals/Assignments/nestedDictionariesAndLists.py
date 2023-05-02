@@ -34,7 +34,7 @@ students = [
 # first_name - KB, last_name - Tonel
 
 def iterateDictionary(some_list):
-    for i in range(0, len(some_list)):
+    for i in range(len(some_list)):
         for key, value in some_list[i].items():
             print(key + ' - ' + value)
             
@@ -43,7 +43,7 @@ iterateDictionary(students)
 
 #Get values from a list of dictionaries
 def iterateDictionary2(key_name, some_list):
-    for i in range(0, len(some_list)):
+    for i in range(len(some_list)):
         print(some_list[i][key_name])
 
 #Iterate through a dictionary with list values

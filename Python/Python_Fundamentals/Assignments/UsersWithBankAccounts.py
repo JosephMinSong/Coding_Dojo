@@ -26,6 +26,8 @@ class BankUser:
         new_account = BankAccount(int_rate, balance)
         self.user_accounts[name] = new_account
         return self
+    
+    # def transfer
 
 
 class BankAccount:
@@ -57,8 +59,12 @@ class BankAccount:
 
 
 user1 = BankUser('Joe Song', 'yeojsong@gmail.com')
+
 user1.make_new_account('Checking', 0.05, 100)
 user1.make_new_account('Savings', 0.05, 500)
+
+user1.user_deposit('Checking', 200)
+
 user1.get_user_info()
 user1.display_account_balance()
 
