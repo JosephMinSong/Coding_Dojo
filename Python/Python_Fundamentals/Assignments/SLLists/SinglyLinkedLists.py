@@ -1,4 +1,4 @@
-class SLList():
+class SLList:
     def __init__(self):
         self.head = None
 
@@ -54,7 +54,6 @@ class SLList():
             self.remove_from_end()
         else: 
             previous_runner.next = runner.next
-
 
     def insert_after_value(self, newvalue, value):
         new_node = SLNode(newvalue)
