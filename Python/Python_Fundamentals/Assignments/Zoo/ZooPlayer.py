@@ -1,5 +1,4 @@
 import Zoo
-import Animals
 
 my_zoo = Zoo.Zoo("Jojo's Bizzare Zoo")
 
@@ -10,7 +9,5 @@ my_zoo.add_bear('Golf', 2, 180, 100).add_bear('Hotel', 3, 150, 190).add_bear('In
 my_zoo.display_all_animals()
 
 my_zoo.feed_lions().feed_tigers().feed_bears()
-
-my_zoo.check_animals(my_zoo.lions)
 
 my_zoo.end_business_day()
