@@ -54,6 +54,7 @@ class SLList:
             self.remove_from_end()
         else: 
             previous_runner.next = runner.next
+            runner.next = None
 
     def insert_after_value(self, newvalue, value):
         new_node = SLNode(newvalue)

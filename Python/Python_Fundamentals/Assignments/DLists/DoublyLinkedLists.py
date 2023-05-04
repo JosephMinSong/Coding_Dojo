@@ -38,6 +38,39 @@ class DLList:
         
         return self
     
+    def print_values_background(self):
+        runner = self.tail
+        while runner != None:
+            print(runner.value)
+            runner = runner.previous
+        return self
+    
+    def insert_at(self, value, index):
+        new_node = DLNode(value)
+        if index == 0:
+            self.add_to_front(value)
+            return self
+        
+        count = 0
+
+        runner = self.head
+        while count != index:
+            runner = runner.next
+            count += 1
+        
+        if runner == None or runner.next == None:
+            self.add_to_last(value)
+            return self
+        
+        new_node.next = runner
+        new_node.previous = runner
+
+        runner.next.previous = new_node
+        runner.previous.next = new_node
+
+        return self
+
+
     """
     --------------------------------------------------------------------------------------
     How would you know if you have a circular linked list?
@@ -168,4 +201,15 @@ class DLNode:
         self.next = None
 
 
+my_dlList = DLList()
+
+my_dlList.add_to_last(1).add_to_last(2).add_to_last(3).add_to_last(4).add_to_last(5).add_to_last(6).add_to_last(7)
+
+my_dlList.add_to_front(90).add_to_front(70)
+
+my_dlList.display_list()
+
+my_dlList.insert_at(55, 9)
+
+my_dlList.display_list()
 
