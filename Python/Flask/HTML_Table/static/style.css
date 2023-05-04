@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    display: flex;
+    margin: 5% auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    margin: 5% auto;
+    width: 1000px;
+}
+
+th, td {
+    padding: 1rem !important;
+}
