@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10% auto;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: red;
+    background-color: black;
+    padding: 1rem;
+}
+
+
+.checkerboard-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    height: 75px;
+    width: 75px;
+}
+
+.color-1 {
+    background-color: black;
+}
+
+.color-2 {
+    background-color: red;
+}
