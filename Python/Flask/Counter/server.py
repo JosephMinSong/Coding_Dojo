@@ -7,7 +7,13 @@ def index():
         session['visits'] = 1
     else: 
         session['visits'] += 1
-    return render_template("index.html", visits = session['visits'])
+
+    if 'actual_visits' not in session:
+        session['actual_visits'] = 1
+    else:
+        session['actual_visits'] += 1
+
+    return render_template("index.html", visits = session['visits'], actual_visits = session['actual_visits'])
 
 @app.route('/users', methods = ['POST'])
 def createuser():
@@ -37,11 +43,14 @@ def adduserincrement():
 @app.route('/reset')
 def reset():
     session['visits'] = 0
+    session['actual_visits'] = 0
     return redirect('/')
 
 @app.route('/destroy_session')
 def destroy_session():
+    session.pop('first_name')
     session.pop('visits')
+    session.pop('actual_visits')
     session.clear
     return redirect('/')
 

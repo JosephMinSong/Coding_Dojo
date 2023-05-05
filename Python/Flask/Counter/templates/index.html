@@ -11,6 +11,7 @@
     <h1>Welcome {{ session['first_name'] }}</h1>
     <h1>Counter: see how many times you've visited this page</h1>
     <h2>You've visited this page {{ session['visits'] }} times!</h2>
+    <h2>You're actual number is {{ session['actual_visits'] }}</h2>
     <div class="buttons">
         <button onclick="location.href='/adduserincrement'">Add {{ session['user_input'] }} visits</button>
         <button onclick="location.href='/reset'">Reset</button>
