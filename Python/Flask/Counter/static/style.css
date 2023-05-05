@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10% auto;
+    gap: 5rem;
+}
+
+.buttons {
+    display: flex; 
+    align-items: center;
+    gap: 2rem;
+}
+
+button {
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: blue;
+    color: white;
+}
+
+form {
+    font-size: 2rem;
+}
+
+input {
+    border: 2px solid black;
+    font-size: 1.5rem;
+}
+

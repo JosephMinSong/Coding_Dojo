@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Counter</title>
+</head>
+<body>
+    <h1>Welcome {{ session['first_name'] }}</h1>
+    <h1>Counter: see how many times you've visited this page</h1>
+    <h2>You've visited this page {{ session['visits'] }} times!</h2>
+    <div class="buttons">
+        <button onclick="location.href='/adduserincrement'">Add {{ session['user_input'] }} visits</button>
+        <button onclick="location.href='/reset'">Reset</button>
+    </div>
+    <div class="createuser">
+        <form action="/users" method="post" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label" name="first_name">First name</label>
+                <input type="text" class="form-control" placeholder="Enter First Name Here" name="first_name" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" name="last_name">Last name</label>
+                <input type="text" class="form-control" placeholder="Enter Last Name Here" name="last_name" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" name="user_username">Username</label>
+                <input type="text" class="form-control" aria-describedby="inputGroupPrepend" name="user_username" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" name="user_city">City</label>
+                <input type="text" class="form-control" name="user_city" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" name="user_state">State</label>
+                <select class="form-select" name="user_state" required>
+                <option selected disabled value="">Choose...</option>
+                <option>WA</option>
+                <option>OR</option>
+                <option>NJ</option>
+                <option>NY</option>
+                <option>CA</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" name="user_zip">Zip</label>
+                <input type="text" class="form-control" name="user_zip" required>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" value="create user">Submit form</button>
+            </div>
+        </form>
+
+        <h1>Change the counter here!</h1>
+        <form action="/getuserincrement" method="post">
+            <label name="user_input">Change Increment Here:</label>
+            <input type="number" name="user_input" min="1" max="10">
+            <button onclick="location.href='/getuserincrement'">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
