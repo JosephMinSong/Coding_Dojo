@@ -51,6 +51,7 @@ def destroy_session():
     session.pop('first_name')
     session.pop('visits')
     session.pop('actual_visits')
+    session.pop('user_input')
     session.clear
     return redirect('/')
 
