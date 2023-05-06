@@ -10,7 +10,7 @@
 <body>
     <form action="/process" method="post">
 
-        <h2>Dojo Survey</h2>
+        <h2 id="index-h2">Dojo Survey</h2>
 
         <h3><label for="username" name="username">Name: </label></h3>
         <input type="text" id="username" name="username" placeholder="Enter your name here...">
@@ -18,27 +18,27 @@
 
         <h3>Dojo Location:</h3>
         <div class="location">
-            <input type="radio" id="Seattle" name="location">
+            <input type="radio" id="Seattle" name="location" value="Seattle">
             <label for="Seattle" name="location">Seattle</label>
-            <input type="radio" id="New-York" name="location">
+            <input type="radio" id="New-York" name="location" value="New York">
             <label for="New-York" name="location">New York</label>
-            <input type="radio" id="Chicago" name="location">
+            <input type="radio" id="Chicago" name="location" value="Chicago">
             <label for="Chicago" name="location">Chicago</label>
-            <input type="radio" id="LA" name="location">
+            <input type="radio" id="LA" name="location" value="Los Angles">
             <label for="LA" name="location">Los Angles</label>
-            <input type="radio" id="Houston" name="location">
+            <input type="radio" id="Houston" name="location" value="Houston">
             <label for="Houston" name="location">Houston</label>
         </div>
 
-        <h3>Favorite language:</h3>
+        <h3>Favorite languages:</h3>
         <div class="language">
-            <input type="checkbox" class="btn-check" id="Python" name="language" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="Python" name="language" autocomplete="off" value="Python">
             <label class="btn btn-outline-secondary" for="Python" name="language">Python</label>
-            <input type="checkbox" class="btn-check" id="JavaScript" name="language" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="JavaScript" name="language" autocomplete="off" value="JavaScript">
             <label class="btn btn-outline-secondary" for="JavaScript" name="language">JavaScript</label>
-            <input type="checkbox" class="btn-check" id="Java" name="language" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="Java" name="language" autocomplete="off" value="Java">
             <label class="btn btn-outline-secondary" for="Java" name="language">Java</label>
-            <input type="checkbox" class="btn-check" id="C#" name="language" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="C#" name="language" autocomplete="off" value="C#">
             <label class="btn btn-outline-secondary" for="C#" name="language">C#</label>
         </div>
 
@@ -46,7 +46,7 @@
         <h3><label for="comments" name="comments">Comments (optional):</label></h3>
         <textarea id="comments" name="comments" placeholder="Enter your comments here..." rows="4" cols="75"></textarea>
 
-        <button onclick="location.href='/process'">Submit</button>
+        <button id="index-button" onclick="location.href='/process'">Submit</button>
         
     </form>
 </body>

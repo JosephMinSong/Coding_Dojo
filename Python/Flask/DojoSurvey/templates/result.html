@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="result-container">
+        <h1 class="result-header">
+            Thank you {{ session['username'] }} for your response!
+        </h1>
+        <h2 id="response-h2">Here were your responses:</h2>
+
+        <p>Dojo Location: {{ session['location'] }}</p>
+        <div>
+            <p>Favorite Languages:
+            {% for i in range(0, session['language']|length) %}
+                {{ session['language'][i] }}
+            {% endfor %}
+            </p>
+        </div>
+        <p>Comments: {{ session['comments'] }}</p>
+
+        <button id="result-button" onclick="location.href='/'">Back to survey</button>
+    </div>
+</body>
+</html>
