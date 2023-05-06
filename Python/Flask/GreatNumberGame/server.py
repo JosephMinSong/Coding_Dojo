@@ -43,12 +43,13 @@ def guess():
     session['attempts'] += 1
 
     print(session['random_num'])
+
+    if session['attempts'] > 4:
+        return redirect('/failed')
     
     if session['userguess'] == session['random_num']:
         return redirect('correct')
     
-    if session['attempts'] > 5:
-        return redirect('/failed')
     
     return redirect('toolow') if session['userguess'] < session['random_num'] else redirect('toohigh')
 
