@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>The Great Number Game</title>
+</head>
+<body>
+    <h1 id="normal_h1" data-value="Welcome to the Great Number Game!">Welcome to the Great Number Game!</h1>
+    <h2>I am thinking of a number between 1 and 100</h2>
+    <h2>You have {{ 5 - session['attempts'] }} attempts left!</h2>
+    <form id="index_form" action="/guess" method="post">
+        <label id="guess-label" for="guess" name="guess">Take a guess!</label>
+        <input id="guess-input" type="number" name="guess" min="0" max="100" placeholder="Guess a number from 1 to 100">
+        <button id="guess-button" onclick="location.href='/guess'">GUESS</button>
+    </form>
+    <div class="wrong-guess">
+        <h2>Too high!</h2>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

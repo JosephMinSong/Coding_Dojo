@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>The Great Number Game</title>
+</head>
+<body class="failed_body">
+    <h1 class="typewriter failed_h1">YOU LOSE</h1>
+    <h2 class="typewriter failed_h2">Sorry, you did not get the number</h2>
+    <p class="typewriter failed_p">The number was {{session['random_num']}} in case you were wondering</p>
+    <button id="failed_button_play_again" onclick="location.href='/reset'">Try again?</button>
+</body>
+</html>

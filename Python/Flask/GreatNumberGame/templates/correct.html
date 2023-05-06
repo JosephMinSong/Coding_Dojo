@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>The Great Number Game</title>
+</head>
+<body class="congrats-body">
+    <h1 id="normal_h1" data-value="Welcome to the Great Number Game!">Welcome to the Great Number Game!</h1>
+    <h2>I am thinking of a number between 1 and 100</h2>
+    <form id="index_form" action="/guess" method="post">
+        <label id="guess-label" for="guess-input" name="guess">Take a guess!!!</label>
+        <input id="guess-input" type="number" name="guess" min="0" max="100" placeholder="Guess a number from 1 to 100">
+        <button id="guess-button" onclick="location.href='/guess'">GUESS</button>
+    </form>
+    <div class="correct-guess">
+        <h2>Correct!!! Congrats!</h2>
+        <h3>The number was {{ session['random_num'] }} | You guessed it in {{ session['attempts'] }} tries!</h3>
+        <h3>Enter your name to be placed on the leaderboard!</h3>
+        <form id="leaderboard-form" action="/getusername" method='post'>
+            <label for="user_name" name="user_name">Name:</label>
+            <input type="text" id="user_name" name="user_name" placeholder="Your name here">
+            <button id="leaderboard-button" onclick="location.href='/getusername'">Submit</button>
+        </form>
+        <button id="play-again-button" onclick="location.href='/reset'">Play again?</button>
+    </div>
+
+
+
+
+
+    <div class="fireworks">
+        <div class="firework">
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+            <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+                <div class="explosion">
+            <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+        </div>
+        <div class="firework" style="margin-top: -70px">
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+        </div>
+        <div class="firework">
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+        </div>
+        <div class="firework" style="margin-top: 70px">
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+            <div class="spark silver"></div>
+            </div>
+        </div>
+        <div class="firework">
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+            <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+        </div>
+        <div class="firework" style="margin-top: -70px">
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark silver"></div>
+            </div>
+        </div>
+        <div class="firework">
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+            <div class="explosion">
+                <div class="spark gold"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
