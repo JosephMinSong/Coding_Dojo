@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Open+Sans:wght@400;700&family=Sigmar&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(255, 235, 205, 0.75);
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Sigmar', sans-serif;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.header-container > p {
+    font-size: 1.75rem;
+}
+
+.header-container h1 > span, #win-gold {
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-container {
+    display: flex;
+    align-items: center;
+    margin: 0% 5%;
+    font-size: 2.5rem;
+    gap: 0.75rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+#gold-count {
+    width: 175px;
+    padding: 0.25rem;
+    border: 2px solid rgb(0, 0, 0, 0.75);
+    font-size: 2rem;
+    background-color: white;
+    color: gold;
+}
+
+.player-choices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 3% 3%;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border: 5px solid black;
+    gap: 2.5rem;
+    padding: 4rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.choice > h4 {
+    font-family: 'Sigmar', sans-serif;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.choice > p {
+    font-size: 1.5rem;
+    background-color: white;
+    padding: 0.25rem;
+    border-radius: 10px;
+}
+
+input[type='submit'], #reset-button {
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(to right, rgb(208,162,22) 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: .75s ease-out;
+    border-radius: 10px;
+}
+
+    
+input[type='submit']:hover, #reset-button:hover{
+    background-position: left bottom;
+    color: white;
+    transition: .75s ease-out;
+    cursor: pointer;
+}
+
+.farm {
+    background-image: url('https://media.istockphoto.com/id/1328004520/photo/healthy-young-soybean-crop-in-field-at-dawn.jpg?b=1&s=170667a&w=0&k=20&c=nb9fxR6z4ztjH_Ov-3NCHPd0O5SpBwxWXmKeEd4W9pc=');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.farm > h4 {
+    color: green;
+}
+
+.cave {
+    background-image: url('https://images.unsplash.com/photo-1560403442-d141ff60800d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2F2ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cave > h4 {
+    color: grey;
+}
+
+.house {
+    background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.house > h4 {
+    color: black;
+}
+
+.casino {
+    background-image: url('https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2FzaW5vfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.casino >h4 {
+    color: gold
+}
+
+#activities-header{
+    margin: 0% 5%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.activities {
+    border: 5px solid black;
+    margin: 0% 5%;
+    width: 85%;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.activities > p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
+.win{
+    color: green;
+}
+
+.loss{
+    color: red;
+}

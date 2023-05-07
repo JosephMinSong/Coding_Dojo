@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Ninja <span>Gold</span></h1>
+        <p>Collect 500 gold as fast as you can!</p>
+    </div>
+    
+    <div class="gold-container">
+        <h4>Your Gold: </h4>
+        <div id="gold-count">{{ session['gold_count'] }}</div>
+    </div>
+
+    {# Player Choices #}
+    <div class="player-choices">
+        <div class="choice farm">
+            <h4>Farm</h4>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="choice" value="farm">
+                <input type="submit" value="Go to Farm">
+            </form>
+        </div>
+
+        <div class="choice cave">
+            <h4>Cave</h4>
+            <p>(earns 5-10 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="choice" value="cave">
+                <input type="submit" value="Go to Cave">
+            </form>
+        </div>
+
+        <div class="choice house">
+            <h4>House</h4>
+            <p>(earns 2-5 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="choice" value="house">
+                <input type="submit" value="Go to House">
+            </form>
+        </div>
+
+        <div class="choice casino">
+            <h4>Casino</h4>
+            <p>(earns or loses 0-50 gold)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="choice" value="casino">
+                <input type="submit" value="Go to Casino">
+            </form>
+        </div>
+    </div>
+
+    {# Activites Section #}
+    <h2 id="activities-header">Activities:</h4>
+    <div class="activities">
+        {% for i in range( session['activities']|length - 1, -1 , -1) %}
+            {{ session['activities'][i]|safe }}
+        {% endfor %}
+    </div>
+</body>
+</html>
