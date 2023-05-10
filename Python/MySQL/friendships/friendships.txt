@@ -1,0 +1,62 @@
+1. Create 6 new users
+INSERT INTO users (first_name, last_name)
+VALUES ('Amy', 'Giver'), 
+('Eli', 'Byers'), 
+('Marky', 'Mark'), 
+('Kermit', 'The Frog'), 
+('Big', 'Bird'), 
+('Oscar', 'The Grouch')
+
+2. Have user 1 be friends with user 2, 4 and 6
+INSERT INTO friendships (user_id, friend_id)
+VALUES (1, 2), (1, 4), (1, 6)
+
+3. Have user 2 be friends with user 1, 3 and 5
+INSERT INTO friendships (user_id, friend_id)
+VALUES (2, 1), (2, 3), (2, 5)
+
+4. Have user 3 be friends with user 2 and 5
+INSERT INTO friendships (user_id, friend_id)
+VALUES (3, 2), (3, 5)
+
+5. Have user 4 be friends with user 3
+INSERT INTO friendships (user_id, friend_id)
+VALUES (4,3)
+
+6. Have user 5 be friends with user 1 and 6
+INSERT INTO friendships (user_id, friend_id)
+VALUES (5,1), (5,6)
+
+7. Have user 6 be friends with user 2 and 3
+INSERT INTO friendships (user_id, friend_id)
+VALUES (6,2), (6,3)
+
+8. Display the relationships created as shown in the table in the above image
+SELECT users.first_name AS 'user first name', users.last_name AS  'user last name', 
+users2.first_name AS 'friend first name', users2.last_name AS  'friend last name'
+FROM friendships
+JOIN users ON friendships.user_id = users.id
+JOIN users AS users2 ON friendships.friend_id = users2.id
+
+9. Return all users who are friends with the first user, make sure their names are displayed in results.
+SELECT users.first_name AS 'friend first name', users.last_name AS 'friend last name' 
+FROM friendships
+JOIN users ON friendships.friend_id = users.id
+WHERE user_id = 1
+
+10. Return the count of all friendships
+SELECT COUNT(*) FROM friendships
+
+11. Find out who has the most friends and return the count of their friends.
+SELECT user_id, COUNT(*) AS total
+FROM friendships
+GROUP BY user_id
+ORDER BY COUNT(*) DESC
+LIMIT 1
+
+12. Return the friends of the third user in alphabetical order
+SELECT users.first_name AS 'friend first name', users.last_name AS 'friend last name'
+FROM friendships
+JOIN users ON friendships.friend_id = users.id
+WHERE user_id = 3
+
