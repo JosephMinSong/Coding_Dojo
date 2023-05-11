@@ -26,6 +26,8 @@
                     <td> {{ user.first_name }} </td>
                     <td> {{ user.last_name }} </td>
                     <td> {{ user.email }} </td>
+                    <td><button onclick="location.href='/users/edit/{{ user.id }}'">Update User</button></td>
+                    <td><button onclick="location.href='/users/delete/{{ user.id }}'">Delete User</button></td>
                 </tr>
             {% endfor %}
         </tbody>

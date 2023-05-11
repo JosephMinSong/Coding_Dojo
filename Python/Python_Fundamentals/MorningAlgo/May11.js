@@ -1,107 +1,101 @@
 /* 
-Parens Valid
-Given an str that has parenthesis in it
-return whether the parenthesis are valid
+  String: Rotate String
+  Create a standalone function that accepts a string and an integer,
+  and rotates the characters in the string to the right by that given
+  integer amount.
 */
 
-const str1 = "Y(3(p)p(3)r)s";         // ( () () )
-const expected1 = true;
+const str = "Hello World";
 
-const str2 = "N(0(p)3";               // ( ( ) 
-const expected2 = false;
-// Explanation: not every parenthesis is closed.
+const rotateAmnt1 = 0;
+const expected1 = "Hello World";
 
-const str3 = "N(0)t ) 0(k";          // ( ) ) (
-const expected3 = false;
-// Explanation: because the second ")" is premature: there is nothing open for it to close.
+const rotateAmnt2 = 1;
+const expected2 = "dHello Worl";
 
+const rotateAmnt3 = 2;
+const expected3 = "ldHello Wor";
+
+const rotateAmnt4 = 4;
+const expected4 = "orldHello W";
+
+const rotateAmnt5 = 13;
+const expected5 = "ldHello Wor"; //length is 11
+/* 
+Explanation: this is 2 more than the length so it ends up being the same
+as rotating it 2 characters because after rotating every letter it gets back
+to the original position.
+*/
 
 /**
- * Determines whether the parenthesis in the given string are valid.
- * Each opening parenthesis must have exactly one closing parenthesis.
-
+ * Rotates a given string's characters to the right by the given amount,
+ * wrapping characters to the beginning.
+ * - Time: O(?).
+ * - Space: O(?).
  * @param {string} str
- * @returns {boolean} Whether the parenthesis are valid.
+ * @param {number} amnt The amount of characters in the given str to rotate to the
+ *    right.
+ * @returns {string} The string rotated by the given amount.
  */
-
-function parensValid(str) {
-    let seen = []; 
-    let parens = {'(' : 1}
-    for (let i = 0; i < str.length; i++){
-        if (parens.hasOwnProperty(str[i])){
-            seen.push(str[i])
-        }
-        else if (str[i] === ')'){
-            seen.pop()
-        }
+function rotateStr(str, amnt) {
+    if (amnt === 0){
+        return str
     }
-    if (seen.length === 0){
-        return true
-    } else {
-        return false
-    }
+    amnt %= str.length
+    let newStr = str.substring(str.length-amnt, str.length) + str.substring(0, str.length-amnt)
+    return newStr
 }
 
+console.log(rotateStr(str, rotateAmnt1)); // expected: "Hello World"
+console.log(rotateStr(str, rotateAmnt2)); // expected: "dHello Worl"
+console.log(rotateStr(str, rotateAmnt3)); // expected: "ldHello Wor"
+console.log(rotateStr(str, rotateAmnt4)); // expected: "orldHello W"
+console.log(rotateStr(str, rotateAmnt5)); // expected: "ldHello Wor"
 
-console.log(parensValid(str1)) // expected: true
-console.log(parensValid(str2)) // expected: false
-console.log(parensValid(str3)) // expected: false
 
+/*****************************************************************************/
 
 /* 
-Braces Valid
-Given a string sequence of parentheses, braces and brackets, determine whether it is valid. 
+Create the function isRotation(str1,str2) that
+returns whether the second string is a rotation of the first.
 */
 
-const strA = "W(a{t}s[o(n{ c}o)m]e )h[e{r}e]!";    // ( {} [ ({}) ] ) [{}]
+const strA1 = "ABCD";
+const strA2 = "CDAB";
+// Explanation: if you start from A in the 2nd string, the letters are in the same order, just rotated
 const expectedA = true;
 
-const strB = "D(i{a}l[ t]o)n{e";          // ({} []) {
+const strB1 = "ABCD";
+const strB2 = "CDBA";
+// Explanation: all same letters in 2nd string, but out of order
 const expectedB = false;
 
-const strC = "A(1)s[O (n]0{t) 0}k";       // () [(] {) }
+const strC1 = "ABCD";
+const strC2 = "BCDAB";
+// Explanation: same letters in correct order but there is an extra letter.
 const expectedC = false;
 
 /**
- * Determines whether the string's braces, brackets, and parenthesis are valid
- * based on the order and amount of opening and closing pairs.
-
- * @param {string} str
- * @returns {boolean} Whether the given strings braces are valid.
+ * Determines whether the second string is a rotated version of the first.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {string} s1
+ * @param {string} s2
+ * @returns {boolean} Whether the second string is a rotated version of the 1st.
  */
-function bracesValid(str) {
-    let seen = []; 
-    let parens = {'(' : 1, '{' : 1, '[' : 1}
-    for (let i = 0; i < str.length; i++){
-        if (parens.hasOwnProperty(str[i])){
-            seen.push(str[i])
-        }
-        else if (str[i] === ')')
-            if (seen.pop() === '('){
-                continue 
-            } else {
-                return false
-            }
-        else if (str[i] === '}')
-            if (seen.pop() === '{'){
-                continue 
-            } else {
-                return false
-            }
-        else if (str[i] === ']')
-            if (seen.pop() === '['){
-                continue 
-            } else {
-                return false
-            }
-        }
-    if (seen.length === 0){
+function isRotation(s1, s2) {
+    if (s1.length != s2.length){
+        return false
+    }
+
+    let compareStr = s2+s2
+    if (compareStr.includes(s1)){
         return true
     } else {
         return false
     }
 }
 
-console.log(bracesValid(strA)) // expected: true
-console.log(bracesValid(strB)) // expected: false
-console.log(bracesValid(strC)) // expected: false
+console.log(isRotation(strA1, strA2)); // expected: true
+console.log(isRotation(strB1, strB2)); // expected: false
+console.log(isRotation(strC1, strC2)); // expected: false
