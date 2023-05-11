@@ -23,8 +23,8 @@ def edit_user(user_id):
 
 @app.route('/users/update/<int:user_id>', methods=['POST'])
 def update_user(user_id):
-    data = {'id' : user_id,
-            **request.form}
+    data = {**request.form,
+            'id': user_id}
     User.update_user(data)
     return redirect('/users')
 

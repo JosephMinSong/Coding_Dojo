@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {{url_for('static', filename='style.css')}} ">
+    <title>Dojos and Ninjas | Add new ninja</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Add a ninja</h1>
+    </div>
+    <form action="/ninjas/create_new_ninja" method="POST">
+        <label for="dojo_id" name="dojo_id">Which location would you like to add this Ninja: </label>
+        <select name="dojo_id">
+            {% for dojo in all_dojos %}
+                <option value="{{ dojo.id }}"> {{dojo.name}} </option>
+            {% endfor %}
+        </select>
+        <label for="first_name" name="first_name">Ninja's First Name: </label>
+        <input type="text" id="first_name" name="first_name" placeholder="Enter first name here...">
+        <label for="last_name" name="last_name">Ninja's Last Name: </label>
+        <input type="text" id="last_name" name="last_name" placeholder="Enter last name here...">
+        <label for="age" name="age">Ninja's Age: </label>
+        <input type="number" id="age" name="age" placeholder="0">
+        <input type="submit">
+    </form>
+    <button onclick="location.href='/dojos'">Go back to home</button>
+</body>
+</html>

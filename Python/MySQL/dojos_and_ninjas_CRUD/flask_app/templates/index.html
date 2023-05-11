@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {{url_for('static', filename='style.css')}} ">
+    <title>Dojos and Ninjas</title>
+</head>
+<body>
+    <div class="header">
+        <h1>All Dojos</h1>
+    </div>
+    <div class="dojos">
+        {% for dojo in all_dojos %}
+        <a href="/dojos/{{ dojo.id }}"> {{ dojo.name }} </a>
+        {% endfor %}
+    </div>
+    <button onclick="location.href='/ninja/new'">Add a ninja</button>
+    <button onclick="location.href='/dojos/new'" >Add Dojo</button>
+</body>
+</html>
