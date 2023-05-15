@@ -16,6 +16,10 @@
     </nav>
 
     <form action="/recipes/create" method="POST">
+        {% for message in get_flashed_messages(category_filter=['add'])%}
+            <p style="color: red">{{message}}</p>
+        {% endfor %}
+
         <div class="left-side">
             <label for="name" name="name">Name: </label>
             <input type="text" id="name" name="name">

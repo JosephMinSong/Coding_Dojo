@@ -46,10 +46,18 @@ def delete_recipe(recipe_id):
 
 @app.route('/recipes/process_edit', methods=['POST'])
 def process_edit_recipe():
+    recipe_id = Recipe.get_recipe_by_id(request.form).id
+    if not Recipe.validate_recipe(request.form):
+        return redirect(f'/recipes/edit/{recipe_id}')
+    
+    print(request.form)
     Recipe.edit_recipe(request.form)
     return redirect('/recipes')
 
 @app.route('/recipes/create', methods=["POST"])
 def create_recipe():
+    if not Recipe.validate_recipe(request.form):
+        return redirect('/recipes/new')    
+    
     Recipe.create_recipe(request.form)
     return redirect('/recipes')

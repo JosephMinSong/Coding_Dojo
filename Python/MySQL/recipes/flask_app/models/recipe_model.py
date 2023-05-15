@@ -59,12 +59,12 @@ class Recipe:
     @classmethod
     def edit_recipe(cls, data):
         query = """UPDATE recipes
-                    SET name = %(name)s
-                        description = %(description)s
-                        instructions = %(instructions)s
-                        cooked_made = %(cooked_made)s
+                    SET name = %(name)s,
+                        description = %(description)s,
+                        instructions = %(instructions)s,
+                        cooked_made = %(cooked_made)s,
                         under_30 = %(under_30)s
-                        WHERE id = %(id)s"""
+                        WHERE id = %(id)s;"""
         return connectToMySQL(DATABASE).query_db(query, data)
     
     @classmethod
@@ -73,5 +73,31 @@ class Recipe:
                     WHERE id = %(id)s"""
         return connectToMySQL(DATABASE).query_db(query, data)
     
-    
+    @staticmethod
+    def validate_recipe(data):
+        is_valid = True
+        print(data)
+        if len(data['name']) < 1:
+            flash('Please enter a name for the dish', 'add')
+            is_valid = False
+        
+        if len(data['description']) < 1:
+            flash('Please enter a description for the dish', 'add')
+            is_valid = False
+
+        if len(data['instructions']) < 1:
+            flash('Please enter instructions for the dish', 'add')
+            is_valid = False
+        
+        if len(data['cooked_made']) < 1:
+            flash('Please enter the date you made this', 'add')
+            is_valid = False
+        
+        if 'under_30' not in data:
+            flash('Please state if the dish takes 30 min or less to make', 'add')
+            is_valid = False
+        
+        return is_valid
+
+
         
