@@ -1,5 +1,6 @@
 from flask_app import app
-from flask_app.controllers import Books
+from flask_app.controllers import author_controller, book_controller, favorite_controller
+
 
 if __name__ == "__main__":
     app.run(debug=True)
