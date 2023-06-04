@@ -8,14 +8,17 @@ class Ninja {
 
     sayName(){
         console.log(`Hello! My name is ${this.name}.`)
+        return this
     }
 
     showStats(){
         console.log(`My health is ${this.health}, speed is ${this.speed}, and strength is ${this.strength}`)
+        return this
     }
 
     drinkSake(){
         this.health += 10
         console.log(`${this.name}'s health increased by 10; health is now ${this.health}`)
+        return this
     }
 }
