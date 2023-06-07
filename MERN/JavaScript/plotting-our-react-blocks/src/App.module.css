@@ -6,4 +6,10 @@
 
 .app {
     display: flex;
+    width: 95vw;
+    height: 95vh;
+    background-color: #dddddd;
+    margin: 1% auto;
+    padding: 1rem;
 }
+
