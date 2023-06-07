@@ -10,13 +10,17 @@ function App() {
   return (
     <div className={ styles.app }>
         <Header />
-        <Navigation />
-        <Main>
-            <SubContents />
-            <SubContents />
-            <SubContents />
-            <Advertisement />
-        </Main>
+        <div className={ styles.bottom }>
+          <Navigation />
+          <Main>
+            <div className={ styles.subcontents }>
+              <SubContents />
+              <SubContents />
+              <SubContents />
+            </div>
+              <Advertisement />
+          </Main>
+        </div>
     </div>
   );
 }

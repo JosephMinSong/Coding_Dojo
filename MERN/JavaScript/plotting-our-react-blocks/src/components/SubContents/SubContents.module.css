@@ -1,0 +1,6 @@
+.subcontents {
+    flex: 1;
+    height: auto;
+    background-color: #ffd966;
+    border: 3px solid black;
+}
