@@ -1,0 +1,12 @@
+.user_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.input {
+    background-color: rgba(255, 235, 205, 0.5);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}

@@ -1,12 +1,12 @@
 
-import './App.css';
+import styles from "./App.module.css"
 import UserForm from "./components/UserForm"
 
 function App() {
   return (
-    <>
-    <UserForm />
-    </>
+    <div className={ styles.form }>
+      <UserForm />
+    </div>
   );
 }
 
