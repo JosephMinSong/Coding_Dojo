@@ -2,87 +2,75 @@ import { useState } from 'react'
 import styles from './UserForm.module.css'
 
 export default function UserForm () {
-    const [firstname, setFirstname] = useState("")
-    const [lastname, setLastname] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
-    const [firstNameError, setFirstNameError] = useState("")
-    const [lastNameError, setLastNameError] = useState("")
-    const [emailError, setEmailError] = useState("")
-    const [passwordError, setPasswordError] = useState("")
-    const [confirmPasswordError, setConfirmPasswordError] = useState("")
+    // Default values for the user
+    const initialValues = {
+        'firstName': "",
+        'lastName': "", 
+        'email': "",
+        'password': "",
+        'confirmPassword': ""
+    }
+    
+    // User info
+    const [user, setUser] = useState({...initialValues})
 
+    //Error info
+    const [errors, setErrors] = useState({...initialValues})
+
+    // Checking to see if the form was submitted
+    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false)
+
+    //On Submit => Create user by creating User object
     const createUser = (e) => {
         e.preventDefault()
 
-        const newUser = { firstname, lastname, email, password }
-        console.log(newUser)
-        setFirstname("")
-        setLastname("")
-        setEmail("")
-        setPassword("")
-        setConfirmPassword("")
+        //When everything is submitted, reset input fields and errors
+        setUser({...initialValues})
+        setErrors({...initialValues})
+
+        //User has submitted something
         setHasBeenSubmitted(true)
     }
     
-    const handleValidFirstName = (e) => {
-        if (e.target.value.length === 0){
-            setFirstNameError("")
-        } else if (e.target.value.length < 2){
-            setFirstNameError("First name must be at least 2 characters long")
-        } else {
-            setFirstNameError("")
-        }
+    // object that hold what the validator should be for each input field - this corresponds to the name of the input field
+    const validators = {
+        "firstName" : ['minlength', 2],
+        "lastName" : ['minlength', 2],
+        "email" : ['minlength', 5],
+        "password" : ['minlength', 8],
+        "confirmPassword" : ['match', 'password']
     }
 
-    const handleValidLastName = (e) => {
-        if (e.target.value.length === 0){
-            setLastNameError("")
-        } else if (e.target.value.length < 2){
-            setLastNameError("Last name must be at least 2 characters long")
-        } else {
-            setLastNameError("")
-        }
-    }
+    const handleChange = (e) => {
+        // grab the name of what is being changed
+        let name = e.target.name
+        
+        // set the current state to what is being inputted into the input field
+        setUser(currentUser => ({ ...currentUser, [name] : e.target.value }))
+        let error = ""
 
-    const handleValidEmail = (e) => {
-        if (e.target.value.length === 0){
-            setEmailError("")
-        } else if (e.target.value.length < 5){
-            setEmailError("Email must be at least 5 characters long")
-        } else {
-            setEmailError("")
-        }
-    }
+        // deconstruct the array into the validator name and what it's comparing it to
+        const [validator, comparator] = validators[name]
 
-    const handleValidPassword = (e) => {
-        if (e.target.value.length === 0){
-            setPasswordError("")
-        } else if (e.target.value.length < 8){
-            setPasswordError("Password must be at least 8 characters long")
-        } else {
-            setPasswordError("")
+        // if the validator is min length AND it's empty => no errors --> same thing for confirm password
+        if (validator == "minlength" && e.target.value.length === 0){
+            error = ''
+        } else if (validator == "minlength"){
+            error = e.target.value.length < comparator ? `${name} must be at least ${comparator} characters long` : ""
+        } else if (validator == "match" && e.target.value.length === 0) {
+            error = ''
+        } else if (validator == "match") {
+            error = e.target.value != user[comparator] ? `${name} must match ${comparator}` : ""
         }
-    }
 
-    const handleValidConfirmPassword = (e) => {
-        if (e.target.value.length === 0){
-            setConfirmPasswordError("")
-        } else if (e.target.value != password){
-            setConfirmPasswordError("Passwords must match")
-        } else if (e.target.value === password) {
-            setConfirmPasswordError("")
-        } else {
-            setConfirmPasswordError("")
-        }
+        setErrors(currentErrors => ({...currentErrors, [name] : error}))
     }
-
+    
     return (
         <>
             <form onSubmit={ createUser } className={ styles.user_form }>
 
+                {/* **************************Form Header***************************** */}
                 <div>
                     {
                         !hasBeenSubmitted ? 
@@ -90,96 +78,85 @@ export default function UserForm () {
                             <h1>Thank you for submitting your form</h1>
                     }
                 </div>
-
+                
+                {/* **************************First Name***************************** */}
                 <div className={ styles.input }>
                     <label>First Name: </label>
                     <input 
                         type='text' 
-                        value={ firstname } 
-                        onChange={ (e) => { setFirstname(e.target.value); handleValidFirstName(e) } }
+                        value={ user.firstName }
+                        name="firstName" 
+                        onChange={ handleChange }
                     />
 
-                    {
-                        firstNameError?
-                            <p> {firstNameError} </p> :
-                            ''
-                    }
-
+                    {/* if there is an error (meaning it's not a blank string), then this becomes true and the second half runs */}
+                    { errors.firstName && <p> {errors.firstName} </p> }
                 </div>
 
+                {/* **************************Last Name***************************** */}
                 <div className={ styles.input }>
                     <label>Last Name: </label>
                     <input 
                         type='text' 
-                        value={ lastname } 
-                        onChange={ (e) => { setLastname(e.target.value); handleValidLastName(e) } }
+                        value={ user.lastName } 
+                        name="lastName"
+                        onChange={ handleChange }
                     />
 
-                    {
-                        lastNameError ?
-                            <p> {lastNameError} </p> :
-                            ''
-                    }
-
+                    { errors.lastName && <p> {errors.lastName} </p> }
                 </div>
 
+                {/* **************************Email***************************** */}
                 <div className={ styles.input }>
                     <label>Email: </label>
                     <input 
                         type='email' 
-                        value={ email } 
-                        onChange={ (e) => { setEmail(e.target.value); handleValidEmail(e) } } 
+                        value={ user.email } 
+                        name="email"
+                        onChange={ handleChange } 
                     />
 
-                    {
-                        emailError ?
-                            <p> {emailError} </p> :
-                            ''
-                    }
-
+                    { errors.email && <p> {errors.email} </p> }
                 </div>
 
+                {/* **************************Password***************************** */}
                 <div className={ styles.input }>
                     <label>Password: </label>
                     <input 
                         type='text' 
-                        value={ password } 
-                        onChange={ (e) => { setPassword(e.target.value); handleValidPassword(e) } } 
+                        value={ user.password } 
+                        name="password"
+                        onChange={ handleChange } 
                     />
 
-                    {
-                        passwordError ?
-                            <p> {passwordError} </p> :
-                            ''
-                    }
-
+                    { errors.password && <p> {errors.password} </p> }
                 </div>
 
+                {/* **************************Confirm Password***************************** */}
                 <div className={ styles.input }>
                     <label>Confirm Password: </label>
                     <input 
                         type='text' 
-                        value={ confirmPassword } 
-                        onChange={ (e) => { setConfirmPassword(e.target.value); handleValidConfirmPassword(e) } } 
+                        value={ user.confirmPassword } 
+                        name="confirmPassword"
+                        onChange={ handleChange } 
                     />
 
-                    {
-                        confirmPasswordError ?
-                            <p> {confirmPasswordError} </p> :
-                            ''
-                    }
-
+                    { errors.confirmPassword && <p> {errors.confirmPassword} </p> }
                 </div>
-
+                
+                {/* **************************Submit Button***************************** */}
                 <input type='submit' />
             </form>
+
+            {/* **************************Relaying form data***************************** */}
             <div>
                 <h2>Your Form Data</h2>
-                <p>First Name: { firstname }</p>
-                <p>Last Name: { lastname }</p>
-                <p>Email: { email }</p>
-                <p>Password: {password}</p>
-                <p>Confirm Password: {confirmPassword}</p>
+                <p>First Name: { user['firstName'] }</p>
+                <p>Last Name: { user['lastName'] }</p>
+                <p>Email: { user['email'] }</p>
+                <p>Password: { user['password'] }</p>
+                <p>Confirm Password: { user['confirmPassword'] }</p>
             </div>
         </>
     )
