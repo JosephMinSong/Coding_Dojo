@@ -33,6 +33,7 @@ export default function ColorForm (props) {
             <form onSubmit={ handleSubmit }>
                 <label>Color: </label>
                 <input type="text" name="color" onChange={ handleChange } value={ form.color }/>
+                <label>Size: </label>
                 <input type="number" name="size" onChange={ handleChange } value={ form.size }/>
                 <input type="submit" value="Add" />
             </form>
