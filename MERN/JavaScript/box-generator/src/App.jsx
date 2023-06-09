@@ -5,25 +5,23 @@ import ColorForm from "./components/ColorForm/ColorForm"
 
 export default function App() {
     // Set color to a blank string until filled
-    const [color, setColor] = useState("")
-
-    // Array of colors for each new box
-    let boxes = []
+    const [boxes, setBoxes] = useState([
+        {color : "", size : ""}
+    ])
 
     // Function to change color and then to add it to the boxes array
-    const changeColor = (newColor) => {
-        setColor(newColor)
-        boxes.push(color)
+    const changeBox = (newBox) => {
+        setBoxes(currentBoxes => [...currentBoxes, newBox])
     }
 
     return (
         <>
         {/* **********************Display form to change color************************* */}
-        <ColorForm onChangeColor = { changeColor } />
+        <ColorForm onNewBox = { changeBox } />
 
         {/* **********************Map function to display the boxes******************* */}
         {
-            boxes.map( c => <Box boxColor= { c } /> )
+            boxes.map( c => <Box boxDimensions={ c } /> )
         }
         </>
     )
