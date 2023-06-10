@@ -1,0 +1,23 @@
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    gap: 1rem;
+    margin-top: 2%;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 4rem 10rem;
+    height: 10rem;
+    overflow: auto;
+}
