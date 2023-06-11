@@ -7,20 +7,33 @@ function App() {
 
   const changeTabs = (i) => {
     setIndex(i)
+    addAnimation(i)
   }
 
+  const addAnimation = (i) => {
+    const target = document.getElementById(i)
+
+    const spinAnimation = {
+      transform: "rotate(0) scale(1)",
+      transform: "rotate(360deg) scale(0)"
+    }
+
+    target.style=spinAnimation
+  }
 
   return (
     <div className={styles.App}>
 
       <div className={ styles.tabRow }>
         
-        { tabContent.map( (_ , index ) => <button key={ index } onClick={ () => changeTabs(index) }> Tab { index + 1 } </button> ) }
+        { tabContent.map( (_ , index) => <button key={ index } onClick={ () => changeTabs(index) }> Tab { index + 1 } </button> ) }
 
       </div>
 
       <div className={ styles.content }>
-        { tabContent[index] }
+
+        { tabContent.map( (content, i) => { if (i == index) return <p  id={ i } className={ styles.contentStyle }> { content } </p> } ) }
+
       </div>
 
     </div>
