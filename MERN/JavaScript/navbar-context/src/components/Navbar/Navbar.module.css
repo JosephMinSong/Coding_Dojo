@@ -1,0 +1,8 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0rem 2rem;
+    min-height: 80px;
+    background-color: rgba(128, 0, 128, 0.75);
+    color: white;
+}
