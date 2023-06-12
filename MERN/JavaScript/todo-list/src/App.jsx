@@ -8,7 +8,7 @@ export default function App() {
 
     // put into state a new list of todo items, getting the initial values from local storage
     const [todos, setTodos] = useState( () => {
-        const localValue = localStorage.getItem("ITEMS")
+        const localValue = localStorage.getItem("todos")
         if (localValue == null) return []
 
         return JSON.parse(localValue)
@@ -16,7 +16,7 @@ export default function App() {
 
     // adds items into local storage whenever the todos list is changed
     useEffect( () => {
-        localStorage.setItem("ITEMS", JSON.stringify(todos))
+        localStorage.setItem("todos", JSON.stringify(todos))
     }, [todos] )
 
     // on form submit handler
@@ -78,10 +78,9 @@ export default function App() {
                 <ul>
 
                     {/* short circuit : if there's nothing in our todo list, we render "no todos" */}
-                    { todos.length === 0 && "No Todos" }
+                    { todos.length === 0 ? "No Todos" : 
 
-                    {/* mapping over todo, we create a new li element with the todo info*/}
-                    { todos.map( todo => {
+                    todos.map( todo => {
                         return (
                             <li id={ todo.id }>
 
