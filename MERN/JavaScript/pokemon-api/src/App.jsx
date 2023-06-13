@@ -20,7 +20,7 @@ export default function App() {
             <button onClick={ getAllPokemon }> Get All Pokemon </button>
             { pokemons.map(pokemon => {
                 return (
-                    <p> {pokemon.id} { pokemon.name } </p>
+                    <p> { pokemon.id } { pokemon.name } </p>
                 )
             }) }
         </div>
