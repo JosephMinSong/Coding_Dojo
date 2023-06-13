@@ -3,13 +3,7 @@
     margin: 0;
     border: none;
     box-sizing: border-box;
-}
-
-.app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 h1 {
