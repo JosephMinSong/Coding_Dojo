@@ -11,21 +11,27 @@ export default function SearchResult( { isSubmitted, setIsSubmitted } ) {
         name : '',
         mass : '',
         hairColor: '',
-        skinColor : ''
+        skinColor : '',
+        home : ''
     })
     const navigate = useNavigate()
 
     const getResult = () => {
         axios.get(`https://swapi.dev/api/${category}/${id}`).then(response => {
             if (category === 'people'){
+                const homePlaneturl = response.data.homeworld
+                let homePlanet
+                axios.get(homePlaneturl).then(response => {
+                    homePlanet = response.data.name
+                    setResult( current => ({ ...current, home : homePlanet }) )
+                })
                 const personData = response.data
 
-                setResult({
+                setResult(current => ({...current, 
                     name : personData.name,
                     mass : personData.mass,
                     hairColor: personData.hair_color,
-                    skinColor : personData.skin_color
-                })
+                    skinColor : personData.skin_color}))
             } else {
                 const planetData = response.data
 
@@ -55,6 +61,7 @@ export default function SearchResult( { isSubmitted, setIsSubmitted } ) {
                     <li> <span className={ styles.bold } >Mass:</span> { result.mass } </li>
                     <li> <span className={ styles.bold } >Hair Color:</span> { result.hairColor } </li>
                     <li> <span className={ styles.bold } >Skin Color:</span> { result.skinColor } </li>
+                    <li> <span className={ styles.bold } >Home Planet:</span> { result.home } </li>
                 </ul> :
                 <ul className={ styles.list }>
                     <li> <span className={ styles.bold } >Climate:</span> { result.climate } </li>

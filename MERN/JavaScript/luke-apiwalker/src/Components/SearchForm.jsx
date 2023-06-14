@@ -21,7 +21,6 @@ export default function SearchForm( { isSubmitted, setIsSubmitted } ) {
         e.preventDefault()
 
         setIsSubmitted(true)
-        console.log(isSubmitted)
         navigate(`/${search.category}/${search.id}`)
     }
 
