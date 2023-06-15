@@ -33,6 +33,24 @@ const createCompany = () => {
 }
 const newFakeCompany = createCompany()
 
+const createUserandCompany = () => {
+    return {
+        _id : faker.string.uuid(),
+        userName : faker.person.fullName(),
+        email : faker.internet.email(),
+        password : faker.internet.password(),
+        phoneNumber : faker.phone.number(),
+        companyName : faker.company.name(),
+        address : {
+            street : faker.location.street(),
+            city : faker.location.city(),
+            state : faker.location.state(),
+            zipCode : faker.location.zipCode(),
+            country : faker.location.country()
+        }
+    }
+}
+const newUserandCompany = createUserandCompany()
 
 app.get('/api/users/new', (req, res) => {
     res.json( newFakeUser )
@@ -40,6 +58,10 @@ app.get('/api/users/new', (req, res) => {
 
 app.get('/api/companies/new', (req, res) => {
     res.json( newFakeCompany )
+})
+
+app.get('/api/user/company', (req, res) => {
+    res.json( newUserandCompany )
 })
 
 app.listen( port, () => console.log(`Listening on port : ${port}`))
