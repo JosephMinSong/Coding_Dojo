@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongodb')
 const Joke = require('../models/joke.model')
 
 module.exports = {
@@ -45,7 +44,7 @@ module.exports = {
             .catch(err => res.status(404).json(err))
     },
 
-    //DELETE
+    // DELETE
     deleteOne : (req, res) => {
         Joke.deleteOne({ _id : req.params.id })
             .then(joke => res.json(joke))

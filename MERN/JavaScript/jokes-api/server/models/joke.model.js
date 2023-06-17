@@ -11,7 +11,7 @@ const JokeSchema = new mongoose.Schema({
         required: [true, "Please provide a punchline"],
         minlength: [3, "Punchline must be at least 3 characters long"]
     }
-})
+}, {timestamps : true})
 
 const Joke = mongoose.model('Joke', JokeSchema)
 
