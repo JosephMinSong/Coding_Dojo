@@ -15,3 +15,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.product_list {
+    list-style-type: none;
+    text-align: center;
+}
+
+.product_data {
+    
+}
