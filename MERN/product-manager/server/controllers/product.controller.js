@@ -28,6 +28,13 @@ module.exports = {
         Product.findByIdAndUpdate({ _id : req.params.id }, req.body, { runValidators : true, new : true })
             .then(one => res.json(one))
             .catch(err => res.status(400).json(err))
+    },
+
+    // Delete one product
+    delete : (req, res) => {
+        Product.deleteOne({ _id : req.params.id })
+            .then(one => res.json(one))
+            .catch(err => res.status(400).json(err))
     }
 
 }

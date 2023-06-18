@@ -5,6 +5,7 @@ import axios from 'axios'
 
 export default function AllProducts ({ products, setProducts }) {
 
+    // Get all items
     const getAll = () => {
         axios.get('http://localhost:8000/api/products').then(res => {
             setProducts(res.data)
@@ -12,12 +13,17 @@ export default function AllProducts ({ products, setProducts }) {
             .catch(err => console.log(err))
     }
 
+    // Get all items on page load
     useEffect( getAll, [] )
 
+    // Get all items when products change
     useEffect( getAll, [products] )
 
-    const handleDelete = (e) => {
-        
+    // Handle Delete
+    const handleDelete = id => {
+        axios.delete(`http://localhost:8000/api/products/${id}`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -33,7 +39,7 @@ export default function AllProducts ({ products, setProducts }) {
                         |
                         <Link to={ `/product/${ one._id }/edit` }> Edit </Link>
                         |
-                        <button onClick={ handleDelete }>Delete</button>
+                        <button onClick={ () => handleDelete(one._id) }>Delete</button>
                     </li>
                 } )}
             </ul>
