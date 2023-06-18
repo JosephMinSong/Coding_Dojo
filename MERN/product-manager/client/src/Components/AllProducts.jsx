@@ -3,10 +3,7 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-export default function AllProducts () {
-
-    const [products, setProducts] = useState([])
-    const [errors, setErrors] = useState([])
+export default function AllProducts ({ products, setProducts }) {
 
     const getAll = () => {
         axios.get('http://localhost:8000/api/products').then(res => {
@@ -16,6 +13,12 @@ export default function AllProducts () {
     }
 
     useEffect( getAll, [] )
+
+    useEffect( getAll, [products] )
+
+    const handleDelete = (e) => {
+
+    }
 
     return (
         <div className={ styles.all_products }>
@@ -27,6 +30,10 @@ export default function AllProducts () {
                 products.map( one => {
                     return <li key={ one._id }>
                         <Link to={ `/product/${ one._id }` }> { one.title } </Link>
+                        |
+                        <Link to={ `/product/${ one._id }/edit` }> Edit </Link>
+                        |
+                        <button onClick={ handleDelete }>Delete</button>
                     </li>
                 } )}
             </ul>
