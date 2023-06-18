@@ -2,13 +2,17 @@ import styles from "../App.module.css"
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import ProductForm from "../Components/ProductForm"
 
-export default function EditProduct() {
+export default function Edit() {
+
     const initialValues = {
         title : '',
         price : '',
         description : ''
     }
+
+    const buttonName = 'Edit'
 
     const [product, setProduct] = useState({ ...initialValues })
     const [errors, setErrors] = useState([])
@@ -22,11 +26,6 @@ export default function EditProduct() {
     }
 
     useEffect( getProductData, [] )
-
-    const handleChange = (e) => {
-        const name = e.target.name 
-        setProduct(current => ( { ...current, [name] : e.target.value } ))
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -52,22 +51,14 @@ export default function EditProduct() {
 
     return (
         <>
-        <form onSubmit={ handleSubmit } className={ styles.form }>
-            <h1>Edit a product</h1>
-            { errors.title && <p className={ styles.error_message }>{ errors.title }</p> }
-            <label htmlFor="title">Title: </label>
-            <input type="text" id='title' name="title" value={ product.title } onChange={ handleChange }/>
-            <br/>
-            { errors.price && <p className={ styles.error_message }>{ errors.price }</p> }
-            <label htmlFor="price">Price: </label>
-            <input type="number" id='price' name="price" value={ product.price } onChange={ handleChange }/>
-            <br/>
-            { errors.description && <p className={ styles.error_message }>{ errors.description }</p> }
-            <label htmlFor="description">Description: </label>
-            <input type="text" id="description" name="description" value={ product.description } onChange={ handleChange }/>
-            <br />
-            <button>Edit</button>
-        </form>
+        <h1>Edit a product</h1>
+        <ProductForm 
+            product={ product } 
+            setProduct={ setProduct } 
+            errors={ errors } 
+            handleSubmit={ handleSubmit } 
+            buttonName={ buttonName }
+        />
         <Link to='/'>Back to All Products</Link>
         </>
     )
