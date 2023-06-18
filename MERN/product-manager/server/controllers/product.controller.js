@@ -20,7 +20,7 @@ module.exports = {
     create : (req, res) => {
         Product.create(req.body)
             .then(oneProduct => res.json(oneProduct))
-            .catch(err => res.json(err))
+            .catch(err => res.status(400).json(err))
     }
 
 }
