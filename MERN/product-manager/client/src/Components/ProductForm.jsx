@@ -1,5 +1,8 @@
 import { useState } from "react"
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+import styles from '../App.module.css'
 
 export default function ProductForm () {
 
@@ -11,6 +14,8 @@ export default function ProductForm () {
 
     const [product, setProduct] = useState({ ...initialValues })
 
+    const navigate = useNavigate()
+
     const handleChange = (e) => {
         const name = e.target.name 
 
@@ -20,17 +25,21 @@ export default function ProductForm () {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axios.post('/api/product', {
+        axios.post('http://localhost:8000/api/products', {
             title : product.title,
             price : product.price,
             description : product.description
         })
-            .then( res => console.log(res) )
+            .then( res => {
+                console.log(res)
+                navigate('/')
+            } )
             .catch( err => console.log(err))
     }
 
     return (
-        <form onSubmit={ handleSubmit }>
+        <>
+        <form onSubmit={ handleSubmit } className={ styles.form }>
             <h1>Add a product</h1>
             <label htmlFor="title">Title: </label>
             <input type="text" id='title' name="title" value={ product.title } onChange={ handleChange }/>
@@ -43,5 +52,7 @@ export default function ProductForm () {
             <br />
             <button>Create</button>
         </form>
+        <Link to='/'> Go Back Home</Link>
+        </>
     )
 }

@@ -1,16 +1,14 @@
 import styles from "./App.module.css"
 import { Routes, Route } from 'react-router-dom'
-import ProductForm from "./Components/ProductForm"
-import AllProducts from "./Components/AllProducts"
+import Main from './Views/Main'
 
 export default function App() {
     return (
-        <>
-        <h1> Product Manager </h1>
-        <Routes>
-            <Route path='/' element={ <AllProducts /> } />
-            <Route path='/add' element={ <ProductForm /> } />
-        </Routes>
-        </>
+        <div className={ styles.app }>
+            <h1> Product Manager </h1>
+            <Routes>
+                <Route path='/' element={ <Main /> } />
+            </Routes>
+        </div>
     )
 }
