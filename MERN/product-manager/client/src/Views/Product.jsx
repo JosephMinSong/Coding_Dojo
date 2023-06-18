@@ -37,7 +37,9 @@ export default function Product() {
             <p>Price: { product.price }</p>
             <p>Description: { product.description } </p>
             <Link to='/'>Back to all products</Link>
+            <br/>
             <Link to={ `/product/${id}/edit` }>Edit Item </Link>
+            <br/>
             <button onClick={ () => handleDelete(id) }>Delete</button>
         </div>
     )
