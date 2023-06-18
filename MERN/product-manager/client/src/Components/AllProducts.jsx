@@ -17,7 +17,7 @@ export default function AllProducts ({ products, setProducts }) {
     useEffect( getAll, [products] )
 
     const handleDelete = (e) => {
-
+        
     }
 
     return (

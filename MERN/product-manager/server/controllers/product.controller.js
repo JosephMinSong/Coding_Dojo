@@ -21,6 +21,13 @@ module.exports = {
         Product.create(req.body)
             .then(oneProduct => res.json(oneProduct))
             .catch(err => res.status(400).json(err))
+    },
+
+    // Edit one product
+    edit : (req, res) => {
+        Product.findByIdAndUpdate({ _id : req.params.id }, req.body, { runValidators : true, new : true })
+            .then(one => res.json(one))
+            .catch(err => res.status(400).json(err))
     }
 
 }

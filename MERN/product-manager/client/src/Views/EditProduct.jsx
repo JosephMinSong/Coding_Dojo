@@ -1,9 +1,9 @@
-import { useState } from "react"
+import styles from "../App.module.css"
+import { useState, useEffect } from "react"
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import styles from '../App.module.css'
 
-export default function ProductForm ({ products, setProducts }) {
-
+export default function EditProduct() {
     const initialValues = {
         title : '',
         price : '',
@@ -12,27 +12,36 @@ export default function ProductForm ({ products, setProducts }) {
 
     const [product, setProduct] = useState({ ...initialValues })
     const [errors, setErrors] = useState([])
+    const { id } = useParams()
+    const navigate = useNavigate()
+
+    const getProductData = () => {
+        axios.get(`http://localhost:8000/api/products/${id}`)
+            .then(res => setProduct(res.data))
+            .catch(err => console.log(err))
+    }
+
+    useEffect( getProductData, [] )
 
     const handleChange = (e) => {
         const name = e.target.name 
-
         setProduct(current => ( { ...current, [name] : e.target.value } ))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setErrors( { ...initialValues } )
 
-        axios.post('http://localhost:8000/api/products', {
+        axios.put(`http://localhost:8000/api/products/${id}/edit`, {
             title : product.title,
             price : product.price,
             description : product.description
         })
             .then( res => {
-                setProduct({ ...initialValues })
+                navigate('/')
             } )
             .catch( err => {
                 const allErrors = err.response.data.errors
+                console.log(allErrors)
                 setErrors({
                     title : allErrors?.title?.message,
                     price : allErrors?.price?.message,
@@ -42,8 +51,9 @@ export default function ProductForm ({ products, setProducts }) {
     }
 
     return (
+        <>
         <form onSubmit={ handleSubmit } className={ styles.form }>
-            <h1>Add a product</h1>
+            <h1>Edit a product</h1>
             { errors.title && <p className={ styles.error_message }>{ errors.title }</p> }
             <label htmlFor="title">Title: </label>
             <input type="text" id='title' name="title" value={ product.title } onChange={ handleChange }/>
@@ -56,7 +66,9 @@ export default function ProductForm ({ products, setProducts }) {
             <label htmlFor="description">Description: </label>
             <input type="text" id="description" name="description" value={ product.description } onChange={ handleChange }/>
             <br />
-            <button>Create</button>
+            <button>Edit</button>
         </form>
+        <Link to='/'>Back to All Products</Link>
+        </>
     )
 }

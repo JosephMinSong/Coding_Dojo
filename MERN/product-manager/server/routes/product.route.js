@@ -11,4 +11,7 @@ module.exports = app => {
     // Create
     app.post('/api/products', ProductController.create)
 
+    // Edit
+    app.put('/api/products/:id/edit', ProductController.edit)
+
 }
