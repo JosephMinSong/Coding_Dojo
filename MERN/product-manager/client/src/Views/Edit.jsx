@@ -40,7 +40,6 @@ export default function Edit() {
             } )
             .catch( err => {
                 const allErrors = err.response.data.errors
-                console.log(allErrors)
                 setErrors({
                     title : allErrors?.title?.message,
                     price : allErrors?.price?.message,

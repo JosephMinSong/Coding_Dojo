@@ -44,7 +44,8 @@ export default function Product() {
                     handleDelete(id) 
                     navigate('/')
                     }
-                }/>
+                }
+                />
             </>
             }  
         </div>

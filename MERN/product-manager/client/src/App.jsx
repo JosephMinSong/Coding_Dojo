@@ -15,8 +15,6 @@ export default function App() {
             .catch(err => console.log(err))
     }
 
-    const myNumber = 5
-
     return (
         <div className={ styles.app }>
             <h1> Product Manager </h1>
