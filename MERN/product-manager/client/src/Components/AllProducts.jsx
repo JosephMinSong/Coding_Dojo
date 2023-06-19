@@ -3,28 +3,8 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import DeleteButton from './DeleteButton'
-import { useProductContext } from '../Context/ProductContext'
 
-export default function AllProducts () {
-
-    const [products, setProducts] = useState([])
-
-    // Get all items
-    const getAll = () => {
-        axios.get('http://localhost:8000/api/products').then(res => {
-            setProducts(res.data)
-        })
-            .catch(err => console.log(err))
-    }
-
-    // Get all items on page load
-    useEffect( getAll, [] )
-
-    // Get all items when products change
-    useEffect( getAll, [products] )
-
-    // Get delete functionality from context
-    const { handleDelete } = useProductContext()
+export default function AllProducts ({ products, removeProduct }) {
 
     return (
         <div className={ styles.all_products }>
@@ -39,7 +19,7 @@ export default function AllProducts () {
                         |
                         <Link to={ `/product/${ one._id }/edit` }> Edit </Link>
                         |
-                        <DeleteButton callBackFunction={ () => handleDelete(one._id) }/>
+                        <DeleteButton id={ one._id } successFunction={ removeProduct(one._id) }/>
                     </li>
                 } )}
             </ul>

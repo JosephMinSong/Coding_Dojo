@@ -3,25 +3,21 @@ import { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import styles from "../App.module.css"
 import DeleteButton from '../Components/DeleteButton'
-import { useProductContext } from '../Context/ProductContext'
+import { getOneProduct } from '../Services/ProductServices'
+import { deleteButton } from '../Services/ProductServices'
 
 export default function Product() {
 
     // Get all required values
     const [product, setProduct] = useState()
-    const [loaded, setLoaded] = useState(false)
     const { id } = useParams()
     const navigate = useNavigate()
 
-     // Get delete button functionality from context
-    const { handleDelete } = useProductContext()
-
     // Get one product info
     const getProductData = () => {
-        axios.get(`http://localhost:8000/api/products/${id}`)
+        getOneProduct(id)
             .then(res => {
                 setProduct(res.data)
-                setLoaded(true)
             })
             .catch(err => console.log(err))
     }
@@ -29,9 +25,11 @@ export default function Product() {
     // Get one product info on page load
     useEffect( getProductData, [] )
 
+    if (!product) return <h1>Loading</h1>
+
     return (
         <div className={ styles.product_data }>
-            { loaded &&
+            { product &&
             <>
                 <h3>Title: { product.title } </h3>
                 <p>Price: ${ product.price }</p>
@@ -40,12 +38,7 @@ export default function Product() {
                 <br/>
                 <Link to={ `/product/${id}/edit` }>Edit Item </Link>
                 <br/>
-                <DeleteButton callBackFunction={ () => {
-                    handleDelete(id) 
-                    navigate('/')
-                    }
-                }
-                />
+                <DeleteButton id={ id } successFunction={ () => navigate('/') }/>
             </>
             }  
         </div>

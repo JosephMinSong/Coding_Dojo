@@ -1,7 +1,15 @@
-export default function DeleteButton( { callBackFunction } ) {
+import { deleteButton } from "../Services/ProductServices"
+
+export default function DeleteButton( { id, successFunction } ) {
+
+    const handleDelete = () => {
+        deleteButton(id)
+            .then(res => successFunction())
+            .catch(err => console.log(err))
+    }
 
     return (
-        <button onClick={ callBackFunction }>
+        <button onClick={ handleDelete }>
             Delete
         </button>
     )

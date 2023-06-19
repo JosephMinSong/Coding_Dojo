@@ -1,6 +1,37 @@
 import styles from '../App.module.css'
+import { useState } from 'react'
 
-export default function ProductForm ( { product, setProduct, errors, handleSubmit, buttonName } ) {
+export default function ProductForm ( { productValues, buttonName, service, successFunction } ) {
+
+    const initialValues = productValues ?? {
+        title : '',
+        price : '',
+        description : ''
+    } 
+
+    const [product, setProduct] = useState({ ...initialValues })
+    const [errors, setErrors] = useState([])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        service({
+            title : product.title,
+            price : product.price,
+            description : product.description
+        })
+            .then( res => {
+                successFunction(res.data)
+            } )
+            .catch( err => {
+                const allErrors = err.response.data.errors
+                setErrors({
+                    title : allErrors?.title?.message,
+                    price : allErrors?.price?.message,
+                    description : allErrors?.description?.message
+                })
+            })
+    }
 
     const handleChange = (e) => {
         const name = e.target.name 

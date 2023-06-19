@@ -13,6 +13,7 @@ module.exports = app => {
 
     // Edit
     app.put('/api/products/:id/edit', ProductController.edit)
+    // api/products/:id
 
     // Delete
     app.delete('/api/products/:id', ProductController.delete)
