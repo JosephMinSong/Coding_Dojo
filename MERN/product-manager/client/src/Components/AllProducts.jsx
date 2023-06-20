@@ -1,7 +1,5 @@
 import styles from '../App.module.css'
-import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import DeleteButton from './DeleteButton'
 
 export default function AllProducts ({ products, removeProduct }) {
@@ -19,7 +17,7 @@ export default function AllProducts ({ products, removeProduct }) {
                         |
                         <Link to={ `/product/${ one._id }/edit` }> Edit </Link>
                         |
-                        <DeleteButton id={ one._id } successFunction={ removeProduct(one._id) }/>
+                        <DeleteButton id={ one._id } successFunction={ () => removeProduct(one._id) }/>
                     </li>
                 } )}
             </ul>

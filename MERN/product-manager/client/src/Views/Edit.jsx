@@ -1,7 +1,5 @@
-import styles from "../App.module.css"
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import ProductForm from "../Components/ProductForm"
 import { getOneProduct } from "../Services/ProductServices"
 import { editProduct } from "../Services/ProductServices"

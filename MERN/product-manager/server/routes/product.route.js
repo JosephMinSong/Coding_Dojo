@@ -12,7 +12,7 @@ module.exports = app => {
     app.post('/api/products', ProductController.create)
 
     // Edit
-    app.put('/api/products/:id/edit', ProductController.edit)
+    app.put('/api/products/:id/', ProductController.edit)
     // api/products/:id
 
     // Delete

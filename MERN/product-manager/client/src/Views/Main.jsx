@@ -1,7 +1,6 @@
 import AllProducts from "../Components/AllProducts"
 import ProductForm from "../Components/ProductForm"
 import styles from "../App.module.css"
-import axios from 'axios'
 import { useState, useEffect } from "react"
 import { createProduct } from "../Services/ProductServices"
 import { getAllProducts } from "../Services/ProductServices"
@@ -22,7 +21,9 @@ export default function Main() {
     }
 
     const removeProduct = (id) => {
-        products.filter(item_id => item_id !== id)
+        setProducts(items => {
+            return items.filter(item => item._id != id)
+        })
     }
 
     // Get all items when products change

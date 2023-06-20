@@ -1,10 +1,8 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import styles from "../App.module.css"
 import DeleteButton from '../Components/DeleteButton'
 import { getOneProduct } from '../Services/ProductServices'
-import { deleteButton } from '../Services/ProductServices'
 
 export default function Product() {
 
