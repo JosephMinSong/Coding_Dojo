@@ -6,7 +6,10 @@ export default function New() {
     return(
         <div className={ styles.new_form }>
             <h2>Add an author</h2>
-            <AuthorForm reqType = 'post'/>
+            <AuthorForm 
+                reqType = 'post'
+                authorData={ {name : ''} }
+            />
         </div>
     )
 }

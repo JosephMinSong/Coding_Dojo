@@ -21,7 +21,7 @@ module.exports = {
     },
 
     updateOne : (req,res) => {
-        Author.findOneAndUpdate({ _id : req.params.id }, req.body, { runValidators : true, new : true })
+        Author.updateOne({ _id : req.params.id }, req.body, { runValidators : true, new : true })
             .then(author => res.json(author))
             .catch(err => res.status(400).json(err))
     },

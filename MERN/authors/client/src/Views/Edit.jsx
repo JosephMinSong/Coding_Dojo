@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default function Edit() {
 
-    const [author, setAuthor] = useState('')
+    const [author, setAuthor] = useState()
     const { id } = useParams()
 
     const getAuthorData = () => {
@@ -20,10 +20,14 @@ export default function Edit() {
     return (
         <div className={ styles.edit_form }>
             <h2>Edit this author</h2>
+            {author ? 
             <AuthorForm 
-                reqType='put'
-                authorData={author}
+            reqType='put'
+            authorData={ author }
             />
+            :
+            <h1>Loading...</h1>
+            }
         </div>
     )
 }
