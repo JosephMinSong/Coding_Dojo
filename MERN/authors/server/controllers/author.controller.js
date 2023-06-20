@@ -27,8 +27,8 @@ module.exports = {
     },
 
     deleteOne : (req, res) => {
-        Author.findByIdAndDelete({ _id : req.params.id })
+        Author.deleteOne({ _id : req.params.id })
             .then(author => res.json(author))
-            .then(err => res.json(err))
+            .catch(err => res.status(400).json(err))
     }
 }
