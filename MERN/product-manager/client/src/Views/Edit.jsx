@@ -21,12 +21,15 @@ export default function Edit() {
     return (
         <>
         <h1>Edit a product</h1>
+        {product ? 
         <ProductForm 
-            productValues={ product }
-            buttonName='Edit'
-            service={ (formData) => editProduct(id, formData) }
-            successFunction={ () => navigate('/') }
+        productValues={ product }
+        buttonName='Edit'
+        service={ (formData) => editProduct(id, formData) }
+        successFunction={ () => navigate('/') }
         />
+        :
+        <h1>Loading...</h1>}
         <Link to='/'>Back to All Products</Link>
         </>
     )
