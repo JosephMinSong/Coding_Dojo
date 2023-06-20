@@ -2,7 +2,7 @@ import styles from "../App.module.css"
 import AuthorForm from "../Components/AuthorForm"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import axios from 'axios'
+import { getOneAuthor, updateAuthor } from "../Services/AuthorServices"
 
 export default function Edit() {
 
@@ -10,7 +10,7 @@ export default function Edit() {
     const { id } = useParams()
 
     const getAuthorData = () => {
-        axios.get(`http://localhost:8000/api/authors/${id}`)
+        getOneAuthor(id)
             .then(res => setAuthor(res.data))
             .catch(err => console.log(err))
     }
@@ -22,8 +22,8 @@ export default function Edit() {
             <h2>Edit this author</h2>
             {author ? 
             <AuthorForm 
-            reqType='put'
             authorData={ author }
+            service={ (authorData) => updateAuthor(id, authorData) }
             />
             :
             <h1>Loading...</h1>

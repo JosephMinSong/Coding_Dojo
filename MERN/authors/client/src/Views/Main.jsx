@@ -1,16 +1,21 @@
 import styles from "../App.module.css"
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react"
-import axios from 'axios'
-import { useAuthorContext } from "../Context/AuthorContext"
+import { deleteAuthor } from "../Services/AuthorServices"
+import { getAll } from "../Services/AuthorServices"
 
-export default function Main({ getAllAuthors }) {
+export default function Main() {
 
-    const { authors, setAuthors } = useAuthorContext()
+    const [authors, setAuthors] = useState([])
+
+    const getAllAuthors = () => {
+        getAll()
+            .then(res => setAuthors(res.data))
+            .catch(err => console.log(err))
+    }
     
-    const handleDelete = (e, id) => {
-        e.preventDefault()
-        axios.delete(`http://localhost:8000/api/authors/${id}`)
+    const handleDelete = (id) => {
+        deleteAuthor(id)
             .then(res => {
                 setAuthors(authors => {
                     return authors.filter(author => author._id != id)
@@ -39,7 +44,7 @@ export default function Main({ getAllAuthors }) {
                             <td>{ one.name }</td>
                             <td>
                                 <Link to={ `/authors/${one._id}/edit` }>Edit</Link>
-                                <button onClick={(e) => handleDelete(e, one._id) }>Delete</button>
+                                <button onClick={() => handleDelete(one._id) }>Delete</button>
                             </td>
                         </tr>
                     } )

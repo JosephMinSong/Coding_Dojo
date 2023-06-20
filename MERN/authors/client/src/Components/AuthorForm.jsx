@@ -1,19 +1,15 @@
 import styles from "../App.module.css"
 import { useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import axios from 'axios'
-import { useAuthorContext } from "../Context/AuthorContext"
+import { useNavigate } from "react-router-dom"
 
-export default function AuthorForm({ reqType, authorData }) {
+
+export default function AuthorForm({ authorData, service }) {
 
     const initialValues = authorData
 
     const [author, setAuthor] = useState({...initialValues})
     const [error, setError] = useState([])
     const navigate = useNavigate()
-    const { id } = useParams()
-
-    const { setAuthors } = useAuthorContext()
 
     const handleChange = (e) => {
         const name = e.target.name
@@ -21,23 +17,11 @@ export default function AuthorForm({ reqType, authorData }) {
         setAuthor(current => ({...current, [name] : e.target.value}))
     }
 
-    const goBack = (e) => {
-        e.preventDefault() 
-        navigate('/')
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        axios[`${reqType}`](`http://localhost:8000/api/authors/${ id ?? '' }`, {name : author.name})
-            .then(res => {
-                if (reqType == 'post'){
-                    setAuthors(current => [...current, res.data])
-                } else {
-                    setAuthors(current => [...current])
-                }
-                navigate('/')
-            })
+        service(author)
+            .then(res => navigate('/'))
             .catch(err => {
                 setError({name : err.response.data.errors.name.message})
             })
@@ -48,7 +32,7 @@ export default function AuthorForm({ reqType, authorData }) {
             { error && <p className={ styles.error_message }> {error.name} </p> }
             <label htmlFor="name">Name: </label>
             <input type="text" id='name' name='name' value={ author.name } onChange={ handleChange }></input>
-            <button onClick={ goBack }>Cancel</button>
+            <button type='button' onClick={ () => navigate('/') }>Cancel</button>
             <button>Submit</button>
         </form>
     )
