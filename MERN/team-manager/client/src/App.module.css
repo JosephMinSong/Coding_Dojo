@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    margin: 2%;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar_link {
+    text-decoration: underline;
+    font-size: 2.25rem;
+    color: black;
+}
+
+.navbar_link:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.main_navbar{
+    display: flex;
+    gap: 1rem;
+    margin-left: 5rem;
+}
+
+.main_navbar_links{
+    text-decoration: underline;
+    font-size: 2rem;
+    margin: 2% 0%;
+}
+
+.main_navbar_links:hover{
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.player_table{
+    width: 40%;
+    margin-left: 5rem;
+    font-size: 1.5rem;
+}
+
+.player_form{
+    margin-left: 5rem;
+    font-size: 1.75rem;
+}
+
+.player_form > input {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 1% 0%;
+}
+
+.player_form_button {
+    font-size: 1.25rem;
+    margin-left: 2.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+}

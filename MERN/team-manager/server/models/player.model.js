@@ -1,5 +1,20 @@
 const mongoose = require('mongoose')
 
+const Games = new mongoose.Schema({
+    game1: {
+        type: Number,
+        default: 3
+    },
+    game2: {
+        type: Number,
+        default: 3
+    },
+    game3: {
+        type: Number,
+        default: 3
+    }
+})
+
 const PlayerSchema = new mongoose.Schema({
     name : {
         type : String,
@@ -11,19 +26,8 @@ const PlayerSchema = new mongoose.Schema({
         type: String
     },
 
-    game1 : {
-        type: Number,
-        default : 3
-    },
-
-    game2: {
-        type: Number,
-        default : 3
-    },
-
-    game3: {
-        type: Number,
-        default: 3
+    gameStatus : {
+        type: [Games]
     }
 }, { timestamps : true })
 
