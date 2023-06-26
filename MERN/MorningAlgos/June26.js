@@ -88,13 +88,3 @@ console.log(canStringBecomePalindrome(str7))
 
 
 /*****************************************************************************/
-
-function canStringBecomePalindrome2(str){
-    let start = 0
-    let end = str.length - 1
-    let letterHash = {}
-
-    while (start < end){
-
-    }
-}
