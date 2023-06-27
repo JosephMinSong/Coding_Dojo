@@ -79,3 +79,28 @@ console.log(backspaceStringCompare(S1, T1))
 console.log(backspaceStringCompare(S2, T2))
 console.log(backspaceStringCompare(S3, T3))
 console.log(backspaceStringCompare(S4, T4))
+
+// Danny's solution
+function backspaceStringCompare(S, T) {
+    const sResult = backspace(S);
+    const tResult = backspace(T);
+
+    return sResult === tResult;
+}
+
+function backspace(str) {
+    let result = "";
+
+    let skipCount = 0;
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (str[i] === "#") {
+            skipCount++;
+        } else if (skipCount === 0) {
+            result = str[i] + result;
+        } else {
+            skipCount--;
+        }
+    }
+
+    return result;
+}
