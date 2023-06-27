@@ -49,7 +49,8 @@ function canStringBecomePalindrome(str) {
 
     for (let letter of str){
         if (letterHash.hasOwnProperty(letter)){
-            delete letterHash[letter]
+            letterHash[letter] ++
+            // delete letterHash[letter]
         } else (
             letterHash[letter] = 1
         )
