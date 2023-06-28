@@ -35,7 +35,11 @@ const objects = [
       name: "The Fertile Crescent",
       category: "Cradle of Civilization",
     },
-  ];
+    {
+        name: "Baby Yoda",
+        category: 'not cute'
+    }
+];
   
   const expected = {
     cute: [
@@ -103,25 +107,24 @@ function groupObjects(items) {
 
 // O(N) time
 // O(N) space
-function groupObjects2(items, param){
+function groupObjects2(items, param){ 
     let result = {}
-
-    let objCategory = param.toLowerCase() 
-
-    result[objCategory] = []
 
     for (let obj of items){
 
-        let comparedCategory = obj['category'].toLowerCase()
+        let comparedCategory = obj[param].toLowerCase() 
 
-        if (objCategory == comparedCategory){
-            result[objCategory].push(obj)
-        } 
+        if (result.hasOwnProperty(comparedCategory)){
+            result[comparedCategory].push(obj)
+        } else {
+            result[comparedCategory] = []
+            result[comparedCategory].push(obj)
+        }
     }
 
     return result
 }
 
-// console.log(groupObjects2(objects, 'cute'))
+console.log(groupObjects2(objects, 'category'))
 // console.log(groupObjects2(objects, 'food'))
 // console.log(groupObjects2(objects, 'Cradle of Civilization'))
