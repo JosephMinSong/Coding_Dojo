@@ -84,7 +84,7 @@ static string RollUntil(int target){
 // Have fun with it!
 
 static void UserInputs(){
-    Console.WriteLine("Welcome! Would you like to roll for a number (1) or roll until you hit a number (2). Press enter after your choice: ");
+    Console.WriteLine("Welcome! Would you like to roll for a number (1) or roll until you hit a number (2). Press press enter after your choice: ");
 
     string UserChoice = Console.ReadLine();
 
