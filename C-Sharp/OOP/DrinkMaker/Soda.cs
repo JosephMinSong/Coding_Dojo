@@ -4,13 +4,19 @@ public class Soda : Drink {
         get { return SugarAmount; }
     }
 
-    public Soda(double sugarAmount, string name, double temp, int calories, string color) : base(name, color, temp, true, calories){
+    bool Diet;
+    public bool _Diet{
+        get { return Diet; }
+    }
+
+    public Soda(double sugarAmount, bool diet, string name, double temp, int calories, string color) : base(name, color, temp, true, calories){
         SugarAmount = sugarAmount;
+        Diet = diet;
     }
 
     public override void ShowInfo()
     {
         base.ShowInfo();
-        Console.WriteLine($"Sugar amount: {SugarAmount}");
+        Console.WriteLine($"Sugar amount: {SugarAmount}. Diet : {Diet}");
     }
 }
