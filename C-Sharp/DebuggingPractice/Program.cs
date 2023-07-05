@@ -38,7 +38,7 @@ for (int i = 0; i < EvenMoreNumbers.Count; i++){
 // Challenge 5
 // What can we learn from this error message?
 string MyString = "superduberawesome";
-MyString[7] = "p";
+// MyString[7] = "p";
 
 // Strings are immuatable in C Sharp
 
