@@ -61,14 +61,14 @@ Console.WriteLine(FindMax(TestIntList2));
 static List<int> SquareValues(List<int> IntList){
     for (int i = 0; i < IntList.Count; i++){
         IntList[i] = IntList[i] * IntList[i];
-        Console.WriteLine(IntList[i]);
     }
+    IntList.ForEach(num => Console.WriteLine(num));
     return IntList;
 }
 
 List<int> TestIntList3 = new List<int>() {1,2,3,4,5};
 // You should get back [1,4,9,16,25], think about how you will show that this worked
-Console.WriteLine(SquareValues(TestIntList3));
+SquareValues(TestIntList3);
 
 
 // 5. Replace Negative Numbers with 0
@@ -81,11 +81,14 @@ static int[] NonNegatives(int[] IntArray){
             IntArray[i] = 0;
         }
     }
+    foreach (int num in IntArray){
+        Console.WriteLine(num);
+    }
     return IntArray;
 }
 int[] TestIntArray = new int[] {-1,2,3,-4,5};
 // You should get back [0,2,3,0,5], think about how you will show that this worked
-Console.WriteLine(NonNegatives(TestIntArray));
+NonNegatives(TestIntArray);
 
 // 6. Print Dictionary
 
@@ -147,6 +150,10 @@ static Dictionary<string,int> GenerateDictionary(List<string> Names, List<int> N
         result.Add(Names[i], Numbers[i]);
     }
 
+    foreach (KeyValuePair<string, int> person in result){
+        Console.WriteLine($"{person.Key} : {person.Value}");
+    }
+
     return result;
 }
 // We've shown several examples of how to set your tests up properly, it's your turn to set it up!
@@ -156,7 +163,7 @@ List<string> finalNames = new List<string>() {"Julie", "Harold", "James", "Monic
 List<int> finalNumbers = new List<int>() {6,12,7,10};
 
 
-Console.WriteLine(GenerateDictionary(finalNames, finalNumbers));
+GenerateDictionary(finalNames, finalNumbers);
 
 
 
