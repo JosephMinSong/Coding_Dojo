@@ -1,4 +1,4 @@
-class Enemy{
+public class Enemy{
     string Name;
 
     int Health;
