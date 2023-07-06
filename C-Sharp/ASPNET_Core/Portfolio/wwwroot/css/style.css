@@ -34,6 +34,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 2rem;
 }
 
@@ -55,6 +56,7 @@ main{
     margin-top: 5rem;
     display: flex;
     justify-content: space-around;
+    gap: 25rem;
 }
 
 .profile_pic{
@@ -93,4 +95,41 @@ main{
     justify-content: space-between;
     align-items: center;
     gap: 5rem;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    gap: 2rem;
+    margin-top: 2rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+input, textarea{
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.submit-button{
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color:white;
+    border-radius: 1rem;
+}
+
+.submit-button:hover{
+    opacity: 80%;
+    cursor: pointer;
 }
