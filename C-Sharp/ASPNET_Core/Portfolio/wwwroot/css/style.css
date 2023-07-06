@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
+a:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.bold{
+    font-weight: 800;
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-text{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2rem 10rem;
+    border-radius: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.index-main{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile_pic{
+    border-radius: 2.5rem;
+}
+
+.about_me{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+}
+
+.project-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7rem;
+    padding: 2rem;
+    border: 2px solid black;
+    margin: 2rem 10rem 1rem 10rem;
+    height: 70vh;
+    overflow-y:scroll;
+}
+
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-desc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+}
