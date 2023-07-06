@@ -1,7 +1,8 @@
 public class RangedFighter : Enemy {
-    Attack ArrowShot = new Attack("Shoot an Arrow", 20);
+    public Attack ArrowShot = new Attack("Shoot an Arrow", 20);
 
-    Attack KnifeThrow = new Attack("Throw a Knife", 15);
+    public Attack KnifeThrow = new Attack("Throw a Knife", 15);
+    
     int Distance;
 
     public int _Distance{

@@ -13,12 +13,16 @@ Attack Throw = new Attack("Throw", 10);
 
 // FROM GAME DEVELOPER 2****************
 
+// MELEE FIGHTER
+
 // MeleeFighter Four = new MeleeFighter("Four");
 // Four.ShowInfo();
 // Four.Rage(One);
 
-RangedFighter Five = new RangedFighter("Five");
+// RANGED FIGHTER
 
-Five.ShowInfo();
-Five.Dash();
-Five.PerformAttack(One, ArrowShot);
+// RangedFighter Five = new RangedFighter("Five");
+// Five.ShowInfo();
+// Five.Dash();
+// Five.PerformAttack(One, Five.ArrowShot);
+
