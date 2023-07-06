@@ -5,18 +5,18 @@ namespace Portfolio.Controllers;
 public class PortfolioController : Controller {
 
     [HttpGet("")]
-    public string Index(){
-        return "This is my Index!";
+    public ViewResult Index(){
+        return View();
     }
 
     [HttpGet("projects")]
-    public string Projects(){
-        return "These are my projects";
+    public ViewResult Projects(){
+        return View();
     }
 
     [HttpGet("contact")]
-    public string Contact(){
-        return "This is my Contact!";
+    public ViewResult Contact(){
+        return View();
     }
 
 }
