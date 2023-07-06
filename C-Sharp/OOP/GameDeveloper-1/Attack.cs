@@ -8,7 +8,8 @@ public class Attack{
     }
 
     public int _DamageAmount{
-        get{ return DamageAmount; }
+        get { return DamageAmount; }
+        set { DamageAmount = value; }
     }
 
     public Attack(string name, int damageAmount){
