@@ -75,9 +75,16 @@ class SLList {
     addToBackRecursive(data, runner = this.head) {
 
         if(runner == null){
+            this.head = new SLNode(data)
             return this;
         }
-        
+
+        if (runner.next == null){
+            runner.next = new SLNode(data)
+            return this;
+        }
+
+        return this.addToBackRecursive(data, runner.next)
     }
 
     /**
