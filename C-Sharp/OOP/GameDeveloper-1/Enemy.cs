@@ -3,6 +3,8 @@ public class Enemy{
 
     int Health;
 
+    int MaxHealth;
+
     public List<Attack> AttackList;
 
     public string _Name{
@@ -12,6 +14,11 @@ public class Enemy{
     public int _Health{
         get { return Health; }
         set { Health = value; }
+    }
+
+    public int _MaxHealth{
+        get { return MaxHealth; }
+        set { MaxHealth = value; }
     }
 
     public Enemy(string name){
@@ -40,9 +47,9 @@ public class Enemy{
 
 
     public virtual void PerformAttack(Enemy target, Attack attack){
+        if (this._Health <= 0) Console.WriteLine("Dead people cannot attack...");
+        if (target._Health <= 0) Console.WriteLine("Stop it! He's already dead!!");
         target._Health -= attack._DamageAmount;
-
-        Console.WriteLine($"{Name} attacks {target._Name}, dealing {attack._DamageAmount} damage and reducing {target._Name}'s health to {target._Health}!!");
     }
 }
 
