@@ -1,4 +1,4 @@
-﻿class Vehicle{
+﻿public abstract class Vehicle{
     string Name;
     public string _Name{
         get{
@@ -46,7 +46,7 @@
         DistanceTraveled = 0;
     }
 
-    public void ShowInfo(){
+    public virtual void ShowInfo(){
         Console.WriteLine($"Name : {Name}. Passenger Capacity: {Passengers}. Color : {Color}. Has engine : {Engine}. Distance Traveled : {DistanceTraveled}");
     }
 

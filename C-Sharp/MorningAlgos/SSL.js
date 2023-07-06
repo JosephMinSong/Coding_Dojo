@@ -237,10 +237,6 @@ let myList = new SLList();
 myList.addToBack(1).addToBack(2).addToBack(3).addToBack(4).addToBack(5).addToBack(-8).addToBack(-6).addToFront(9).removeHead().removeBack();
 myList.printList();
 
-// console.log(myList.average());
-
-// console.log(myList.contains(4));
-console.log(myList.containsRecursive(2));
 
 
   // const singleNodeList = new SinglyLinkedList().addToBack([1]);
