@@ -6,6 +6,16 @@
     <title>A Web Page</title>
 </head>
 <body>
-    
+    <h1>Here are some delicious foods!</h1>
+    <ul style='list-style: None'>
+    @foreach(string word in ViewBag.WordList)
+    {
+        @if (word[0] == 'C')
+        {
+            <li style='color:red'>@word</li>
+        }
+        <li>@word</li>
+    }
+    </ul>
 </body>
 </html>
