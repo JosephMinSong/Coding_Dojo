@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Countdown!</title>
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="time-container">
+
+            <h3>Start Time</h3>
+            <h4>@ViewBag.currentDate</h4>
+
+        </div>
+        
+        <div class="time-container">
+
+            <h3>End Time</h3>
+            <h4>@ViewBag.endTimeView</h4>
+
+        </div>
+    </div>
+    <div class="time-remaining-container">
+        <h2>Time Remaining</h2>
+        <p>@ViewBag.Years years, @ViewBag.Days days, @ViewBag.Hours hours, @ViewBag.Minutes minutes, @ViewBag.Seconds seconds</p>
+    </div>
+</body>
+</html>
