@@ -1,0 +1,71 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+form, .result-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin: 5rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    padding: 5rem;
+}
+
+input, select, textarea{
+    border: 2px solid black;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+label{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+button{
+    padding: 0.5rem 1rem;
+    background-color: black !important;
+    color: white;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+}
+
+button:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.result-container{
+    align-items: center;
+}
+
+.list-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 4rem;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    text-decoration: none;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: "Open Sans", sans-serif;
+}

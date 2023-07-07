@@ -1,0 +1,25 @@
+@model Survey
+
+<div class="result-container">
+    <h2>Submitted Info</h2>
+    <div class="list-container">
+        <ul>
+            <li>Name:</li>
+            <li>Dojo Location:</li>
+            <li>Favorite Language: </li>
+            <li>Comments (optional):</li>
+        </ul>
+        <ul>
+            <li>@Model.Name</li>
+            <li>@Model.Location</li>
+            <li>@Model.Language</li>
+            @{
+                @if (Model.Comments == null){
+                    <li style="color:grey">No Comments</li>
+                }
+                <li>@Model.Comments</li>
+            }
+        </ul>
+    </div>
+    <a href="/">Go Back Home</a>
+</div>

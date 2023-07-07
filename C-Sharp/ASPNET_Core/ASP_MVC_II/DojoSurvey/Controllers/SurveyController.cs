@@ -4,23 +4,33 @@ using DojoSurvey.Models;
 
 namespace DojoSurvey.Controllers;
 
-public class HomeController : Controller
+public class SurveyController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    static Survey userSurvey;
+    private readonly ILogger<SurveyController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public SurveyController(ILogger<SurveyController> logger)
     {
         _logger = logger;
     }
 
+    [HttpGet("")]
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    [HttpPost("process")]
+    public IActionResult Process(Survey newSurvey)
     {
-        return View();
+        userSurvey = newSurvey;
+        return RedirectToAction("Result");
+    }
+
+    [HttpPost("result")]
+    public IActionResult Result()
+    {
+        return View(userSurvey);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
