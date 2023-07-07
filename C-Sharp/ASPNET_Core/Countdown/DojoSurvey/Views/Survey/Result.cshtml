@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>Survey Results</title>
+</head>
+<body>
+    <div class="result-container">
+        <h2>Submitted Info</h2>
+        <div class="list-container">
+            <ul>
+                <li>Name:</li>
+                <li>Dojo Location:</li>
+                <li>Favorite Language: </li>
+                <li>Comments (optional):</li>
+            </ul>
+            <ul>
+                @foreach (string result in ViewBag.SurveyResults)
+                {
+                    @* Terrible way to do this but given how I set it up, the best way I can think of *@
+                    if (result == null){
+                        <li style='color:grey'>No Comments</li>
+                    }
+                    <li>@result</li>
+                }
+            </ul>
+        </div>
+        <a href="/">Go Back Home</a>
+    </div>
+</body>
+</html>
