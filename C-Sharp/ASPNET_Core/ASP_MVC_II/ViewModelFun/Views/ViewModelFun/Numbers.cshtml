@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Numbers!";
+}
+
+@model List<int>
+
+<div class="flex flex-col justify-center items-center text-center gap-10">
+    <h1 class="font-bold text-5xl">Here are some numbers</h1>
+    <div class="flex flex-col gap-5 p-5 border-5 border-black justify-center items-center">
+        @foreach (int number in @Model)
+        {
+            <p class="text-xl font-semibold">@number</p>
+        }
+    </div>
+</div>

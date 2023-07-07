@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Users...Plural!";
+}
+
+@model List<UserModel>
+
+<div class="flex flex-col items-center text-center gap-10">
+    <h1 class="text-5xl text-blue-600 font-bold">Here is a List of Users</h1>
+    <div class="flex flex-col gap-5 border-2 border-black p-8">
+        @foreach (UserModel user in Model)
+        {
+            <p class="text-2xl">@user.FirstName @user.LastName</p>
+        }
+    </div>
+</div>
