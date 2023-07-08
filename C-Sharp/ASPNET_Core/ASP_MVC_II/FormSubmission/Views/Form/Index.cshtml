@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Form
+
+<div class="flex justify-center items-center mt-20">
+    <form asp-action="Process" asp-controller="Form" method="post" class="flex flex-col gap-3 text-center">
+        <h2 class="text-5xl font-bold">Enter your information</h2>
+        <span asp-validation-for="Name" class="error-message"></span>
+        <div class="form-field">
+            <label asp-for="Name" class="w-96 text-xl font-semibold">Name: </label>
+            <input asp-for="Name" class=input-field>
+        </div>
+        <span asp-validation-for="Email" class="error-message"></span>
+        <div class="form-field">
+            <label asp-for="Email" class="w-96 text-xl font-semibold">Email Address: </label>
+            <input asp-for="Email" class=input-field>
+        </div>
+        <span asp-validation-for="Birthday" class="error-message"></span>
+        <div class="form-field">
+            <label asp-for="Birthday" class="w-96 text-xl font-semibold">Date of Birth: </label>
+            <input asp-for="Birthday" class=input-field>
+        </div>
+        <span asp-validation-for="Password" class="error-message"></span>
+        <div class="form-field">
+            <label asp-for="Password" class="w-96 text-xl font-semibold">Password: </label>
+            <input asp-for="Password" class=input-field>
+        </div>
+        <span asp-validation-for="FavoriteOdd" class="error-message"></span>
+        <div class="form-field">
+            <label asp-for="FavoriteOdd" class="w-96 text-xl font-semibold">Favorite Prime Number: </label>
+            <input asp-for="FavoriteOdd" class=input-field>
+        </div>
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>

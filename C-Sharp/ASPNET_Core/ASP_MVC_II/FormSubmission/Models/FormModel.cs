@@ -7,6 +7,7 @@ public class Form
     public string Name {get;set;}
 
     [Required]
+    [DataType(DataType.EmailAddress)]
     [RegularExpression(@"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+", ErrorMessage = "Email must be in a valid format")]
     public string Email {get;set;}
 
@@ -16,10 +17,12 @@ public class Form
     public DateTime Birthday {get;set;}
 
     [Required]
+    [DataType(DataType.Password)]
     [MinLength(8, ErrorMessage = "Password must be longer than 8 characters")]
     public string Password {get;set;}
 
     [Required]
+    [IsPrimeNumber]
     public int FavoriteOdd {get;set;}
 }
 
@@ -34,5 +37,43 @@ public class BeforeDateAttribute : ValidationAttribute
         else {
             return ValidationResult.Success;
         }
+    }
+}
+
+// Odd validation
+// public class OddNumberAttribute : ValidationAttribute
+// {
+//     protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+//     {
+//         if((int)value % 2 == 0)
+//         {
+//             return new ValidationResult("Number must be an odd number. This number is even");
+//         }
+//         else
+//         {
+//             return ValidationResult.Success;
+//         }
+//     }
+// }
+
+// Prime validation
+public class IsPrimeNumberAttribute : ValidationAttribute
+{
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+    {
+        if ((int)value % 2 == 0)
+        {
+            return new ValidationResult("Number must be a prime number");
+        }
+        
+        double limit = Math.Sqrt((int)value);
+        for(int i = 2; i <= limit; i++)
+        {
+            if ((int)value % i == 0)
+            {
+                return new ValidationResult("Number must be a prime number");
+            }
+        }
+        return ValidationResult.Success;
     }
 }

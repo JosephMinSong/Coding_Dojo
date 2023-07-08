@@ -12,3 +12,39 @@
     white-space: nowrap;
     line-height: 60px;
 }
+
+.form-field, .button-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-field{
+    border: 2px solid black;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.button-container{
+    justify-content: flex-end;
+}
+
+button{
+    font-size: 1.25rem;
+    font-weight: 800;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+}
+
+button:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.error-message{
+    color: red;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
