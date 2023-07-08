@@ -2,7 +2,30 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model Form
+
+<div>
+    <form asp-action="Process" asp-controller="Form" method="post">
+        <h2>Enter your information</h2>
+        <div class="form-field">
+            <label asp-for="Name">Name: </label>
+            <input asp-for="Name" class=input-field>
+        </div>
+        <div class="form-field">
+            <label asp-for="Email">Email Address: </label>
+            <input asp-for="Email" class=input-field>
+        </div>
+        <div class="form-field">
+            <label asp-for="Birthday">Date of Birth: </label>
+            <input asp-for="Birthday" class=input-field>
+        </div>
+        <div class="form-field">
+            <label asp-for="Password">Password: </label>
+            <input asp-for="Password" class=input-field>
+        </div>
+        <div class="form-field">
+            <label asp-for="FavoriteOdd">Favorite Odd Number: </label>
+            <input asp-for="FavoriteOdd" class=input-field>
+        </div>
+    </form>
 </div>

@@ -4,11 +4,11 @@ using FormSubmission.Models;
 
 namespace FormSubmission.Controllers;
 
-public class HomeController : Controller
+public class FormController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<FormController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public FormController(ILogger<FormController> logger)
     {
         _logger = logger;
     }
@@ -18,10 +18,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
