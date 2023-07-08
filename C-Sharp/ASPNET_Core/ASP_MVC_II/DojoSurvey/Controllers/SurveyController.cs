@@ -23,11 +23,18 @@ public class SurveyController : Controller
     [HttpPost("process")]
     public IActionResult Process(Survey newSurvey)
     {
-        userSurvey = newSurvey;
-        return RedirectToAction("Result");
+        if (ModelState.IsValid)
+        {
+            userSurvey = newSurvey;
+            return RedirectToAction("Result");
+        }
+        else
+        {
+            return View("Index");
+        }
     }
 
-    [HttpPost("result")]
+    [HttpGet("result")]
     public IActionResult Result()
     {
         return View(userSurvey);

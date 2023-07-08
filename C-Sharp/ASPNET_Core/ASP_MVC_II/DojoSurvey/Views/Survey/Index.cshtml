@@ -6,17 +6,24 @@
 
 <div class="flex justify-center items-center">
     <form asp-action="Process" asp-controller="Survey" method='post'>
-        <div>
+        <div class="inline-block">
+            <span asp-validation-for="Name" class="error-message"></span>
+            <br/>
             <label for="Name">Your Name: </label>
             <input asp-for="Name" id="name">
         </div>
         <div>
+            <span asp-validation-for="Location" class="error-message"></span>
+            <br/>
             <label asp-for="Location">Dojo Location</label>
             <input asp-for="Location" id="location">
         </div>
         <div>
+            <span asp-validation-for="Language" class="error-message"></span>
+            <br/>
             <label asp-for="Language">Favorite Language</label>
             <select asp-for="Language" id="language">
+                <option value=""></option>
                 <option value="C#">C#</option>
                 <option value="JavaScript">JavaScript</option>
                 <option value="Python">Python</option>
@@ -24,6 +31,8 @@
             </select>
         </div>
         <div>
+            <span asp-validation-for="Comments" class="error-message"></span>
+            <br/>
             <label asp-for="Comments">Comments (optional)</label>
             <textarea asp-for="Comments" id="comments" cols="30" rows="10"></textarea>
         </div>

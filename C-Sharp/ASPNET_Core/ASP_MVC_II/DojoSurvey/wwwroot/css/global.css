@@ -69,3 +69,7 @@ li{
     font-size: 1.5rem;
     font-family: "Open Sans", sans-serif;
 }
+
+.error-message{
+    color: red;
+}
