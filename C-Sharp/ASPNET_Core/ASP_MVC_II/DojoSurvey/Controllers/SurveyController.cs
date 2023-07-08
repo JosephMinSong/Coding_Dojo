@@ -26,6 +26,7 @@ public class SurveyController : Controller
         if (ModelState.IsValid)
         {
             userSurvey = newSurvey;
+            // To use ViewModel, we would need to pass in newSurvey into our Redirect
             return RedirectToAction("Result");
         }
         else
@@ -36,7 +37,10 @@ public class SurveyController : Controller
 
     [HttpGet("result")]
     public IActionResult Result()
-    {
+    {   
+        // From here, we would make a ViewModel
+        // Survey ViewModel = newSurvey
+        // and then pass this into our view so we can use it
         return View(userSurvey);
     }
 
