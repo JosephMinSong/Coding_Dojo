@@ -13,7 +13,29 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet("")]
     public IActionResult Index()
+    {
+        return View();
+    }
+
+    [HttpPost("process")]
+    public IActionResult Process(DateModel newdate)
+    {   
+        Console.WriteLine(newdate.UserDate.Date);
+        return View("Index");
+        // if(ModelState.IsValid)
+        // {
+        //     return RedirectToAction("Result");
+        // } 
+        // else 
+        // {
+        //     return View("Index");
+        // }
+    }
+
+    [HttpGet("result")]
+    public IActionResult Result()
     {
         return View();
     }
