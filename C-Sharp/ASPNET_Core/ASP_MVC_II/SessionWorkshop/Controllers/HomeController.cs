@@ -13,14 +13,31 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet("")]
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    [HttpPost("process")]
+    public IActionResult Process(User newUser)
     {
-        return View();
+        if (ModelState.IsValid)
+        {   
+            HttpContext.Session.SetString("sessionUser", newUser.Username);
+            return RedirectToAction("Dashboard");
+        }
+        else
+        {
+            return View("Index");
+        }
+    }
+
+    [HttpGet("dashboard")]
+    public IActionResult Dashboard()
+    {
+        ViewBag.sessionUsername = HttpContext.Session.GetString("sessionUser");
+        return View("Dashboard");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

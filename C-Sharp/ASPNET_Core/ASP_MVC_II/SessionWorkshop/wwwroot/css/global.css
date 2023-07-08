@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.input-field{
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+}
+
+.submit-button{
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+}
