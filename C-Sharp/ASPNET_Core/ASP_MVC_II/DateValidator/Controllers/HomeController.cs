@@ -6,6 +6,8 @@ namespace DateValidator.Controllers;
 
 public class HomeController : Controller
 {
+
+    static DateModel finaldate;
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -22,22 +24,21 @@ public class HomeController : Controller
     [HttpPost("process")]
     public IActionResult Process(DateModel newdate)
     {   
-        Console.WriteLine(newdate.UserDate.Date);
-        return View("Index");
-        // if(ModelState.IsValid)
-        // {
-        //     return RedirectToAction("Result");
-        // } 
-        // else 
-        // {
-        //     return View("Index");
-        // }
+        if(ModelState.IsValid)
+        {   
+            finaldate = newdate;
+            return RedirectToAction("Result");
+        } 
+        else 
+        {
+            return View("Index");
+        }
     }
 
     [HttpGet("result")]
     public IActionResult Result()
     {
-        return View();
+        return View(finaldate);
     }
 
     public IActionResult Privacy()
