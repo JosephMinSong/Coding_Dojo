@@ -24,3 +24,20 @@
     border-radius: 0.5rem;
     padding: 1rem 2rem;
 }
+
+.logout-button{
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+}
+
+.dash-header{
+    border-bottom: 2px solid black;
+}
+
+.math-button{
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    width: 250px;
+    height: 200px;
+}
