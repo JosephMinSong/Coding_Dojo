@@ -29,7 +29,7 @@ public class HomeController : Controller
             HttpContext.Session.SetString("Username", newUser.Name);
             if(newUser.Location != null)
             {
-                HttpContext.Session.SetString("Location", $"{newUser.Location}");
+                HttpContext.Session.SetString("Location", newUser.Location);
             } else {
                 HttpContext.Session.SetString("Location", "Undisclosed");
             }
@@ -42,7 +42,7 @@ public class HomeController : Controller
     [HttpGet("generator")]
     public IActionResult Generator()
     {
-        if(HttpContext.Session.GetString("Name") == null)
+        if(HttpContext.Session.GetString("Username") == null)
         {
             return RedirectToAction("Index");
         }
@@ -64,6 +64,7 @@ public class HomeController : Controller
     [HttpPost("generate/new")]
     public IActionResult GenerateNew()
     {
+        GeneratePasscode();
         return RedirectToAction("Generator");
     }
 
