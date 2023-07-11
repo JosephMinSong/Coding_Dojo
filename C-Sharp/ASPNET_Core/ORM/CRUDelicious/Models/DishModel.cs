@@ -18,6 +18,7 @@ public class Dish
     public int Tastiness {get;set;}
 
     [Required]
+    [Range(0, double.PositiveInfinity, ErrorMessage = "Calories cannot be negative")]
     public int Calories {get;set;}
 
     [Required]

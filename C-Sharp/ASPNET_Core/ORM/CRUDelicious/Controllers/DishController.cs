@@ -20,7 +20,7 @@ public class DishController : Controller
     [HttpGet("")]
     public IActionResult Index()
     {
-        List<Dish> ViewModel = _context.Dishes.ToList();
+        List<Dish> ViewModel = _context.Dishes.OrderByDescending(x => x.CreatedAt).ToList();
         return View(ViewModel);
     }
 
