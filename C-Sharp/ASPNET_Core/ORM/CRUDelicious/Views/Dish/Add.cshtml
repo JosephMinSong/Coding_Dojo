@@ -28,7 +28,7 @@
 
         <div class="flex flex-1 flex-col gap-10">
             <label asp-for="Tastiness" class="label-priv">Tastiness</label>
-            <select name="Tastiness" id="Tastiness" class="input-priv">
+            <select asp-for="Tastiness" id="Tastiness" class="input-priv">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -44,7 +44,7 @@
 
         <div class="flex flex-1 flex-col items-center gap-10">
             <label asp-for="Description" class="label-priv">Description</label>
-            <textarea name="Description" id="Description" cols="50" rows="10" class="input-priv"></textarea>
+            <textarea asp-for="Description" id="Description" cols="50" rows="10" class="input-priv"></textarea>
             <button class="submit-button-priv">Submit</button>
         </div>
 

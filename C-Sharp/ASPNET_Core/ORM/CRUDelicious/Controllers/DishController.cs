@@ -24,7 +24,7 @@ public class DishController : Controller
         return View(ViewModel);
     }
 
-    [HttpGet("/add")]
+    [HttpGet("dishes/new")]
     public IActionResult Add()
     {
         return View();
@@ -44,7 +44,8 @@ public class DishController : Controller
         return View(ViewModel);
     }
 
-    [HttpPost("ProcessAdd")]
+    // CREATE
+    [HttpPost("dishes/create")]
     public IActionResult ProcessAdd(Dish newDish)
     {
         if(ModelState.IsValid)
@@ -59,6 +60,28 @@ public class DishController : Controller
         }
     }
 
+    // EDIT
+    [HttpPost("dishes/{DishId}/update")]
+    public IActionResult ProcessEdit(Dish updateDish, int DishId)
+    {
+        Dish? oldDish = _context.Dishes.FirstOrDefault(x => x.DishId == DishId);
+
+        if (ModelState.IsValid)
+        {
+            oldDish.Chef = updateDish.Chef;
+            oldDish.Name = updateDish.Name;
+            oldDish.Calories = updateDish.Calories;
+            oldDish.Tastiness = updateDish.Tastiness;
+            oldDish.Description = updateDish.Description;
+            oldDish.UpdatedAt = DateTime.Now;
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        } else {
+            return View("EditDish", oldDish);
+        }
+    }
+
+    // DELETE
     [HttpPost("dishes/{DishId}/delete")]
     public IActionResult Destroy(int DishId)
     {
