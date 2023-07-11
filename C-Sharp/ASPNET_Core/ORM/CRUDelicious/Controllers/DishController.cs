@@ -4,23 +4,32 @@ using CRUDelicious.Models;
 
 namespace CRUDelicious.Controllers;
 
-public class HomeController : Controller
+public class DishController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<DishController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public DishController(ILogger<DishController> logger)
     {
         _logger = logger;
     }
 
+    [HttpGet("")]
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    [HttpGet("/add")]
+    public IActionResult Add()
     {
         return View();
+    }
+
+    [HttpPost("ProcessAdd")]
+    public IActionResult ProcessAdd(Dish newDish)
+    {
+        
+        return View("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

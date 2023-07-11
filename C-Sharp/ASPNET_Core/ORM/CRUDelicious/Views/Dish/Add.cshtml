@@ -1,0 +1,49 @@
+@{
+    ViewData["Add"] = "Add a Dish";
+}
+
+@model Dish
+
+<nav class="flex justify-center items-center gap-6">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/add" class="nav-link bold">Add a Dish</a>
+</nav>
+
+<div>
+    <form asp-action="ProcessAdd" asp-controller="Dish" method="post" class="flex gap-32 mt-20">
+
+        <div class="flex flex-1 flex-col justify-center gap-10">
+            <label asp-for="Chef">Chef's Name</label>
+            <input asp-for="Chef" class="input-priv">
+
+            <label asp-for="Name">Name of Dish</label>
+            <input asp-for="Name" class="input-priv">
+
+            <label asp-for="Calories">Number of Calories</label>
+            <input asp-for="Calories" class="input-priv">
+        </div>
+
+        <div class="flex flex-1 flex-col gap-10">
+            <label asp-for="Tastiness">Tastiness</label>
+            <select name="Tastiness" id="Tastiness">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="flex flex-1 flex-col items-center gap-10">
+            <label asp-for="Description">Description</label>
+            <textarea name="Description" id="Description" cols="50" rows="10" class="input-priv"></textarea>
+            <button class="submit-button-priv">Submit</button>
+        </div>
+
+    </form>
+</div>

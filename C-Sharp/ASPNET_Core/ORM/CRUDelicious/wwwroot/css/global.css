@@ -12,3 +12,38 @@
     white-space: nowrap;
     line-height: 60px;
 }
+
+.nav-link{
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.border-bottom-priv{
+    border-bottom: 2px solid black;
+    padding-bottom: 2rem;
+}
+
+.input-priv{
+    border: 1.5px solid black;
+    border-radius: 0.75rem;
+    padding: 1.15rem;
+}
+
+.submit-button-priv{
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 0.75rem;
+}
+
+.submit-button-priv:hover{
+    opacity: 80%;
+    cursor: pointer;
+}

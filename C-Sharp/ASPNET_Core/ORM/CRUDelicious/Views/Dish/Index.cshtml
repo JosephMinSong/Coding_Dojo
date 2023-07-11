@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<nav class="flex justify-center items-center gap-6">
+    <a href="/" class="nav-link bold">Home</a>
+    <a href="/add" class="nav-link">Add a Dish</a>
+</nav>
+<div class="flex flex-col justify-start mt-5">
+    <div class="border-bottom-priv">
+        <p class="text-2xl font-semibold">Check out some recent dishes</p>
+    </div>
+    @* Import from model
+        foreach(Dish dish in ViewBag.AllDishes)
+     *@
+</div>
