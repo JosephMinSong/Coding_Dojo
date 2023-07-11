@@ -2,15 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<nav class="flex justify-center items-center gap-6">
-    <a href="/" class="nav-link bold">Home</a>
-    <a href="/add" class="nav-link">Add a Dish</a>
+@model List<Dish>
+
+<nav class="flex flex-col justify-center items-center gap-6 mt-10">
+    <h1 class="text-5xl font-bold">Welcome to CRUDelicious!</h1>
+    <div class="flex">
+        <a href="/" class="nav-link bold">Home</a>
+        <a href="/add" class="nav-link">Add a Dish</a>
+    </div>
 </nav>
 <div class="flex flex-col justify-start mt-5">
     <div class="border-bottom-priv">
         <p class="text-2xl font-semibold">Check out some recent dishes</p>
     </div>
-    @* Import from model
-        foreach(Dish dish in ViewBag.AllDishes)
-     *@
+    <div class="flex flex-col justify-start mt-10">
+    @foreach (Dish dish in @Model)
+    {
+        <p class="dish-home"><a href="/dishes/@dish.DishId">@dish.Name</a> by @dish.Chef </p>
+    }
+    </div>
 </div>

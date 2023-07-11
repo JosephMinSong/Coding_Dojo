@@ -580,6 +580,10 @@ video {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -610,6 +614,10 @@ video {
 
 .gap-32 {
   gap: 8rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .border-b-2 {
@@ -654,6 +662,16 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {
