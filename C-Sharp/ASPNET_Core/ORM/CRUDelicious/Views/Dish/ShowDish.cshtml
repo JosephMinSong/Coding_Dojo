@@ -24,9 +24,7 @@
         <form asp-action="Destroy" asp-controller="Dish" method="post" asp-route-DishId="@Model.DishId" class="delete-btn">
             <input type="submit" value="Delete">
         </form>
-        <form asp-action="EditDish" asp-controller="Dish" asp-route-DishId="@Model.DishId" class="edit-btn">
-            <input type="submit" value="Edit">
-        </form>
+        <button class="edit-btn" onclick="location.href='/dishes/@Model.DishId/edit'">Edit</button>
     </div>
 </div>
 
