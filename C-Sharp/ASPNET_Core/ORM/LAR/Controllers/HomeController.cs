@@ -47,9 +47,7 @@ public class HomeController : Controller
         db.Add(newUser);
         db.SaveChanges();
 
-        User loggedUser = db.Users.FirstOrDefault(x => x.Email == newUser.Email);
-
-        HttpContext.Session.SetInt32("loggedUserId", loggedUser.UserId);
+        HttpContext.Session.SetInt32("loggedUserId", newUser.UserId);
 
         return RedirectToAction("Success");
     }
