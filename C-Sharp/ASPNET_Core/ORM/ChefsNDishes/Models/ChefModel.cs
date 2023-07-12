@@ -9,21 +9,24 @@ public class Chef
     [Key]
     public int ChefId {get;set;}
 
-    [Required]
+    [Required(ErrorMessage = "First Name is required")]
+    [Display(Name = "First Name:")]
     public string FirstName {get;set;}
 
-    [Required]
+    [Required(ErrorMessage = "Last Name is required")]
+    [Display(Name = "Last Name:")]
     public string LastName {get;set;}
 
     [Required]
     [DataType(DataType.Date)]
-    [BeforeDate]
+    [BirthdayValidator]
+    [Display(Name = "Date of Birth:")]
     public DateTime Birthday {get;set;}
 
     public List<Dish> AllDishes {get;set;} = new List<Dish>();
 }
 
-public class BeforeDateAttribute : ValidationAttribute
+public class BirthdayValidatorAttribute : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
@@ -32,9 +35,18 @@ public class BeforeDateAttribute : ValidationAttribute
         {
             return new ValidationResult("This is in the future! Please enter a date from the past...");  
         } 
-        else 
+        else
         {
-            return ValidationResult.Success;
+            TimeSpan diff = DateTime.Now.Date - (DateTime)value;
+            int years = diff.Days/365;
+            if(years < 18)
+            {
+                return new ValidationResult($"According to our calculations, you are {years} years old and too young to register");
+            }
+            else
+            {
+                return ValidationResult.Success;
+            }
         }
     }
 }

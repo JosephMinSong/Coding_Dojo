@@ -7,38 +7,23 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ChefsNDishes.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ChefsNDishes</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <header class="flex justify-center items-center mt-10 gap-10">
+        <a href="/" class="nav-link-priv @((string)ViewData["Title"] == "Home Page" ? "bold" : "")">Chefs</a>
+        <a href="/dishes" class="nav-link-priv @((string)ViewData["Title"] == "Dishes" ? "bold" : "")">Dishes</a>
+        <a href="/chefs/add" class="nav-link-priv @((string)ViewData["Title"] == "Add Chef" ? "bold" : "")">Add a Chef</a>
+        <a href="/dishes/add" class="nav-link-priv @((string)ViewData["Title"] == "Add Dish" ? "bold" : "")">Add a Dish</a>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - ChefsNDishes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - ChefsNDishes - Built by Joseph Song
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

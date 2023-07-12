@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Add Dish";
+}
+
+@model Dish
+
+<div class="title-header">
+    <h1 class="title-header-text">Add a dish</h1>
+</div>
+
+<div class="mx-10 mt-10">
+    <form asp-action="ProcessDish" asp-controller="Dish" method="POST" class="flex justify-between mx-10 gap-36">
+        <div class="flex flex-1 flex-col gap-2">
+            <span asp-validation-for="Name" class="error-message"></span>
+            <label asp-for="Name" class="label-priv"></label>
+            <input asp-for="Name" class="input-priv">
+            <span asp-validation-for="Calories" class="error-message"></span>
+            <label asp-for="Calories" class="label-priv"></label>
+            <input asp-for="Calories" class="input-priv">
+        </div>
+
+        <div class="flex flex-1 flex-col gap-2">
+            <label asp-for="ChefId" class="label-priv">Chef: </label>
+            <select asp-for="ChefId" class="input-priv">
+                @foreach (Chef chef in ViewBag.allChefs)
+                {
+                    <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+                }
+            </select>
+        </div>
+
+        <div class="flex flex-1 flex-col justify-between">
+            <label asp-for="Tastiness" class="label-priv"></label>
+            <select asp-for="Tastiness" class="input-priv">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <button class="submit-btn mt-20">Add Dish</button>
+        </div>
+    </form>
+</div>
