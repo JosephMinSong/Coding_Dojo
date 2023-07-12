@@ -1,32 +1,32 @@
 @model User
 
-<form action="" class="mt-10 flex flex-col gap-2 justify-center">
+<form asp-action="CreateUser" asp-controller="Home" method="post" class="mt-10 flex flex-col gap-2 justify-center">
+    <span asp-validation-for="FirstName" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <span asp-validation-for="FirstName"></span>
         <label asp-for="FirstName" class="label-priv">First Name: </label>
         <input asp-for="FirstName" class="input-priv">
     </div>
 
+    <span asp-validation-for="LastName" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <span asp-validation-for="LastName"></span>
         <label asp-for="LastName" class="label-priv">Last Name: </label>
         <input asp-for="LastName" class="input-priv">
     </div>
 
+    <span asp-validation-for="Email" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <span asp-validation-for="Email"></span>
         <label asp-for="Email" class="label-priv">Email: </label>
         <input asp-for="Email" class="input-priv">
     </div>
 
+    <span asp-validation-for="Password" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <span asp-validation-for="Password"></span>
         <label asp-for="Password" class="label-priv">Password: </label>
         <input asp-for="Password" class="input-priv">
     </div>
 
+    <span asp-validation-for="ConfirmPassword" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <span asp-validation-for="ConfirmPassword"></span>
         <label asp-for="ConfirmPassword" class="label-priv">PW Confirm: </label>
         <input asp-for="ConfirmPassword" class="input-priv">
     </div>

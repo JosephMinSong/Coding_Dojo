@@ -1,14 +1,15 @@
-@model User
+@model LoginUser
 
-<form action="" class="mt-10 flex flex-col gap-2">
+<form asp-action="Login" asp-controller="Home" method="post" class="mt-10 flex flex-col gap-2">
+    <span asp-validation-for="LoginEmail" class="error-message"></span>
     <div class="flex gap-10 items-center justify-between">
-        <label asp-for="Email" class="text-2xl">Email: </label>
-        <input asp-for="Email" class="input-priv">
+        <label asp-for="LoginEmail" class="text-2xl">Email: </label>
+        <input asp-for="LoginEmail" class="input-priv">
     </div>
 
     <div class="flex gap-10 items-center justify-between">
-        <label asp-for="Password" class="text-2xl">Password: </label>
-        <input asp-for="Password" class="input-priv">
+        <label asp-for="LoginPassword" class="text-2xl">Password: </label>
+        <input asp-for="LoginPassword" class="input-priv">
     </div>
 
     <div class="flex justify-center items-center mt-10">

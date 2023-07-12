@@ -1,0 +1,7 @@
+@model User
+
+<div class="flex flex-col justify-center items-center gap-10 mt-20">
+    <h1>Success!</h1>
+    <h2>Welcome @Model.FirstName @Model.LastName</h2>
+    <a asp-action="Logout" asp-controller="Home">Logout</a>
+</div>
