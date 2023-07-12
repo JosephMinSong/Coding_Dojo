@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 namespace ChefsNDishes.Models;
 
-public class MyContext : DbContext 
+public class ChefContext : DbContext 
 {   
-    public MyContext(DbContextOptions options) : base(options) { }    
+    public ChefContext(DbContextOptions options) : base(options) { }    
     public DbSet<Chef> Chefs { get; set; } 
 }

@@ -1,9 +1,10 @@
 #pragma warning disable CS8618
 using Microsoft.EntityFrameworkCore;
-namespace YourProjectName.Models;
+namespace ChefsNDishes.Models;
 
-public class MyContext : DbContext 
+
+public class DishContext : DbContext 
 {   
-    public MyContext(DbContextOptions options) : base(options) { }    
+    public DishContext(DbContextOptions options) : base(options) { }    
     public DbSet<Dish> Dishes { get; set; } 
 }
