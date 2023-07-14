@@ -22,8 +22,22 @@ public class ProductController : Controller
 
     [HttpGet("")]
     public IActionResult Index()
-    {
+    {   
+        ViewBag.allProducts = db.Products.ToList();
         return View();
+    }
+
+    [HttpPost("/products/create")]
+    public IActionResult CreateProduct(Product newProduct)
+    {
+        if (!ModelState.IsValid)
+        {   
+            ViewBag.allProducts = db.Products.ToList();
+            return View("Index");
+        }
+        db.Products.Add(newProduct);
+        db.SaveChanges();
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

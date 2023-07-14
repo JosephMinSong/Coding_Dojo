@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Categories";
+}
+
+@model Category
+
+<div class="flex gap-20 mt-16">
+    <div class="flex flex-1 flex-col justif-center items-center item-container">
+        <h2 class="title-header-text mb-5">New Product</h2>
+        <form asp-action="CreateCategory" asp-controller="Category" method="POST" class="flex flex-col justify-evenly gap-2">
+            <span asp-validation-for="Name" class="error-message"></span>
+            <div class="flex">
+                <label asp-for="Name" class="label-priv"></label>
+                <input asp-for="Name" class="input-priv">
+            </div>
+
+            <div>
+                <button class="submit-btn">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="flex-1">
+        <h2 class="title-header-text mb-5">All Products</h2>
+        <div class="flex flex-col gap-2">
+            @foreach (Category category in ViewBag.allCategories)
+            {
+                <a href="/categories/@category.CategoryId" class="product-nav">@category.Name</a>
+            }
+        </div>
+    </div>
+</div>
