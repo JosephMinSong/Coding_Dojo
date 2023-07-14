@@ -226,6 +226,7 @@ insertRecursive(newVal, curr = this.root) {
     return this.insertRecursive(newVal, curr.right);
     }
 }
+
 /**
  * DFS Preorder: (CurrNode, Left, Right)
  * Converts this BST into an array following Depth First Search preorder.
@@ -236,15 +237,12 @@ insertRecursive(newVal, curr = this.root) {
  * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
  */
 toArrPreorder(node = this.root, vals = []) {
-    if (node)
-    {
-        vals.push(node.data)
-
-        this.toArrPreorder(node.left, vals)
-
-        this.toArrPreorder(node.right, vals)
+    if (node) {
+    vals.push(node.data);
+    this.toArrPreorder(node.left, vals);
+    this.toArrPreorder(node.right, vals);
     }
-    return vals
+    return vals;
 }
 
 /**
@@ -257,19 +255,12 @@ toArrPreorder(node = this.root, vals = []) {
  * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
  */
 toArrInorder(node = this.root, vals = []) {
-    if (node)
-    {
-    
-    // Traverse left subtree
+    if (node) {
     this.toArrInorder(node.left, vals);
-    
-    // Visit node
-    vals.push(node.data)
-    
-    // Traverse right subtree
+    vals.push(node.data);
     this.toArrInorder(node.right, vals);
     }
-    return vals
+    return vals;
 }
 
 /**
@@ -281,8 +272,98 @@ toArrInorder(node = this.root, vals = []) {
  * @param {Array<number>} vals The data that has been visited so far.
  * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
  */
-toArrPostorder(node = this.root, vals = []) {}
+toArrPostorder(node = this.root, vals = []) {
+    if (node) {
+    this.toArrPostorder(node.left, vals);
+    this.toArrPostorder(node.right, vals);
+    vals.push(node.data);
+    }
+    return vals;
+}
 
+/**
+ * BFS order: horizontal rows top-down left-to-right.
+ * Converts this BST into an array following Breadth First Search order.
+ * Example on the fullTree var:
+ * [25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90]
+ * @param {Node} current The current node during the traversal of this tree.
+ * @returns {Array<number>} The data of all nodes in BFS order.
+ */
+toArrLevelorder(current = this.root) {
+    if (!current) return
+
+    let result = []
+
+    let queue = [current]
+
+    while(queue.length > 0){
+        const dequeuedNode = queue.shift()
+        result.push(dequeuedNode.data)
+        queue.pop()
+
+        if(dequeuedNode.left){
+            queue.push(dequeuedNode.left)
+        }
+        if(current.right){
+            queue.push(dequeuedNode.right)
+        }
+    }
+    return result
+}
+
+/**
+ * Recursively counts the total number of nodes in this tree.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {Node} node The current node during the traversal of this tree.
+ * @returns {number} The total number of nodes.
+ */
+size(node = this.root) {
+    if (node == null){
+        return 0
+    } else {
+        return this.size(node.left) + 1 + this.size(node.right)
+    }
+}
+
+/**
+ * Calculates the height of the tree which is based on how many nodes from
+ * top to bottom (whichever side is taller).
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {Node} node The current node during traversal of this tree.
+ * @returns {number} The height of the tree.
+ */
+height(node = this.root) {
+    if(!node) return 0
+
+    let leftHeight = this.height(node.left)
+    let rightHeight = this.height(node.right)
+
+    return Math.max(leftHeight, rightHeight) + 1
+}
+
+/**
+ * Determines if this tree is a full tree. A full tree is a tree where every
+ * node has both a left and a right except for the leaf nodes (last nodes)
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {Node} node The current node during traversal of this tree.
+ * @returns {boolean} Indicates if this tree is full.
+ */
+isFull(node = this.root) {
+    if(!node) return false
+    
+    if(!node.left && !node.right){
+        return true
+    }
+
+    if(node.left && node.right){
+        return this.isFull(node.left) && this.isFull(node.right)
+    }
+
+    return false
+}
 
 // Logs this tree horizontally with the root on the left.
 print(node = this.root, spaceCnt = 0, spaceIncr = 10) {
@@ -303,7 +384,7 @@ print(node = this.root, spaceCnt = 0, spaceIncr = 10) {
 }
 
 const emptyTree = new BinarySearchTree();
-// emptyTree.print()
+emptyTree.print()
 
 const oneNodeTree = new BinarySearchTree();
 oneNodeTree.root = new BSTNode(10);
@@ -366,25 +447,14 @@ fullTree
 .insert(31)
 .insert(44)
 .insert(66)
-.insert(90);
+// .insert(90);
 
 fullTree.print()
+// console.log(fullTree.toArrInorder())
+// console.log(fullTree.toArrPreorder())
+// console.log(fullTree.toArrPostorder())
 
-console.log(fullTree.toArrInorder())
-// fullTree
-// .insertRecursive(25)
-// .insertRecursive(15)
-// .insertRecursive(10)
-// .insertRecursive(22)
-// .insertRecursive(4)
-// .insertRecursive(12)
-// .insertRecursive(18)
-// .insertRecursive(24)
-// .insertRecursive(50)
-// .insertRecursive(35)
-// .insertRecursive(70)
-// .insertRecursive(31)
-// .insertRecursive(44)
-// .insertRecursive(66)
-// .insertRecursive(90);
-// fullTree.print()
+console.log(fullTree.toArrLevelorder())
+console.log(fullTree.size())
+console.log(fullTree.height())
+console.log(fullTree.isFull())
