@@ -2,6 +2,33 @@
     ViewData["Title"] = "Show Category";
 }
 
+@model Association
+
 <div class="title-header">
     <h2 class="title-header-text mb-5">@ViewBag.category.Name</h2>
+</div>
+
+<div class="flex">
+    <div class="flex flex-col gap-10 flex-1 items-center">
+        <h2 class="text-5xl font-semibold">Products</h2>
+        @foreach (Association association in @ViewBag.category.Associations)
+        {   
+            <form asp-action="ToggleCatProdAssociation" asp-controller="Category" asp-route-CategoryId="@association.CategoryId" method="POST" class="flex gap-2 text-center items-center">
+                <input type="hidden" name="ProductId" value="@association.ProductId">
+                <p>@association.Product?.Name</p>
+                <button class="submit-btn">Remove</button>
+            </form>
+        }
+    </div>
+
+    <form asp-action="ToggleCatProdAssociation" asp-controller="Category" asp-route-CategoryId=@ViewBag.category.CategoryId method="POST" class="flex flex-col flex-1 items-center gap-10">
+        <h2 class="text-5xl font-semibold">Add Product</h2>
+        <select name="ProductId" class="input-priv w-50">
+            @foreach (Product product in ViewBag.allUnrelatedProducts)
+            {
+                <option value="@product.ProductId">@product.Name</option>
+            }
+        </select>
+        <button class="submit-btn">Add Product</button>
+    </form>
 </div>

@@ -40,6 +40,45 @@ public class ProductController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet("products/{id}")]
+    public IActionResult ShowProduct(int id)
+    {
+        ViewBag.product = db.Products 
+                                .Include(x => x.Associations) 
+                                .ThenInclude(z => z.Category) 
+                                .FirstOrDefault(y => y.ProductId == id); 
+
+        ViewBag.allUnrelatedCategories = db.Categories 
+                                .Include(x => x.Associations) 
+                                .Where(cat => cat.Associations 
+                                    .Any(association => association.ProductId == id) == false) 
+                                .ToList();
+        return View();
+    }
+
+    [HttpPost("products/association/{ProductId}")]
+    public IActionResult ToggleProdCatAssociation(int ProductId, int CategoryId)
+    {
+        Association? existingAssociation = db.Associations
+                                                .FirstOrDefault(x => x.CategoryId == CategoryId && x.ProductId == ProductId);
+        
+        if(existingAssociation != null)
+        {
+            db.Associations.Remove(existingAssociation);
+        }
+        else
+        {
+            Association newAssociation = new Association()
+            {
+                ProductId = ProductId,
+                CategoryId = CategoryId
+            };
+            db.Associations.Add(newAssociation);
+        }
+        db.SaveChanges();
+        return RedirectToAction("ShowProduct", new {id = ProductId} );
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
