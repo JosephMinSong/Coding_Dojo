@@ -4,15 +4,17 @@
 
 @model List<Wedding>
 
-<nav>
-    <h2>Welcome @ViewBag.loggedUser.FirstName</h2>
-    <div>
-        <a href="/">Home</a>
+<nav class="flex justify-between p-10 text-align items-center">
+    <h2 class="text-2xl font-semibold">Welcome @ViewBag.loggedUser.FirstName</h2>
+    <div class="flex text-xl gap-5">
+        <a href="/weddings">Home</a>
         <a href="/weddings/add">Plan a Wedding</a>
-        <a href="/users/logout">Logout</a>
+        <form asp-action="Logout" asp-controller="LAR" method="POST">
+            <button>Logout</button>
+        </form>
     </div>
 </nav>
-<table>
+<table class="table text-2xl">
     <thead>
         <tr>
             <th>Wedding Of</th>
@@ -25,17 +27,42 @@
         @foreach (Wedding wedding in @Model)
         {
             <tr>
-                <td>@wedding.WedderOne & @wedding.WedderTwo</td>
-                <td>@wedding.WeddingDate</td>
+                <td><a href="/weddings/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                <td>@wedding.WeddingDate.ToString("MMM dd, yyyy")</td>
                 <td>@wedding.Associations.Count</td>
                 <td>
-                    @{if (wedding.Creator.UserId == ViewBag.loggedUser.UserId)
-                    {
-                        <form action="">
-                            // Delete
+                    @{if (wedding.Creator?.UserId == ViewBag.loggedUser.UserId)
+                    {   
+                        @* Delete Functionality *@
+                        <form asp-action="DeleteOne" 
+                            asp-controller="Wedding" 
+                            asp-route-WeddingId="@wedding.WeddingId" 
+                            method="POST">
+                            <button>Delete</button>
                         </form>
                     }
-                    else if ()
+                    else if (wedding.Associations.Any(x => x.WeddingId == wedding.WeddingId && x.UserId == ViewBag.loggedUser.UserId))
+                    {
+                        @* Un-RSVP Functionality *@
+                        <form asp-action="ToggleRSVP" 
+                            asp-controller="Wedding" 
+                            asp-route-WeddingId="@wedding.WeddingId" 
+                            method="POST">
+                            <input type="hidden" name="UserId" value="@ViewBag.loggedUser.UserId">
+                            <button>Un-RSVP</button>
+                        </form>
+                    }
+                    else 
+                    {
+                        @* RSVP Functionality *@
+                        <form asp-action="ToggleRSVP" 
+                            asp-controller="Wedding" 
+                            asp-route-WeddingId="@wedding.WeddingId" 
+                            method="POST">
+                            <input type="hidden" name="UserId" value="@ViewBag.loggedUser.UserId">
+                            <button>RSVP</button>
+                        </form>
+                    }
                     }
                 </td>
             </tr>

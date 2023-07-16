@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Show";
+}
+
+@model Wedding
+
+<nav class="flex justify-between p-10 text-align items-center">
+    <h2 class="text-2xl font-semibold">Welcome @ViewBag.loggedUser.FirstName</h2>
+    <div class="flex text-xl gap-5">
+        <a href="/weddings">Home</a>
+        <a href="/weddings/add">Plan a Wedding</a>
+        <a href="/users/logout">Logout</a>
+    </div>
+</nav>
+
+<h1 class="text-5xl font-bold">@Model.WedderOne & @Model.WedderTwo's wedding</h1>
+
+<h2 class="text-3xl font-semibold mt-8">Date: @Model.WeddingDate.ToString("MMM dd, yyyy")</h2>
+
+<div class="flex flex-col">
+    <h3 class="text-2xl font-semibold mt-8">Guests: </h3>
+    <div class="guest-list-container">
+        @foreach (Association association in @Model.Associations)
+        {
+            <p>@association.User.FirstName @association.User.LastName</p>
+        }
+    </div>
+</div>

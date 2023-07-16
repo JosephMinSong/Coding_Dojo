@@ -20,12 +20,14 @@ public class LARController : Controller
         db = context;
     }
 
+    // LOGIN AND REGISTRATION PAGE
     [HttpGet("")]
     public IActionResult Index()
     {
         return View();
     }
-
+    
+    // CREATE NEW USER 
     [HttpPost("/users/create")]
     public IActionResult CreateUser(User newUser)
     {
@@ -41,9 +43,10 @@ public class LARController : Controller
 
         HttpContext.Session.SetInt32("loggedUserId", newUser.UserId);
 
-        return RedirectToAction("Success");
+        return RedirectToAction("Index", "Wedding");
     }
 
+    // LOGIN AN EXISTING USER
     [HttpPost("/users/login")]
     public IActionResult Login(LoginUser loginUser)
     {   
@@ -69,7 +72,15 @@ public class LARController : Controller
         }
         HttpContext.Session.SetInt32("loggedUserId", existingUser.UserId);
 
-        return RedirectToAction("Index", "WeddingController");
+        return RedirectToAction("Index", "Wedding");
+    }
+
+    // LOGOUT
+    [HttpPost("users/logout")]
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -9,16 +9,18 @@ public class Wedding
     [Key]
     public int WeddingId {get;set;}
 
-    [Required]
+    [Required(ErrorMessage = "Wedding One is required")]
+    [Display(Name = "Wedder One: ")]
     public string WedderOne {get;set;}
 
-    [Required]
+    [Required(ErrorMessage = "Wedding Two is required")]
+    [Display(Name = "Wedder Two: ")]
     public string WedderTwo {get;set;}
 
     [Required]
     [DataType(DataType.Date)]
     [BeforeDate]
-    public int WeddingDate {get;set;}
+    public DateTime WeddingDate {get;set;}
 
     [Required]
     public string WeddingAddress {get;set;}
@@ -39,9 +41,9 @@ public class BeforeDateAttribute : ValidationAttribute
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
     {
         
-        if((DateTime)value > DateTime.Now)
+        if((DateTime)value < DateTime.Now)
         {
-            return new ValidationResult("This is in the future! Please enter a date from the past...");  
+            return new ValidationResult("This is in the past! Please pick a date in the future");  
         } 
         else 
         {
