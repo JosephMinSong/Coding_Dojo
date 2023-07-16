@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Wedding Dashboard";
+}
+
+@model List<Wedding>
+
+<nav>
+    <h2>Welcome @ViewBag.loggedUser.FirstName</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/weddings/add">Plan a Wedding</a>
+        <a href="/users/logout">Logout</a>
+    </div>
+</nav>
+<table>
+    <thead>
+        <tr>
+            <th>Wedding Of</th>
+            <th>Date</th>
+            <th>Guest Count</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Wedding wedding in @Model)
+        {
+            <tr>
+                <td>@wedding.WedderOne & @wedding.WedderTwo</td>
+                <td>@wedding.WeddingDate</td>
+                <td>@wedding.Associations.Count</td>
+                <td>
+                    @{if (wedding.Creator.UserId == ViewBag.loggedUser.UserId)
+                    {
+                        <form action="">
+                            // Delete
+                        </form>
+                    }
+                    else if ()
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
