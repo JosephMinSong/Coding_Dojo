@@ -167,7 +167,12 @@ public class HomeController : Controller
                                 .Include(x => x.Product)
                                 .Include(x => x.Customer)
                                 .OrderByDescending(x => x.CreatedAt)
-                                .ToList()
+                                .ToList(),
+                allProducts = db.Products
+                                    .ToList(),
+
+                allCustomers = db.Customers
+                                    .ToList()
             };
             return View("Orders", ViewModel);
         }
@@ -180,14 +185,19 @@ public class HomeController : Controller
             existingProduct.ProductQuantity -= newOrder.OrderQuantity;
             if(existingProduct.ProductQuantity < 0)
             {
-                ModelState.AddModelError("NotEnoughProduct", "Not enough product stock");
+                ModelState.AddModelError("newOrder.OrderQuantity", $"Not enough product stock. There are only {existingProduct.ProductQuantity + newOrder.OrderQuantity} left");
                 OrderViewModel ViewModel = new OrderViewModel
                 {
                     allOrders = db.Orders
                                     .Include(x => x.Product)
                                     .Include(x => x.Customer)
                                     .OrderByDescending(x => x.CreatedAt)
-                                    .ToList()
+                                    .ToList(),
+                    allProducts = db.Products
+                                        .ToList(),
+
+                    allCustomers = db.Customers
+                                        .ToList()
                 };
                 return View("Orders", ViewModel);
                 }
@@ -198,7 +208,7 @@ public class HomeController : Controller
         }
         else
         {
-            ModelState.AddModelError("NoProductFound", "Sorry, we could not find this product in our database.");
+            ModelState.AddModelError("newOrder.OrderQuantity", "Sorry, we could not find this product in our database.");
             OrderViewModel ViewModel = new OrderViewModel
             {
                 allOrders = db.Orders
