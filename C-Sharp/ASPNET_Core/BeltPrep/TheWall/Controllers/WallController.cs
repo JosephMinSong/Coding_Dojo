@@ -11,16 +11,28 @@ public class WallController : Controller
 {
     private readonly ILogger<WallController> _logger;
 
-    public WallController(ILogger<WallController> logger)
+    private MyContext db;
+
+    public WallController(ILogger<WallController> logger, MyContext context)
     {
         _logger = logger;
+
+        db = context;
     }
 
     // WALL HOME PAGE
     [HttpGet("/messages")]
     public IActionResult Index()
-    {
-        return View();
+    {   
+        List<Message> allMessages = db.Messages.ToList();
+        User? loggedUser = db.Users.FirstOrDefault(x => x.UserId == HttpContext.Session.GetInt32("loggedUserId"));
+
+        MyViewModel MyViewModel = new MyViewModel
+        {   
+            LoggedUser = loggedUser,
+            AllMessages = allMessages
+        };
+        return View(MyViewModel);
     }
 
 

@@ -1,0 +1,12 @@
+@model Message
+
+<form asp-action="CreateMessage"
+    asp-controller="Wall"
+    method="POST"
+>
+    <h2>Post a Message</h2>
+    <textarea asp-for="Content" cols="30" rows="10"></textarea>
+    <div class="flex justify-end">
+        <button>Post</button>
+    </div>
+</form>
