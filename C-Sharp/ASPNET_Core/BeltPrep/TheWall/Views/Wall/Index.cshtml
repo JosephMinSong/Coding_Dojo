@@ -2,20 +2,71 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model MyViewModel
+@model MyViewModel // Has User Model, Comment Model, Message Model, and AllMessages
 
 <nav class="flex justify-between p-10 text-align items-center">
     <h2 class="text-2xl font-semibold">Coding Dojo Wall</h2>
     <div class="flex text-xl gap-5">
         <p>Welcome @Model.LoggedUser.FirstName</p>
-        <a href="/users/logout">Logout</a>
+        <form asp-action="Logout" asp-controller="LAR" method="POST">
+            <button>Logout</button>
+        </form>
     </div>
 </nav>
 
 <div>
-    @await Html.PartialAsync("_MessageForm", Model.Message);
+    @await Html.PartialAsync("_MessageForm", Model.Message)
 </div>
 
 <div>
-    @await Html.PartialAsync("_AllMessages", Model.AllMessages);
+    @foreach (Message message in Model.AllMessages)
+    {
+        <div>
+            <h3 class="text-4xl font-bold">@message.Creator.FirstName @message.Creator.LastName[0] - @message.CreatedAt.ToString("MMM dd, yyyy")</h3>
+            <p class="text-2xl pl-5 mt-3">@message.Content</p>
+            @if(Model.LoggedUser.UserId == message.UserId)
+            {
+                <form asp-action="DeleteMessage"
+                asp-controller="Wall"
+                asp-route-MessageId="@message.MessageId"
+                method="POST"
+                >
+                    <button class="submit-btn">Delete Message</button>
+                </form>
+            }
+            <div class="pl-10">
+                @foreach (Comment comment in message.Comments)
+                {
+                    <div>
+                        <h4>@comment.Creator.FirstName @comment.Creator.LastName[0] - @comment.CreatedAt.ToString("MM dd, yyyy")</h4>
+                        <p>@comment.Content</p>
+                        @if(Model.LoggedUser.UserId == comment.UserId)
+                        {
+                            <form asp-action="DeleteComment"
+                                asp-controller="Wall"
+                                asp-route-CommentId="@comment.CommentId"
+                                method="POST"
+                            >
+                                <button class="submit-btn">Delete Comment</button>
+                            </form>
+                        }
+                    </div>
+                }
+            </div>
+            <h4 class="pl-10 text-xl mt-3">Post a Comment</h4>
+            <form asp-action="CreateComment"
+                asp-controller="Wall"
+                asp-route-MessageId="@message.MessageId"
+                method="POST"
+                class="flex flex-col gap-2 pl-10"
+                >
+                <span asp-validation-for="@Model.Comment.Content"></span>
+                <textarea asp-for="@Model.Comment.Content" cols="30" rows="1" class="comment-priv"></textarea>
+                <input type="hidden" name="UserId" value="@Model.LoggedUser.UserId">
+                <div class="flex justify-end">
+                    <button class="submit-btn">Comment</button>
+                </div>
+            </form>
+        </div>
+    }
 </div>

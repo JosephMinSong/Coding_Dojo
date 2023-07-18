@@ -16,11 +16,10 @@ public class Message
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     // So we know who made the message
-    [Required]
     public int UserId {get;set;}
 
     public User? Creator {get;set;}
 
     // A message can have many Comments, that hold who the creator is and what message they are responding to
-    public List<Comment> Comments = new List<Comment>();
+    public List<Comment> Comments {get;set;} = new List<Comment>();
 }

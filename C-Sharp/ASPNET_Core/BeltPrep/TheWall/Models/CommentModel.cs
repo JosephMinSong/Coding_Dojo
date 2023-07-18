@@ -16,7 +16,7 @@ public class Comment
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     // Required UserId to know who made the comment
-    [Required]
+    // We remove the "Required" part so that we can add it in our controller
     public int UserId {get;set;}
 
     // The creator is tied to the UserId

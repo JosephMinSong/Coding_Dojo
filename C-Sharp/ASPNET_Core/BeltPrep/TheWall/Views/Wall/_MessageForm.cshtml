@@ -3,10 +3,12 @@
 <form asp-action="CreateMessage"
     asp-controller="Wall"
     method="POST"
->
-    <h2>Post a Message</h2>
-    <textarea asp-for="Content" cols="30" rows="10"></textarea>
+    class="flex flex-col gap-2"
+>   
+    <span asp-validation-for="Content"></span>
+    <h2 class="text-4xl font-semibold">Post a Message</h2>
+    <textarea asp-for="Content" cols="30" rows="5" class="input-priv"></textarea>
     <div class="flex justify-end">
-        <button>Post</button>
+        <button class="submit-btn">Post</button>
     </div>
 </form>
