@@ -4,29 +4,38 @@
 
 @model MyHomeModel
 
-<div class="flex gap-5 items-center">
+<div class="flex gap-5 items-center mt-10">
     @foreach (Product product in @Model.AllProducts)
     {
         <div class="flex flex-col gap-2 items-center justify-center">
-            <img src="@product.Image" alt="product-img">
+            <img src="@product.Image" alt="product-img" class="product-img">
             <h4>@product.Name</h4>
             <p>@product.ProductQuantity left</p>
         </div>
     }
-    @if(Model.AllProducts.Count > 5)
-    {
-        <a href="/products">Show more products...</a>
-    }
+    <a href="/products">Show more products...</a>
 </div>
 
-<div>
+<div class="mt-20">
     <h2 class="text-3xl font-bold">Recent Orders</h2>
     <div class="pl-10 flex flex-col gap-5 ">
         @foreach (Order order in @Model.AllOrders)
         {
-            <p>@order.Customer.Name purchased </p>
+            <p>@order.Customer.Name purchased @order.OrderQuantity @order.Product.Name on @order.CreatedAt.ToString("MMM dd, yyyy")</p>
         }
     </div>
+    <a href="/orders">Show more orders...</a>
+</div>
+
+<div class="mt-20">
+    <h2 class="text-3xl font-bold">New Customers</h2>
+    <div class="pl-10 flex flex-col gap-5 ">
+        @foreach (Customer customer in @Model.AllCustomers)
+        {
+            <p>@customer.Name joined the store @customer.CreatedAt.ToString("MMM dd, yyyy")</p>
+        }
+    </div>
+    <a href="/customers">Show more customers...</a>
 </div>
 
 

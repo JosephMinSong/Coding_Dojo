@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Products";
+}
+
+@model ProductViewModel
+
+<div class="flex gap-10">
+    <div class="flex-2">
+        <h2 class="text-3xl font-bold">Add a new product</h2>
+        <form asp-action="CreateProduct"
+            asp-controller="Home"
+            method="POST"
+            class="flex flex-col gap-2"
+        >   
+            <span asp-validation-for="newProduct.Name"></span>
+            <label asp-for="newProduct.Name" class="label-priv">Name: </label>
+            <input asp-for="newProduct.Name" class="input-priv w-100">
+
+            <span asp-validation-for="newProduct.Image"></span>
+            <label asp-for="newProduct.Image" class="label-priv">Image (URL): </label>
+            <input asp-for="newProduct.Image" class="input-priv w-100">
+
+            <span asp-validation-for="newProduct.ProductQuantity"></span>
+            <label asp-for="newProduct.ProductQuantity" class="label-priv">Quantity: </label>
+            <input asp-for="newProduct.ProductQuantity" class="input-priv w-100">
+
+            <div>
+                <button class="submit-btn">Create</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="product-container">
+        @foreach (Product product in Model.allProducts)
+        {
+            <div class="flex flex-1 flex-col gap-2 items-center justify-center">
+                <img src="@product.Image" alt="product-image" class="product-img">
+                <h4>@product.Name</h4>
+                <p>@product.ProductQuantity left</p>
+            </div>
+        }
+    </div>
+</div>

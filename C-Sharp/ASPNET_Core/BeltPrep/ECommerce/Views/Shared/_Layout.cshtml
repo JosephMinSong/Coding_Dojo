@@ -11,11 +11,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow my-3 gap-5 pl-10 text-2xl">
             <a href="/" class="nav-link-priv @((string)ViewData["Title"] == "Dashboard" ? "bold" : "")">Dashboard</a>
-            <a href="/" class="nav-link-priv @((string)ViewData["Title"] == "Products" ? "bold" : "")">Products</a>
-            <a href="/" class="nav-link-priv @((string)ViewData["Title"] == "Order" ? "bold" : "")">Order</a>
-            <a href="/" class="nav-link-priv @((string)ViewData["Title"] == "Customers" ? "bold" : "")">Customers</a>
+            <a href="/products" class="nav-link-priv @((string)ViewData["Title"] == "Products" ? "bold" : "")">Products</a>
+            <a href="/orders" class="nav-link-priv @((string)ViewData["Title"] == "Order" ? "bold" : "")">Orders</a>
+            <a href="/customers" class="nav-link-priv @((string)ViewData["Title"] == "Customers" ? "bold" : "")">Customers</a>
         </nav>
     </header>
     <div class="container">
