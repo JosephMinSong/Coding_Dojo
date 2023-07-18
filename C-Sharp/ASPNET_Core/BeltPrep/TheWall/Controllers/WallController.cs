@@ -69,6 +69,58 @@ public class WallController : Controller
         return RedirectToAction("Index");
     }
 
+    // Edit Message
+    [HttpGet("messages/{MessageId}/edit")]
+    public IActionResult EditMessage(int MessageId)
+    {
+        User? loggedUser = db.Users.FirstOrDefault(x => x.UserId == HttpContext.Session.GetInt32("loggedUserId"));
+        List<Message> allMessages = db.Messages
+                                    .Include(x => x.Creator)
+                                    .Include(x => x.Comments)
+                                    .ThenInclude(x => x.Creator)
+                                    .ToList();
+        Message? toEditMessage = db.Messages
+                                    .FirstOrDefault(x => x.UserId == loggedUser.UserId && x.MessageId == MessageId);
+        MyViewModel MyViewModel = new MyViewModel
+        {   
+            LoggedUser = loggedUser,
+            AllMessages = allMessages,
+            Message = toEditMessage
+        };  
+        return View("Edit", MyViewModel);
+    }
+
+    // Process Edit Message
+    [HttpPost("messages/{MessageId}/edit")]
+    public IActionResult ProcessEditMessage(Message editedMessage, int MessageId)
+    {
+        User? loggedUser = db.Users.FirstOrDefault(x => x.UserId == HttpContext.Session.GetInt32("loggedUserId"));
+        Message? toEditMessage = db.Messages
+                                        .FirstOrDefault(x => x.UserId == loggedUser.UserId && x.MessageId == MessageId);
+        if(!ModelState.IsValid)
+        {
+            List<Message> allMessages = db.Messages
+                                        .Include(x => x.Creator)
+                                        .Include(x => x.Comments)
+                                        .ThenInclude(x => x.Creator)
+                                        .ToList();
+
+            MyViewModel MyViewModel = new MyViewModel
+            {   
+                LoggedUser = loggedUser,
+                AllMessages = allMessages,
+                Message = toEditMessage
+            };
+            return View("Index", MyViewModel);
+        }
+
+        toEditMessage.MessageContent = editedMessage.MessageContent;
+        toEditMessage.UpdatedAt = DateTime.Now;
+        db.Messages.Update(toEditMessage);
+        db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
     // Delete Message
     [HttpPost("messages/{MessageId}/delete")]
     public IActionResult DeleteMessage(int MessageId)
@@ -88,8 +140,11 @@ public class WallController : Controller
     public IActionResult CreateComment(Comment newComment, int MessageId)
     {   
         User? loggedUser = db.Users.FirstOrDefault(x => x.UserId == HttpContext.Session.GetInt32("loggedUserId"));
+        newComment.MessageId = MessageId;
+        newComment.UserId = loggedUser.UserId;
+
         if (!ModelState.IsValid)
-        {
+        {   
             List<Message> allMessages = db.Messages
                                         .Include(x => x.Creator)
                                         .Include(x => x.Comments)
@@ -101,10 +156,9 @@ public class WallController : Controller
                 LoggedUser = loggedUser,
                 AllMessages = allMessages
             };
+            ViewBag.Error = MessageId;
             return View("Index", MyViewModel);
         }
-        newComment.MessageId = MessageId;
-        newComment.UserId = loggedUser.UserId;
         db.Comments.Add(newComment);
         db.SaveChanges();
         return RedirectToAction("Index");

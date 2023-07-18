@@ -1,14 +1,24 @@
-@model Message
 
-<form asp-action="CreateMessage"
+
+@model Message
+<form asp-action="@(ViewData["Title"] == "Dashboard" ? "CreateMessage" : "ProcessEditMessage")"
     asp-controller="Wall"
+    asp-route-MessageId="@(ViewData["Title"] == "Dashboard" ? "" : Model.MessageId)"
     method="POST"
-    class="flex flex-col gap-2"
+    class="flex flex-col gap-2" 
 >   
-    <span asp-validation-for="Content"></span>
+    <span asp-validation-for="MessageContent" class="error-message"></span>
     <h2 class="text-4xl font-semibold">Post a Message</h2>
-    <textarea asp-for="Content" cols="30" rows="5" class="input-priv"></textarea>
+    <textarea asp-for="MessageContent" cols="30" rows="5" class="input-priv"></textarea>
     <div class="flex justify-end">
-        <button class="submit-btn">Post</button>
+        <button class="submit-btn">
+            @if(ViewData["Title"] == "Dashboard")
+            {
+                <span>Post</span>
+            }
+            else {
+                <span>Edit</span>
+            }
+            </button>
     </div>
 </form>

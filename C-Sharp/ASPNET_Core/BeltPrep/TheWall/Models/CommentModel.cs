@@ -10,7 +10,7 @@ public class Comment
     public int CommentId {get;set;}
 
     [Required(ErrorMessage = "Comment field cannot be empty")]
-    public string Content {get;set;}
+    public string CommentContent {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
@@ -23,7 +23,6 @@ public class Comment
     public User? Creator {get;set;}
 
     // Required MessageId to know which message the comment is for
-    [Required]
     public int MessageId {get;set;}
 
     // The message is tied to the comment

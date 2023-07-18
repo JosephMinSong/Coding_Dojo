@@ -10,7 +10,7 @@ public class Message
     public int MessageId {get;set;}
 
     [Required(ErrorMessage = "Message field cannot be empty")]
-    public string Content {get;set;}
+    public string MessageContent {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;

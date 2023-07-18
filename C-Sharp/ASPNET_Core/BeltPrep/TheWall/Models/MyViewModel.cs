@@ -9,5 +9,6 @@ public class MyViewModel
     public User LoggedUser {get;set;}
     public Message Message {get;set;}
     public List<Message> AllMessages{get;set;}
-    public Comment Comment {get;set;}
+    public Comment newComment {get;set;}
+    public Comment ToEditComment {get;set;}
 }

@@ -1,5 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Dashboard";
+@{
+    ViewData["Title"] = "Edit";
 }
 
 @model MyViewModel // Has User Model, Comment Model, Message Model, and AllMessages
@@ -66,10 +66,7 @@
                 method="POST"
                 class="flex flex-col gap-2 pl-10"
                 >
-                @if(ViewBag.Error == message.MessageId)
-                {
-                    <span asp-validation-for="newComment.CommentContent" class="error-message"></span>
-                }
+                <span asp-validation-for="newComment.CommentContent"></span>
                 <textarea asp-for="newComment.CommentContent" cols="30" rows="1" class="input-priv"></textarea>
                 <div class="flex justify-end">
                     <button class="submit-btn" value="Comment">Comment</button>
