@@ -151,39 +151,15 @@ class DoublyLinkedList {
     }
 
     /**
-   * Inserts a new node with the given newVal after the node that has the
-   * given targetVal as it's data.
-   * - Time: O(?).
-   * - Space: O(?).
-   * @param {any} targetVal The node data to find.
-   * @param {any} newVal Data for the new node.
-   * @returns {boolean} Indicates if the new node was added.
-   */
-    insertAfter(targetVal, newVal) {
-        if(this.isEmpty()) return false;
-
-        const newNode = new DLLNode(newVal);
-
-        let runner = this.head;
-
-        while(runner && runner.data != targetVal){
-            runner = runner.next;
-        }
-
-        if(!runner) return false;
-
-        if(runner.next){
-            runner.next.prev = newNode;
-        } else{
-            this.tail = newNode;
-        }
-        
-        newNode.next = runner.next;
-        runner.next = newNode;
-        newNode.prev = runner;
-
-        return true;
-    }
+     * Inserts a new node with the given newVal after the node that has the
+     * given targetVal as it's data.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {any} targetVal The node data to find.
+     * @param {any} newVal Data for the new node.
+     * @returns {boolean} Indicates if the new node was added.
+     */
+    insertAfter(targetVal, newVal) { }
 
     /**
      * Inserts a new node with the given newVal before the node that has the
@@ -194,56 +170,7 @@ class DoublyLinkedList {
      * @param {any} newVal Data for the new node.
      * @returns {boolean} Indicates if the new node was added.
      */
-    insertBefore(targetVal, newVal) {
-        if(this.isEmpty()) return false;
-
-        let runner = this.head;
-
-        while(runner && runner.data != targetVal){
-            runner = runner.next;
-        }
-
-        if(!runner) return false;
-        
-        const newNode = new DLLNode(newVal);
-
-        if(runner.prev){
-            runner.prev.next = newNode;
-            runner.prev = newNode;
-        } else{
-            this.head = newNode;
-        }
-        
-        newNode.next = runner;
-        newNode.prev = runner.prev;
-
-        return true;
-    }
-
-    // insertBefore(targetVal, newVal) {
-    //     if (this.isEmpty()) return false;
-
-    //     let isFound = false;
-    //     let curr = this.head;
-    //     while (curr) {
-    //         if (curr.data == targetVal) {
-    //             isFound = true;
-    //             let node = new DLLNode(newVal);
-    //             node.next = curr;
-    //             node.prev = curr.prev;
-
-    //             // if not the first node, then update the prev node
-    //             if (curr.prev) curr.prev.next = node;
-    //             // else update the head;
-    //             else this.head = node;
-
-    //             curr.prev = node;
-    //             return isFound;
-    //         }
-    //         curr = curr.next;
-    //     }
-    //     return isFound;
-    // }
+    insertBefore(targetVal, newVal) { }
 
     /**
      * Determines if this list is empty.
@@ -281,6 +208,89 @@ class DoublyLinkedList {
         items.forEach((item) => this.insertAtBack(item));
         return this;
     }
+
+    /*
+        * Retrieves the data from the nthLast node in this list.
+        * The nthLast parameter specifies the position of the node 
+        * to be retrieved from the end of the linked list. For example, if nthLast is 1,
+        * it means we need to retrieve the last node; if nthLast is 2,
+        * it means we need to retrieve the second-to-last node; and so on.
+        * - Time: O(?).
+        * - Space: O(?).
+        * @param {number} nthLast Indicates the position from the back of the list.
+        * @returns {any}
+    */
+    nthToLast(nthLast) {
+        if(this.isEmpty()) return null
+
+        let i = 1;
+        let runner = this.tail;
+
+        while(i <= nthLast && runner != null){
+            runner = runner.prev;
+            i++;
+        }
+
+        return runner 
+    }
+
+    /**
+     * Determines if the node's data of this list forms a palindrome.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @returns {boolean} Indicates if this list is a palindrome.
+     */
+    isPalindrome() {
+        if(this.isEmpty()) return false
+
+        let runner1 = this.head;
+        let runner2 = this.tail;
+
+        while(runner1.prev != runner2){
+            if(runner1 == runner2 || runner1.data != runner2.data){
+                return false
+            }
+            runner1 = runner1.next;
+            runner2 = runner2.prev;
+        }
+        return true
+    }
+
+    /**
+     * Determines if a given node in this list is in the left half of this list.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {Node} node
+     * @returns {boolean}
+     */
+    isNodeInLeftHalf(node) {
+        if(this.isEmpty()) return false
+
+        let runner1 = this.head;
+        let runner2 = this.tail;
+
+        while(runner1.prev != runner2){
+            if(runner1 == node){
+                return true
+            }
+            runner1 = runner1.next;
+            runner2 = runner2.prev;
+        }
+        return false
+    }
+
+    getANode(placement){
+        if(this.isEmpty()) return false
+    
+        let i = 1;
+        let runner = this.head;
+
+        while(i <= placement){
+            runner = runner.next;
+            i++;
+        }
+        return runner
+    }   
 }
 
 /**************** Uncomment these test lists after insertAtBack is created. ****************/
@@ -289,9 +299,28 @@ const singleNodeList = new DoublyLinkedList().insertAtFront(1);
 const biNodeList = new DoublyLinkedList().insertAtBack(1).insertAtBack(2);
 const triNodeList = new DoublyLinkedList().insertAtBack(1).insertAtBack(2).insertAtBack(3);
 
-const firstThreeList = new DoublyLinkedList().insertAtBackMany([1, 2, 3, 4, 5, 6]);
+const firstThreeList = new DoublyLinkedList().insertAtBackMany([1, 2, 3]);
 const secondThreeList = new DoublyLinkedList().insertAtBackMany([4, 5, 6]);
 const unorderedList = new DoublyLinkedList().insertAtBackMany([-5, -10, 4, -3, 6, 1, -7, -2]);
+const palindromeList = new DoublyLinkedList().insertAtBackMany([1,2,3,3,2,1])
+const newNodeWeMade = new DLLNode(-10);
 
-console.log(firstThreeList.insertAfter(6, 10))
-console.log(firstThreeList.toArray())
+// console.log(singleNodeList.toArray())
+// console.log(biNodeList.toArray())
+// console.log(triNodeList.toArray())
+
+// console.log(biNodeList.removeMiddleNode())
+// console.log(biNodeList.toArray())
+
+// console.log(biNodeList.removeMiddleNode())
+// console.log(biNodeList.toArray())
+
+// console.log(triNodeList.removeMiddleNode())
+// console.log(triNodeList.toArray())
+
+// console.log(palindromeList.toArray());
+// console.log(palindromeList.isPalindrome());
+
+const lookingFor = unorderedList.getANode(2); // give us -10 node in memory
+console.log(unorderedList.isNodeInLeftHalf(lookingFor));
+console.log(unorderedList.isNodeInLeftHalf(newNodeWeMade));
